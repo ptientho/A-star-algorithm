@@ -2,6 +2,7 @@
 #include <ranges>
 #include <vector>
 #include "AstarSearch.hpp"
+#include "Map.hpp"
 
 int main() {
     std::vector<int> numbers = {1, 2, 3, 4, 5};
@@ -17,4 +18,11 @@ int main() {
     std::cout << std::endl;
 
     return 0;
+
+    // this will provide arguments for A* search
+    // PNG file path
+    // Start coordinates "(x1, y1)"
+    // Goal coordinates "(x2, y2)"
+
+
 }

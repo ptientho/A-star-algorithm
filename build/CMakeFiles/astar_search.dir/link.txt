@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/astar_search.dir/src/main.cpp.o -o astar_search  src/AstarSearch/libAstarSearch.a 
+/usr/bin/c++ CMakeFiles/astar_search.dir/src/main.cpp.o -o astar_search  src/AstarSearch/libAstarSearch.a src/Map/libMap.a 

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/peera/A-star-algorithm/build -I/home/peera/A-star-algorithm/src/AstarSearch -I/home/peera/A-star-algorithm/src/Map
+CXX_INCLUDES = 
 
 CXX_FLAGS = -std=gnu++20
 

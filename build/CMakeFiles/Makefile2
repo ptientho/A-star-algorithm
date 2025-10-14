@@ -65,15 +65,18 @@ CMAKE_BINARY_DIR = /home/peera/A-star-algorithm/build
 # The main recursive "all" target.
 all: CMakeFiles/astar_search.dir/all
 all: src/AstarSearch/all
+all: src/Map/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: src/AstarSearch/preinstall
+preinstall: src/Map/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/astar_search.dir/clean
 clean: src/AstarSearch/clean
+clean: src/Map/clean
 .PHONY : clean
 
 #=============================================================================
@@ -92,18 +95,34 @@ src/AstarSearch/clean: src/AstarSearch/CMakeFiles/AstarSearch.dir/clean
 .PHONY : src/AstarSearch/clean
 
 #=============================================================================
+# Directory level rules for directory src/Map
+
+# Recursive "all" directory target.
+src/Map/all: src/Map/CMakeFiles/Map.dir/all
+.PHONY : src/Map/all
+
+# Recursive "preinstall" directory target.
+src/Map/preinstall:
+.PHONY : src/Map/preinstall
+
+# Recursive "clean" directory target.
+src/Map/clean: src/Map/CMakeFiles/Map.dir/clean
+.PHONY : src/Map/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/astar_search.dir
 
 # All Build rule for target.
 CMakeFiles/astar_search.dir/all: src/AstarSearch/CMakeFiles/AstarSearch.dir/all
+CMakeFiles/astar_search.dir/all: src/Map/CMakeFiles/Map.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=4,5 "Built target astar_search"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=6,7 "Built target astar_search"
 .PHONY : CMakeFiles/astar_search.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/astar_search.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/astar_search.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles 0
 .PHONY : CMakeFiles/astar_search.dir/rule
@@ -142,6 +161,32 @@ AstarSearch: src/AstarSearch/CMakeFiles/AstarSearch.dir/rule
 src/AstarSearch/CMakeFiles/AstarSearch.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/clean
 .PHONY : src/AstarSearch/CMakeFiles/AstarSearch.dir/clean
+
+#=============================================================================
+# Target rules for target src/Map/CMakeFiles/Map.dir
+
+# All Build rule for target.
+src/Map/CMakeFiles/Map.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=4,5 "Built target Map"
+.PHONY : src/Map/CMakeFiles/Map.dir/all
+
+# Build rule for subdir invocation for target.
+src/Map/CMakeFiles/Map.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Map/CMakeFiles/Map.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles 0
+.PHONY : src/Map/CMakeFiles/Map.dir/rule
+
+# Convenience name for target.
+Map: src/Map/CMakeFiles/Map.dir/rule
+.PHONY : Map
+
+# clean rule for target.
+src/Map/CMakeFiles/Map.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/clean
+.PHONY : src/Map/CMakeFiles/Map.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

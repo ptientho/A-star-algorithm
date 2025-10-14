@@ -1,3 +1,5 @@
 /home/peera/A-star-algorithm/bin/astar_search
 /home/peera/A-star-algorithm/lib/libAstarSearch.a
 /home/peera/A-star-algorithm/include/AstarSearch.hpp
+/home/peera/A-star-algorithm/lib/libMap.a
+/home/peera/A-star-algorithm/include/Map.hpp

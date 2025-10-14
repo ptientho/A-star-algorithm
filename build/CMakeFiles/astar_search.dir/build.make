@@ -93,6 +93,7 @@ astar_search_EXTERNAL_OBJECTS =
 astar_search: CMakeFiles/astar_search.dir/src/main.cpp.o
 astar_search: CMakeFiles/astar_search.dir/build.make
 astar_search: src/AstarSearch/libAstarSearch.a
+astar_search: src/Map/libMap.a
 astar_search: CMakeFiles/astar_search.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable astar_search"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/astar_search.dir/link.txt --verbose=$(VERBOSE)

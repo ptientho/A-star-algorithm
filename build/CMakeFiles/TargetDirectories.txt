@@ -12,3 +12,10 @@
 /home/peera/A-star-algorithm/build/src/AstarSearch/CMakeFiles/install.dir
 /home/peera/A-star-algorithm/build/src/AstarSearch/CMakeFiles/install/local.dir
 /home/peera/A-star-algorithm/build/src/AstarSearch/CMakeFiles/install/strip.dir
+/home/peera/A-star-algorithm/build/src/Map/CMakeFiles/Map.dir
+/home/peera/A-star-algorithm/build/src/Map/CMakeFiles/edit_cache.dir
+/home/peera/A-star-algorithm/build/src/Map/CMakeFiles/rebuild_cache.dir
+/home/peera/A-star-algorithm/build/src/Map/CMakeFiles/list_install_components.dir
+/home/peera/A-star-algorithm/build/src/Map/CMakeFiles/install.dir
+/home/peera/A-star-algorithm/build/src/Map/CMakeFiles/install/local.dir
+/home/peera/A-star-algorithm/build/src/Map/CMakeFiles/install/strip.dir

@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles /home/peera/A-star-algorithm/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/peera/A-star-algorithm/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles /home/peera/A-star-algorithm/build/src/Map//CMakeFiles/progress.marks
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Map/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Map/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,81 +148,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Map/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Map/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/peera/A-star-algorithm/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named astar_search
+# Convenience name for target.
+src/Map/CMakeFiles/Map.dir/rule:
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Map/CMakeFiles/Map.dir/rule
+.PHONY : src/Map/CMakeFiles/Map.dir/rule
 
-# Build rule for target.
-astar_search: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 astar_search
-.PHONY : astar_search
-
-# fast build rule for target.
-astar_search/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/build
-.PHONY : astar_search/fast
-
-#=============================================================================
-# Target rules for targets named AstarSearch
-
-# Build rule for target.
-AstarSearch: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 AstarSearch
-.PHONY : AstarSearch
-
-# fast build rule for target.
-AstarSearch/fast:
-	$(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/build
-.PHONY : AstarSearch/fast
-
-#=============================================================================
-# Target rules for targets named Map
-
-# Build rule for target.
-Map: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Map
+# Convenience name for target.
+Map: src/Map/CMakeFiles/Map.dir/rule
 .PHONY : Map
 
 # fast build rule for target.
 Map/fast:
-	$(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/build
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/build
 .PHONY : Map/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+c.o: c.cpp.o
+.PHONY : c.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+c.cpp.o:
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/c.cpp.o
+.PHONY : c.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+c.i: c.cpp.i
+.PHONY : c.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+c.cpp.i:
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/c.cpp.i
+.PHONY : c.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+c.s: c.cpp.s
+.PHONY : c.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+c.cpp.s:
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/c.cpp.s
+.PHONY : c.cpp.s
 
 # Help Target
 help:
@@ -236,12 +211,10 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... AstarSearch"
 	@echo "... Map"
-	@echo "... astar_search"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... c.o"
+	@echo "... c.i"
+	@echo "... c.s"
 .PHONY : help
 
 
@@ -253,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/peera/A-star-algorithm/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
