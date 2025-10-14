@@ -1,0 +1,3 @@
+/home/peera/A-star-algorithm/bin/astar_search
+/home/peera/A-star-algorithm/lib/libAstarSearch.a
+/home/peera/A-star-algorithm/include/AstarSearch.hpp
