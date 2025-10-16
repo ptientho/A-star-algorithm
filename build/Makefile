@@ -198,6 +198,19 @@ map_test/fast:
 .PHONY : map_test/fast
 
 #=============================================================================
+# Target rules for targets named astar_test
+
+# Build rule for target.
+astar_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 astar_test
+.PHONY : astar_test
+
+# fast build rule for target.
+astar_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_test.dir/build.make CMakeFiles/astar_test.dir/build
+.PHONY : astar_test/fast
+
+#=============================================================================
 # Target rules for targets named AstarSearch
 
 # Build rule for target.
@@ -299,6 +312,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+tests/astar_test.o: tests/astar_test.cc.o
+.PHONY : tests/astar_test.o
+
+# target to build an object file
+tests/astar_test.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_test.dir/build.make CMakeFiles/astar_test.dir/tests/astar_test.cc.o
+.PHONY : tests/astar_test.cc.o
+
+tests/astar_test.i: tests/astar_test.cc.i
+.PHONY : tests/astar_test.i
+
+# target to preprocess a source file
+tests/astar_test.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_test.dir/build.make CMakeFiles/astar_test.dir/tests/astar_test.cc.i
+.PHONY : tests/astar_test.cc.i
+
+tests/astar_test.s: tests/astar_test.cc.s
+.PHONY : tests/astar_test.s
+
+# target to generate assembly for a file
+tests/astar_test.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_test.dir/build.make CMakeFiles/astar_test.dir/tests/astar_test.cc.s
+.PHONY : tests/astar_test.cc.s
+
 tests/map_test.o: tests/map_test.cc.o
 .PHONY : tests/map_test.o
 
@@ -339,6 +376,7 @@ help:
 	@echo "... AstarSearch"
 	@echo "... Map"
 	@echo "... astar_search"
+	@echo "... astar_test"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
@@ -347,6 +385,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... tests/astar_test.o"
+	@echo "... tests/astar_test.i"
+	@echo "... tests/astar_test.s"
 	@echo "... tests/map_test.o"
 	@echo "... tests/map_test.i"
 	@echo "... tests/map_test.s"

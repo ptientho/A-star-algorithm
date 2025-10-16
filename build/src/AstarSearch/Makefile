@@ -185,53 +185,29 @@ AstarSearch/fast:
 	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/build
 .PHONY : AstarSearch/fast
 
-a.o: a.cpp.o
-.PHONY : a.o
+AstarSearch.o: AstarSearch.cpp.o
+.PHONY : AstarSearch.o
 
 # target to build an object file
-a.cpp.o:
-	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.o
-.PHONY : a.cpp.o
+AstarSearch.cpp.o:
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.o
+.PHONY : AstarSearch.cpp.o
 
-a.i: a.cpp.i
-.PHONY : a.i
-
-# target to preprocess a source file
-a.cpp.i:
-	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.i
-.PHONY : a.cpp.i
-
-a.s: a.cpp.s
-.PHONY : a.s
-
-# target to generate assembly for a file
-a.cpp.s:
-	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.s
-.PHONY : a.cpp.s
-
-b.o: b.cpp.o
-.PHONY : b.o
-
-# target to build an object file
-b.cpp.o:
-	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.o
-.PHONY : b.cpp.o
-
-b.i: b.cpp.i
-.PHONY : b.i
+AstarSearch.i: AstarSearch.cpp.i
+.PHONY : AstarSearch.i
 
 # target to preprocess a source file
-b.cpp.i:
-	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.i
-.PHONY : b.cpp.i
+AstarSearch.cpp.i:
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.i
+.PHONY : AstarSearch.cpp.i
 
-b.s: b.cpp.s
-.PHONY : b.s
+AstarSearch.s: AstarSearch.cpp.s
+.PHONY : AstarSearch.s
 
 # target to generate assembly for a file
-b.cpp.s:
-	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.s
-.PHONY : b.cpp.s
+AstarSearch.cpp.s:
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.s
+.PHONY : AstarSearch.cpp.s
 
 # Help Target
 help:
@@ -247,12 +223,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... AstarSearch"
-	@echo "... a.o"
-	@echo "... a.i"
-	@echo "... a.s"
-	@echo "... b.o"
-	@echo "... b.i"
-	@echo "... b.s"
+	@echo "... AstarSearch.o"
+	@echo "... AstarSearch.i"
+	@echo "... AstarSearch.s"
 .PHONY : help
 
 

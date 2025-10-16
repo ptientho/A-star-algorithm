@@ -1,5 +1,6 @@
 /home/peera/A-star-algorithm/build/CMakeFiles/astar_search.dir
 /home/peera/A-star-algorithm/build/CMakeFiles/map_test.dir
+/home/peera/A-star-algorithm/build/CMakeFiles/astar_test.dir
 /home/peera/A-star-algorithm/build/CMakeFiles/test.dir
 /home/peera/A-star-algorithm/build/CMakeFiles/edit_cache.dir
 /home/peera/A-star-algorithm/build/CMakeFiles/rebuild_cache.dir

@@ -90,6 +90,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/astar_search.dir/DependInfo.cmake"
   "CMakeFiles/map_test.dir/DependInfo.cmake"
+  "CMakeFiles/astar_test.dir/DependInfo.cmake"
   "src/AstarSearch/CMakeFiles/AstarSearch.dir/DependInfo.cmake"
   "src/Map/CMakeFiles/Map.dir/DependInfo.cmake"
   "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"

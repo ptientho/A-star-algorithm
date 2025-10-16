@@ -69,47 +69,31 @@ include src/AstarSearch/CMakeFiles/AstarSearch.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/AstarSearch/CMakeFiles/AstarSearch.dir/flags.make
 
-src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.o: src/AstarSearch/CMakeFiles/AstarSearch.dir/flags.make
-src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.o: ../src/AstarSearch/a.cpp
-src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.o: src/AstarSearch/CMakeFiles/AstarSearch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.o"
-	cd /home/peera/A-star-algorithm/build/src/AstarSearch && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.o -MF CMakeFiles/AstarSearch.dir/a.cpp.o.d -o CMakeFiles/AstarSearch.dir/a.cpp.o -c /home/peera/A-star-algorithm/src/AstarSearch/a.cpp
+src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.o: src/AstarSearch/CMakeFiles/AstarSearch.dir/flags.make
+src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.o: ../src/AstarSearch/AstarSearch.cpp
+src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.o: src/AstarSearch/CMakeFiles/AstarSearch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.o"
+	cd /home/peera/A-star-algorithm/build/src/AstarSearch && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.o -MF CMakeFiles/AstarSearch.dir/AstarSearch.cpp.o.d -o CMakeFiles/AstarSearch.dir/AstarSearch.cpp.o -c /home/peera/A-star-algorithm/src/AstarSearch/AstarSearch.cpp
 
-src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AstarSearch.dir/a.cpp.i"
-	cd /home/peera/A-star-algorithm/build/src/AstarSearch && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/peera/A-star-algorithm/src/AstarSearch/a.cpp > CMakeFiles/AstarSearch.dir/a.cpp.i
+src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AstarSearch.dir/AstarSearch.cpp.i"
+	cd /home/peera/A-star-algorithm/build/src/AstarSearch && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/peera/A-star-algorithm/src/AstarSearch/AstarSearch.cpp > CMakeFiles/AstarSearch.dir/AstarSearch.cpp.i
 
-src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AstarSearch.dir/a.cpp.s"
-	cd /home/peera/A-star-algorithm/build/src/AstarSearch && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/peera/A-star-algorithm/src/AstarSearch/a.cpp -o CMakeFiles/AstarSearch.dir/a.cpp.s
-
-src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.o: src/AstarSearch/CMakeFiles/AstarSearch.dir/flags.make
-src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.o: ../src/AstarSearch/b.cpp
-src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.o: src/AstarSearch/CMakeFiles/AstarSearch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.o"
-	cd /home/peera/A-star-algorithm/build/src/AstarSearch && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.o -MF CMakeFiles/AstarSearch.dir/b.cpp.o.d -o CMakeFiles/AstarSearch.dir/b.cpp.o -c /home/peera/A-star-algorithm/src/AstarSearch/b.cpp
-
-src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AstarSearch.dir/b.cpp.i"
-	cd /home/peera/A-star-algorithm/build/src/AstarSearch && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/peera/A-star-algorithm/src/AstarSearch/b.cpp > CMakeFiles/AstarSearch.dir/b.cpp.i
-
-src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AstarSearch.dir/b.cpp.s"
-	cd /home/peera/A-star-algorithm/build/src/AstarSearch && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/peera/A-star-algorithm/src/AstarSearch/b.cpp -o CMakeFiles/AstarSearch.dir/b.cpp.s
+src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AstarSearch.dir/AstarSearch.cpp.s"
+	cd /home/peera/A-star-algorithm/build/src/AstarSearch && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/peera/A-star-algorithm/src/AstarSearch/AstarSearch.cpp -o CMakeFiles/AstarSearch.dir/AstarSearch.cpp.s
 
 # Object files for target AstarSearch
 AstarSearch_OBJECTS = \
-"CMakeFiles/AstarSearch.dir/a.cpp.o" \
-"CMakeFiles/AstarSearch.dir/b.cpp.o"
+"CMakeFiles/AstarSearch.dir/AstarSearch.cpp.o"
 
 # External object files for target AstarSearch
 AstarSearch_EXTERNAL_OBJECTS =
 
-src/AstarSearch/libAstarSearch.a: src/AstarSearch/CMakeFiles/AstarSearch.dir/a.cpp.o
-src/AstarSearch/libAstarSearch.a: src/AstarSearch/CMakeFiles/AstarSearch.dir/b.cpp.o
+src/AstarSearch/libAstarSearch.a: src/AstarSearch/CMakeFiles/AstarSearch.dir/AstarSearch.cpp.o
 src/AstarSearch/libAstarSearch.a: src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make
 src/AstarSearch/libAstarSearch.a: src/AstarSearch/CMakeFiles/AstarSearch.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libAstarSearch.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libAstarSearch.a"
 	cd /home/peera/A-star-algorithm/build/src/AstarSearch && $(CMAKE_COMMAND) -P CMakeFiles/AstarSearch.dir/cmake_clean_target.cmake
 	cd /home/peera/A-star-algorithm/build/src/AstarSearch && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/AstarSearch.dir/link.txt --verbose=$(VERBOSE)
 

@@ -23,6 +23,9 @@ A-star-algorithm_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 A-star-algorithm_SOURCE_DIR:STATIC=/home/peera/A-star-algorithm
 
+//Dependencies for the target
+AstarSearch_LIB_DEPENDS:STATIC=general;Map;
+
 //Builds the googlemock subproject
 BUILD_GMOCK:BOOL=ON
 
@@ -344,6 +347,9 @@ ImageMagick_Magick++_INCLUDE_DIR:PATH=/usr/local/include/ImageMagick-7
 
 //Path to the ImageMagick Magick++ library.
 ImageMagick_Magick++_LIBRARY:FILEPATH=/usr/local/lib/libMagick++-7.Q16HDRI.so
+
+//The directory containing a CMake configuration file for Map.
+Map_DIR:PATH=Map_DIR-NOTFOUND
 
 //Dependencies for the target
 Map_LIB_DEPENDS:STATIC=general;/usr/local/lib/libMagick++-7.Q16HDRI.so;

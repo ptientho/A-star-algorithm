@@ -43,6 +43,14 @@ target_link_libraries(
     GTest::gtest_main
     Map
 )
+add_executable(
+    astar_test tests/astar_test.cc 
+)
+target_link_libraries(
+    astar_test
+    GTest::gtest_main
+    AstarSearch
+)
 target_compile_definitions(map_test PRIVATE
     PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
 )
