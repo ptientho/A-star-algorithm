@@ -36,14 +36,6 @@ install(TARGETS astar_search DESTINATION bin)
 enable_testing()
 
 add_executable(
-    hello_test tests/hello_test.cc
-)
-target_link_libraries(
-    hello_test
-    GTest::gtest_main
-)
-
-add_executable(
     map_test tests/map_test.cc 
 )
 target_link_libraries(
@@ -56,5 +48,4 @@ target_compile_definitions(map_test PRIVATE
 )
 
 include(GoogleTest)
-gtest_discover_tests(hello_test)
 gtest_discover_tests(map_test)

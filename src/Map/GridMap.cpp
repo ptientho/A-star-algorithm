@@ -85,7 +85,7 @@ void GridMap::convert_map(fs::path img_dir, bool decomposition) {
     size_t height = gray_img.rows();
 
     // Check image depth
-    unsigned int depth = gray_img.depth(); // bits per channel (1, 8, 16, ...)
+    depth = gray_img.depth(); // bits per channel (1, 8, 16, ...)
     
     // Choose appropriate pixel type based on depth
     std::variant<
@@ -122,11 +122,11 @@ void GridMap::convert_map(fs::path img_dir, bool decomposition) {
     }
     
 
-    // if (has_alpha_channel) {
-    //     std::cout << "Image has alpha channel." << std::endl;
-    // } else {
-    //     std::cout << "Image does not have alpha channel." << std::endl;
-    // }
+    if (has_alpha_channel) {
+        std::cout << "Image has alpha channel." << std::endl;
+    } else {
+        std::cout << "Image does not have alpha channel." << std::endl;
+    }
 
     std::cout << "First ten elements of normalized matrix:" << std::endl;
     for (int i = 0; i < std::min(20, static_cast<int>(normalized.size())); ++i) {
@@ -151,6 +151,11 @@ void GridMap::convert_map(fs::path img_dir, bool decomposition) {
         // Initialize result with unknown value (-1)
         result_matrix.setConstant(-1); // array of -1s
 
+        // print first ten elements of -1s
+        std::cout << "First ten elements of initialized result matrix:" << std::endl;
+        for (int i = 0; i < std::min(20, static_cast<int>(result_matrix.size())); ++i) {
+            std::cout << static_cast<int>(result_matrix.data()[i]) << " ";
+        }
         // Scale occupancy values to [0,100]
         result_matrix = (occupied_cells.array() > 0).select(100, result_matrix);
         result_matrix = (free_cells.array() > 0).select(0, result_matrix);
@@ -190,8 +195,16 @@ void GridMap::convert_map(fs::path img_dir, bool decomposition) {
         auto c_width = (this->grid_.width + this->grid_.resolution - 1) / this->grid_.resolution;
         auto c_height = (this->grid_.height + this->grid_.resolution - 1) / this->grid_.resolution;
 
+        // Resize grid data to coarse size
+        this->grid_.width = static_cast<uint32_t>(c_width);
+        this->grid_.height = static_cast<uint32_t>(c_height);
+        this->grid_.data.resize(c_width * c_height);
+
+        // Print width and height
+        std::cout << "Coarse matrix dimensions: " << c_width << " x " << c_height << std::endl;
+
         // Prepare coarse matrix
-        Eigen::Matrix<int8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> result_matrix(c_height, c_width);
+        Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> result_matrix(c_height, c_width);
         
         // For each coarse cell rectangle compute sums via integral image and apply threshold rules in 
         for (size_t i = 0; i < c_height; ++i) {
@@ -202,11 +215,24 @@ void GridMap::convert_map(fs::path img_dir, bool decomposition) {
                 size_t col_start = j * this->grid_.resolution;
                 size_t col_end = std::min(col_start + this->grid_.resolution, width);
 
+                // Compute block sizes
+                const Eigen::Index block_h = static_cast<Eigen::Index>(row_end - row_start);
+                const Eigen::Index block_w = static_cast<Eigen::Index>(col_end - col_start);
+
                 // Extract the block and compute the mean
-                auto block = normalized.block(row_start, col_start, row_end - row_start, col_end - col_start);
-                result_matrix(i, j) = block.mean();
+                Eigen::Block<Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>>
+                    block = normalized.block(static_cast<Eigen::Index>(row_start), static_cast<Eigen::Index>(col_start), block_h, block_w);
+
+                const double sum = block.sum();
+                const double mean = sum / (static_cast<double>(block_h) * static_cast<double>(block_w));
+                result_matrix(static_cast<Eigen::Index>(i), static_cast<Eigen::Index>(j)) = mean;
             }
         }
+
+        Eigen::Matrix<int8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> result_int8(
+        result_matrix.rows(), result_matrix.cols());
+
+        result_int8.setConstant(-1);
 
         // Extract binary masks for occupied, free, unknown
         Eigen::Matrix<uint8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
@@ -216,30 +242,25 @@ void GridMap::convert_map(fs::path img_dir, bool decomposition) {
         Eigen::Matrix<uint8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
         free_cells = (result_matrix.array() <= this->map_params.free_thresh).cast<uint8_t>();
 
-        // Unknown cells
-        // Eigen::Matrix<uint8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
-        // unknown_cells = ((result_matrix.array() < this->map_params.occupancy_thresh) && 
-        //                  (result_matrix.array() > this->map_params.free_thresh)).cast<uint8_t>();
-
-        // Scale occupancy values to [0,100]
-        result_matrix = (occupied_cells.array() > 0).select(100, result_matrix);
-        result_matrix = (free_cells.array() > 0).select(0, result_matrix);
+    
+        result_int8 = (occupied_cells.array() > 0).select(static_cast<int8_t>(100), result_int8);
+        result_int8 = (free_cells.array() > 0).select(static_cast<int8_t>(0), result_int8);
 
         // Select unknown cells where alpha < 255 if alpha channel exists
-        if (has_alpha_channel) {
-            if (depth <= 8){
-                // Set cells with alpha = 0 to unknown (-1)
-                result_matrix = (std::get<Eigen::Array<uint8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>>(alpha_array) < 255).select(-1, result_matrix);
-            } else {
-                // Set cells with alpha = 0 to unknown (-1)
-                result_matrix = (std::get<Eigen::Array<uint16_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>>(alpha_array) < 65535).select(-1, result_matrix);
-            }
-        }
+        // if (has_alpha_channel) {
+        //     if (depth <= 8){
+        //         // Set cells with alpha = 0 to unknown (-1)
+        //         result_matrix = (std::get<Eigen::Array<uint8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>>(alpha_array) < 255).select(-1, result_matrix);
+        //     } else {
+        //         // Set cells with alpha = 0 to unknown (-1)
+        //         result_matrix = (std::get<Eigen::Array<uint16_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>>(alpha_array) < 65535).select(-1, result_matrix);
+        //     }
+        // }
         //result_matrix = (unknown_cells.array() == 1).select(-1, result_matrix);
         
         
         // Convert result matrix to row-major 1D vector
-        std::memcpy(this->grid_.data.data(), result_matrix.data(), width * height);
+        std::memcpy(this->grid_.data.data(), result_int8.data(), c_width * c_height);
         // Print a random member of grid data
         if (!this->grid_.data.empty()) {
             size_t random_index = std::rand() % this->grid_.data.size();

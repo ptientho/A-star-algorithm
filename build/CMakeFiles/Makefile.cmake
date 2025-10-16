@@ -89,7 +89,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/astar_search.dir/DependInfo.cmake"
-  "CMakeFiles/hello_test.dir/DependInfo.cmake"
   "CMakeFiles/map_test.dir/DependInfo.cmake"
   "src/AstarSearch/CMakeFiles/AstarSearch.dir/DependInfo.cmake"
   "src/Map/CMakeFiles/Map.dir/DependInfo.cmake"

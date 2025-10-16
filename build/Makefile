@@ -185,19 +185,6 @@ astar_search/fast:
 .PHONY : astar_search/fast
 
 #=============================================================================
-# Target rules for targets named hello_test
-
-# Build rule for target.
-hello_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hello_test
-.PHONY : hello_test
-
-# fast build rule for target.
-hello_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_test.dir/build.make CMakeFiles/hello_test.dir/build
-.PHONY : hello_test/fast
-
-#=============================================================================
 # Target rules for targets named map_test
 
 # Build rule for target.
@@ -312,30 +299,6 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-tests/hello_test.o: tests/hello_test.cc.o
-.PHONY : tests/hello_test.o
-
-# target to build an object file
-tests/hello_test.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_test.dir/build.make CMakeFiles/hello_test.dir/tests/hello_test.cc.o
-.PHONY : tests/hello_test.cc.o
-
-tests/hello_test.i: tests/hello_test.cc.i
-.PHONY : tests/hello_test.i
-
-# target to preprocess a source file
-tests/hello_test.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_test.dir/build.make CMakeFiles/hello_test.dir/tests/hello_test.cc.i
-.PHONY : tests/hello_test.cc.i
-
-tests/hello_test.s: tests/hello_test.cc.s
-.PHONY : tests/hello_test.s
-
-# target to generate assembly for a file
-tests/hello_test.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_test.dir/build.make CMakeFiles/hello_test.dir/tests/hello_test.cc.s
-.PHONY : tests/hello_test.cc.s
-
 tests/map_test.o: tests/map_test.cc.o
 .PHONY : tests/map_test.o
 
@@ -380,14 +343,10 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... hello_test"
 	@echo "... map_test"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... tests/hello_test.o"
-	@echo "... tests/hello_test.i"
-	@echo "... tests/hello_test.s"
 	@echo "... tests/map_test.o"
 	@echo "... tests/map_test.i"
 	@echo "... tests/map_test.s"

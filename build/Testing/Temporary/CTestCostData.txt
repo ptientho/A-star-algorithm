@@ -1,8 +1,13 @@
-HelloTest.BasicAssertions 60 0.00022117
-GridMapTest.AllFreeCells 10 0.00690576
-GridMapTest.AllOccupiedCells 9 0.00719411
-GridMapTest.MixedCells 9 0.00840212
-GridMapTest.CellsWithUnknown 56 0
-GridMapTest.CellsWithAlpha 57 0.000996381
+HelloTest.BasicAssertions 86 0.000178115
+GridMapTest.AllFreeCells 59 0.00158311
+GridMapTest.AllOccupiedCells 58 0.00164396
+GridMapTest.MixedCells 57 0.00203847
+GridMapTest.CellsWithUnknown 94 0.00104003
+GridMapTest.CellsWithAlpha 106 0.00106179
+GridMapTest.PartialAlpha 33 0.00352765
+GridMapTest.DecomposeImage 26 0.0048441
+GridMapTest.DecomposeObstacledImage 12 0.0100197
+GridMapTest.DecomposeMapImage 10 0.0235601
+GridMapTest.CheckObstacleMapImage 3 0.094035
+GridMapTest.CheckObstacleMapImageWithDecomposition 1 0.197682
 ---
-GridMapTest.CellsWithUnknown

@@ -50,11 +50,14 @@ public:
 
     OccupancyGrid grid_; // 2D grid representation of the map
 
+    unsigned int get_depth() const { return depth; }
+    
     ~GridMap();
 
 private:
 
     LoadMapParameters map_params;
+    unsigned int depth; // bits per channel (1, 8, 16, ...)
     // Convert image to occupancy grid, given that parameters are already set
     /*
         - load an image (PNG format) from the specified file path using ImageMagick
