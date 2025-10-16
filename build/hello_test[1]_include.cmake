@@ -1,0 +1,5 @@
+if(EXISTS "/home/peera/A-star-algorithm/build/hello_test[1]_tests.cmake")
+  include("/home/peera/A-star-algorithm/build/hello_test[1]_tests.cmake")
+else()
+  add_test(hello_test_NOT_BUILT hello_test_NOT_BUILT)
+endif()

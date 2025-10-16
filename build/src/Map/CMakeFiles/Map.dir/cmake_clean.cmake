@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Map.dir/c.cpp.o"
-  "CMakeFiles/Map.dir/c.cpp.o.d"
+  "CMakeFiles/Map.dir/GridMap.cpp.o"
+  "CMakeFiles/Map.dir/GridMap.cpp.o.d"
   "libMap.a"
   "libMap.pdb"
 )

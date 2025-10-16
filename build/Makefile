@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/peera/A-star-algorithm/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -175,6 +185,32 @@ astar_search/fast:
 .PHONY : astar_search/fast
 
 #=============================================================================
+# Target rules for targets named hello_test
+
+# Build rule for target.
+hello_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hello_test
+.PHONY : hello_test
+
+# fast build rule for target.
+hello_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_test.dir/build.make CMakeFiles/hello_test.dir/build
+.PHONY : hello_test/fast
+
+#=============================================================================
+# Target rules for targets named map_test
+
+# Build rule for target.
+map_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 map_test
+.PHONY : map_test
+
+# fast build rule for target.
+map_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/map_test.dir/build.make CMakeFiles/map_test.dir/build
+.PHONY : map_test/fast
+
+#=============================================================================
 # Target rules for targets named AstarSearch
 
 # Build rule for target.
@@ -200,6 +236,58 @@ Map/fast:
 	$(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/build
 .PHONY : Map/fast
 
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -224,6 +312,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+tests/hello_test.o: tests/hello_test.cc.o
+.PHONY : tests/hello_test.o
+
+# target to build an object file
+tests/hello_test.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_test.dir/build.make CMakeFiles/hello_test.dir/tests/hello_test.cc.o
+.PHONY : tests/hello_test.cc.o
+
+tests/hello_test.i: tests/hello_test.cc.i
+.PHONY : tests/hello_test.i
+
+# target to preprocess a source file
+tests/hello_test.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_test.dir/build.make CMakeFiles/hello_test.dir/tests/hello_test.cc.i
+.PHONY : tests/hello_test.cc.i
+
+tests/hello_test.s: tests/hello_test.cc.s
+.PHONY : tests/hello_test.s
+
+# target to generate assembly for a file
+tests/hello_test.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_test.dir/build.make CMakeFiles/hello_test.dir/tests/hello_test.cc.s
+.PHONY : tests/hello_test.cc.s
+
+tests/map_test.o: tests/map_test.cc.o
+.PHONY : tests/map_test.o
+
+# target to build an object file
+tests/map_test.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/map_test.dir/build.make CMakeFiles/map_test.dir/tests/map_test.cc.o
+.PHONY : tests/map_test.cc.o
+
+tests/map_test.i: tests/map_test.cc.i
+.PHONY : tests/map_test.i
+
+# target to preprocess a source file
+tests/map_test.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/map_test.dir/build.make CMakeFiles/map_test.dir/tests/map_test.cc.i
+.PHONY : tests/map_test.cc.i
+
+tests/map_test.s: tests/map_test.cc.s
+.PHONY : tests/map_test.s
+
+# target to generate assembly for a file
+tests/map_test.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/map_test.dir/build.make CMakeFiles/map_test.dir/tests/map_test.cc.s
+.PHONY : tests/map_test.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -236,12 +372,25 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... AstarSearch"
 	@echo "... Map"
 	@echo "... astar_search"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
+	@echo "... hello_test"
+	@echo "... map_test"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... tests/hello_test.o"
+	@echo "... tests/hello_test.i"
+	@echo "... tests/hello_test.s"
+	@echo "... tests/map_test.o"
+	@echo "... tests/map_test.i"
+	@echo "... tests/map_test.s"
 .PHONY : help
 
 

@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/peera/A-star-algorithm/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -175,29 +185,29 @@ Map/fast:
 	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/build
 .PHONY : Map/fast
 
-c.o: c.cpp.o
-.PHONY : c.o
+GridMap.o: GridMap.cpp.o
+.PHONY : GridMap.o
 
 # target to build an object file
-c.cpp.o:
-	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/c.cpp.o
-.PHONY : c.cpp.o
+GridMap.cpp.o:
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/GridMap.cpp.o
+.PHONY : GridMap.cpp.o
 
-c.i: c.cpp.i
-.PHONY : c.i
+GridMap.i: GridMap.cpp.i
+.PHONY : GridMap.i
 
 # target to preprocess a source file
-c.cpp.i:
-	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/c.cpp.i
-.PHONY : c.cpp.i
+GridMap.cpp.i:
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/GridMap.cpp.i
+.PHONY : GridMap.cpp.i
 
-c.s: c.cpp.s
-.PHONY : c.s
+GridMap.s: GridMap.cpp.s
+.PHONY : GridMap.s
 
 # target to generate assembly for a file
-c.cpp.s:
-	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/c.cpp.s
-.PHONY : c.cpp.s
+GridMap.cpp.s:
+	cd /home/peera/A-star-algorithm/build && $(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/GridMap.cpp.s
+.PHONY : GridMap.cpp.s
 
 # Help Target
 help:
@@ -211,10 +221,11 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... Map"
-	@echo "... c.o"
-	@echo "... c.i"
-	@echo "... c.s"
+	@echo "... GridMap.o"
+	@echo "... GridMap.i"
+	@echo "... GridMap.s"
 .PHONY : help
 
 

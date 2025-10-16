@@ -1,0 +1,8 @@
+HelloTest.BasicAssertions 60 0.00022117
+GridMapTest.AllFreeCells 10 0.00690576
+GridMapTest.AllOccupiedCells 9 0.00719411
+GridMapTest.MixedCells 9 0.00840212
+GridMapTest.CellsWithUnknown 56 0
+GridMapTest.CellsWithAlpha 57 0.000996381
+---
+GridMapTest.CellsWithUnknown

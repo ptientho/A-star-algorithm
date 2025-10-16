@@ -1,6 +1,21 @@
+find_package(Eigen3 REQUIRED NO_MODULE)
+find_package(ImageMagick REQUIRED COMPONENTS Magick++)
+
 # Create a library target with its source files
-add_library(Map c.cpp)
+add_library(Map GridMap.cpp)
+
+target_compile_definitions(Map PUBLIC
+  MAGICKCORE_HDRI_ENABLE=1
+  MAGICKCORE_QUANTUM_DEPTH=16
+)
+include_directories(${ImageMagick_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR})
+target_link_libraries(Map PUBLIC Eigen3::Eigen ${ImageMagick_LIBRARIES})
+
+target_include_directories(Map
+    PUBLIC
+        ${CMAKE_SOURCE_DIR}/src
+)
 
 install(TARGETS Map DESTINATION lib)
 
-install(FILES Map.hpp DESTINATION include)
+install(FILES GridMap.hpp DESTINATION include)

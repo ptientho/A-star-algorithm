@@ -69,28 +69,28 @@ include src/Map/CMakeFiles/Map.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/Map/CMakeFiles/Map.dir/flags.make
 
-src/Map/CMakeFiles/Map.dir/c.cpp.o: src/Map/CMakeFiles/Map.dir/flags.make
-src/Map/CMakeFiles/Map.dir/c.cpp.o: ../src/Map/c.cpp
-src/Map/CMakeFiles/Map.dir/c.cpp.o: src/Map/CMakeFiles/Map.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/Map/CMakeFiles/Map.dir/c.cpp.o"
-	cd /home/peera/A-star-algorithm/build/src/Map && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/Map/CMakeFiles/Map.dir/c.cpp.o -MF CMakeFiles/Map.dir/c.cpp.o.d -o CMakeFiles/Map.dir/c.cpp.o -c /home/peera/A-star-algorithm/src/Map/c.cpp
+src/Map/CMakeFiles/Map.dir/GridMap.cpp.o: src/Map/CMakeFiles/Map.dir/flags.make
+src/Map/CMakeFiles/Map.dir/GridMap.cpp.o: ../src/Map/GridMap.cpp
+src/Map/CMakeFiles/Map.dir/GridMap.cpp.o: src/Map/CMakeFiles/Map.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/Map/CMakeFiles/Map.dir/GridMap.cpp.o"
+	cd /home/peera/A-star-algorithm/build/src/Map && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/Map/CMakeFiles/Map.dir/GridMap.cpp.o -MF CMakeFiles/Map.dir/GridMap.cpp.o.d -o CMakeFiles/Map.dir/GridMap.cpp.o -c /home/peera/A-star-algorithm/src/Map/GridMap.cpp
 
-src/Map/CMakeFiles/Map.dir/c.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Map.dir/c.cpp.i"
-	cd /home/peera/A-star-algorithm/build/src/Map && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/peera/A-star-algorithm/src/Map/c.cpp > CMakeFiles/Map.dir/c.cpp.i
+src/Map/CMakeFiles/Map.dir/GridMap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Map.dir/GridMap.cpp.i"
+	cd /home/peera/A-star-algorithm/build/src/Map && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/peera/A-star-algorithm/src/Map/GridMap.cpp > CMakeFiles/Map.dir/GridMap.cpp.i
 
-src/Map/CMakeFiles/Map.dir/c.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Map.dir/c.cpp.s"
-	cd /home/peera/A-star-algorithm/build/src/Map && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/peera/A-star-algorithm/src/Map/c.cpp -o CMakeFiles/Map.dir/c.cpp.s
+src/Map/CMakeFiles/Map.dir/GridMap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Map.dir/GridMap.cpp.s"
+	cd /home/peera/A-star-algorithm/build/src/Map && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/peera/A-star-algorithm/src/Map/GridMap.cpp -o CMakeFiles/Map.dir/GridMap.cpp.s
 
 # Object files for target Map
 Map_OBJECTS = \
-"CMakeFiles/Map.dir/c.cpp.o"
+"CMakeFiles/Map.dir/GridMap.cpp.o"
 
 # External object files for target Map
 Map_EXTERNAL_OBJECTS =
 
-src/Map/libMap.a: src/Map/CMakeFiles/Map.dir/c.cpp.o
+src/Map/libMap.a: src/Map/CMakeFiles/Map.dir/GridMap.cpp.o
 src/Map/libMap.a: src/Map/CMakeFiles/Map.dir/build.make
 src/Map/libMap.a: src/Map/CMakeFiles/Map.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libMap.a"

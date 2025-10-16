@@ -23,6 +23,9 @@ A-star-algorithm_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 A-star-algorithm_SOURCE_DIR:STATIC=/home/peera/A-star-algorithm
 
+//Builds the googlemock subproject
+BUILD_GMOCK:BOOL=ON
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -109,8 +112,56 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 //Enable/Disable output of compile commands during generation.
 CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 
+//User executables (bin)
+CMAKE_INSTALL_BINDIR:PATH=bin
+
+//Read-only architecture-independent data (DATAROOTDIR)
+CMAKE_INSTALL_DATADIR:PATH=
+
+//Read-only architecture-independent data root (share)
+CMAKE_INSTALL_DATAROOTDIR:PATH=share
+
+//Documentation root (DATAROOTDIR/doc/PROJECT_NAME)
+CMAKE_INSTALL_DOCDIR:PATH=
+
+//C header files (include)
+CMAKE_INSTALL_INCLUDEDIR:PATH=include
+
+//Info documentation (DATAROOTDIR/info)
+CMAKE_INSTALL_INFODIR:PATH=
+
+//Object code libraries (lib)
+CMAKE_INSTALL_LIBDIR:PATH=lib
+
+//Program executables (libexec)
+CMAKE_INSTALL_LIBEXECDIR:PATH=libexec
+
+//Locale-dependent data (DATAROOTDIR/locale)
+CMAKE_INSTALL_LOCALEDIR:PATH=
+
+//Modifiable single-machine data (var)
+CMAKE_INSTALL_LOCALSTATEDIR:PATH=var
+
+//Man documentation (DATAROOTDIR/man)
+CMAKE_INSTALL_MANDIR:PATH=
+
+//C header files for non-gcc (/usr/include)
+CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
+
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
+
+//Run-time variable data (LOCALSTATEDIR/run)
+CMAKE_INSTALL_RUNSTATEDIR:PATH=
+
+//System admin executables (sbin)
+CMAKE_INSTALL_SBINDIR:PATH=sbin
+
+//Modifiable architecture-independent data (com)
+CMAKE_INSTALL_SHAREDSTATEDIR:PATH=com
+
+//Read-only single-machine data (etc)
+CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/usr/bin/ld
@@ -155,6 +206,21 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
 CMAKE_PROJECT_NAME:STATIC=A-star-algorithm
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION:STATIC=1.12.1
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MAJOR:STATIC=1
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MINOR:STATIC=12
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_PATCH:STATIC=1
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_TWEAK:STATIC=
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -217,6 +283,140 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
+
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=/usr/local/share/eigen3/cmake
+
+//Directory under which to collect all populated content
+FETCHCONTENT_BASE_DIR:PATH=/home/peera/A-star-algorithm/build/_deps
+
+//Disables all attempts to download or update content and assumes
+// source dirs already exist
+FETCHCONTENT_FULLY_DISCONNECTED:BOOL=OFF
+
+//Enables QUIET option for all content population
+FETCHCONTENT_QUIET:BOOL=ON
+
+//When not empty, overrides where to find pre-populated content
+// for googletest
+FETCHCONTENT_SOURCE_DIR_GOOGLETEST:PATH=
+
+//Enables UPDATE_DISCONNECTED behavior for all content population
+FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of googletest
+FETCHCONTENT_UPDATES_DISCONNECTED_GOOGLETEST:BOOL=OFF
+
+//Use Abseil and RE2. Requires Abseil and RE2 to be separately
+// added to the build.
+GTEST_HAS_ABSL:BOOL=OFF
+
+//Path to the ImageMagick binary directory.
+IMAGEMAGICK_BINARY_PATH:PATH=/usr/local/bin
+
+//Path to ImageMagick's composite executable.
+IMAGEMAGICK_COMPOSITE_EXECUTABLE:FILEPATH=/usr/local/bin/composite
+
+//Path to ImageMagick's convert executable.
+IMAGEMAGICK_CONVERT_EXECUTABLE:FILEPATH=/usr/local/bin/convert
+
+//Path to ImageMagick's import executable.
+IMAGEMAGICK_IMPORT_EXECUTABLE:FILEPATH=/usr/local/bin/import
+
+//Path to ImageMagick's mogrify executable.
+IMAGEMAGICK_MOGRIFY_EXECUTABLE:FILEPATH=/usr/local/bin/mogrify
+
+//Path to ImageMagick's montage executable.
+IMAGEMAGICK_MONTAGE_EXECUTABLE:FILEPATH=/usr/local/bin/montage
+
+//Enable installation of googletest. (Projects embedding googletest
+// may want to turn this OFF.)
+INSTALL_GTEST:BOOL=ON
+
+//Path to the ImageMagick binary directory.
+ImageMagick_EXECUTABLE_DIR:PATH=/usr/local/bin
+
+//Path to the ImageMagick arch-specific include dir.
+ImageMagick_Magick++_ARCH_INCLUDE_DIR:PATH=ImageMagick_Magick++_ARCH_INCLUDE_DIR-NOTFOUND
+
+//Path to the ImageMagick arch-independent include dir.
+ImageMagick_Magick++_INCLUDE_DIR:PATH=/usr/local/include/ImageMagick-7
+
+//Path to the ImageMagick Magick++ library.
+ImageMagick_Magick++_LIBRARY:FILEPATH=/usr/local/lib/libMagick++-7.Q16HDRI.so
+
+//Dependencies for the target
+Map_LIB_DEPENDS:STATIC=general;/usr/local/lib/libMagick++-7.Q16HDRI.so;
+
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
+//Value Computed by CMake
+gmock_BINARY_DIR:STATIC=/home/peera/A-star-algorithm/build/_deps/googletest-build/googlemock
+
+//Value Computed by CMake
+gmock_IS_TOP_LEVEL:STATIC=OFF
+
+//Dependencies for the target
+gmock_LIB_DEPENDS:STATIC=general;gtest;
+
+//Value Computed by CMake
+gmock_SOURCE_DIR:STATIC=/home/peera/A-star-algorithm/build/_deps/googletest-src/googlemock
+
+//Build all of Google Mock's own tests.
+gmock_build_tests:BOOL=OFF
+
+//Dependencies for the target
+gmock_main_LIB_DEPENDS:STATIC=general;gmock;
+
+//Value Computed by CMake
+googletest-distribution_BINARY_DIR:STATIC=/home/peera/A-star-algorithm/build/_deps/googletest-build
+
+//Value Computed by CMake
+googletest-distribution_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+googletest-distribution_SOURCE_DIR:STATIC=/home/peera/A-star-algorithm/build/_deps/googletest-src
+
+//Value Computed by CMake
+gtest_BINARY_DIR:STATIC=/home/peera/A-star-algorithm/build/_deps/googletest-build/googletest
+
+//Value Computed by CMake
+gtest_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+gtest_SOURCE_DIR:STATIC=/home/peera/A-star-algorithm/build/_deps/googletest-src/googletest
+
+//Build gtest's sample programs.
+gtest_build_samples:BOOL=OFF
+
+//Build all of gtest's own tests.
+gtest_build_tests:BOOL=OFF
+
+//Disable uses of pthreads in gtest.
+gtest_disable_pthreads:BOOL=OFF
+
+//Use shared (DLL) run-time lib even when Google Test is built
+// as static lib.
+gtest_force_shared_crt:BOOL=ON
+
+//Build gtest with internal symbols hidden in shared libraries.
+gtest_hide_internal_symbols:BOOL=OFF
+
+//Dependencies for the target
+gtest_main_LIB_DEPENDS:STATIC=general;gtest;
+
+//Path to a library.
+pkgcfg_lib_PC_Magick++_Magick++-7.Q16HDRI:FILEPATH=/usr/local/lib/libMagick++-7.Q16HDRI.so
+
+//Path to a library.
+pkgcfg_lib_PC_Magick++_MagickCore-7.Q16HDRI:FILEPATH=/usr/local/lib/libMagickCore-7.Q16HDRI.so
+
+//Path to a library.
+pkgcfg_lib_PC_Magick++_MagickWand-7.Q16HDRI:FILEPATH=/usr/local/lib/libMagickWand-7.Q16HDRI.so
 
 
 ########################
@@ -301,11 +501,47 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
+//Test CMAKE_HAVE_LIBC_PTHREAD
+CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
+//Have include pthread.h
+CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/peera/A-star-algorithm
+//ADVANCED property for variable: CMAKE_INSTALL_BINDIR
+CMAKE_INSTALL_BINDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DATADIR
+CMAKE_INSTALL_DATADIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DATAROOTDIR
+CMAKE_INSTALL_DATAROOTDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DOCDIR
+CMAKE_INSTALL_DOCDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_INCLUDEDIR
+CMAKE_INSTALL_INCLUDEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_INFODIR
+CMAKE_INSTALL_INFODIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LIBDIR
+CMAKE_INSTALL_LIBDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LIBEXECDIR
+CMAKE_INSTALL_LIBEXECDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LOCALEDIR
+CMAKE_INSTALL_LOCALEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LOCALSTATEDIR
+CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_MANDIR
+CMAKE_INSTALL_MANDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_OLDINCLUDEDIR
+CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_RUNSTATEDIR
+CMAKE_INSTALL_RUNSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SBINDIR
+CMAKE_INSTALL_SBINDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SHAREDSTATEDIR
+CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED:INTERNAL=1
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SYSCONFDIR
+CMAKE_INSTALL_SYSCONFDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MAKE_PROGRAM
@@ -323,7 +559,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -366,4 +602,92 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding ImageMagick
+FIND_PACKAGE_MESSAGE_DETAILS_ImageMagick:INTERNAL=[/usr/local/lib/libMagick++-7.Q16HDRI.so][v7.1.2-6()]
+//Details about finding Python
+FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[/usr/bin/python3.10][cfound components: Interpreter ][v3.10.12()]
+//Details about finding Threads
+FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//ADVANCED property for variable: IMAGEMAGICK_BINARY_PATH
+IMAGEMAGICK_BINARY_PATH-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: IMAGEMAGICK_COMPOSITE_EXECUTABLE
+IMAGEMAGICK_COMPOSITE_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: IMAGEMAGICK_CONVERT_EXECUTABLE
+IMAGEMAGICK_CONVERT_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: IMAGEMAGICK_IMPORT_EXECUTABLE
+IMAGEMAGICK_IMPORT_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: IMAGEMAGICK_MOGRIFY_EXECUTABLE
+IMAGEMAGICK_MOGRIFY_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: IMAGEMAGICK_MONTAGE_EXECUTABLE
+IMAGEMAGICK_MONTAGE_EXECUTABLE-ADVANCED:INTERNAL=1
+PC_Magick++_CFLAGS:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-I/usr/local/include/ImageMagick-7
+PC_Magick++_CFLAGS_I:INTERNAL=
+PC_Magick++_CFLAGS_OTHER:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32
+PC_Magick++_FOUND:INTERNAL=1
+PC_Magick++_INCLUDEDIR:INTERNAL=/usr/local/include/ImageMagick-7
+PC_Magick++_INCLUDE_DIRS:INTERNAL=/usr/local/include/ImageMagick-7
+PC_Magick++_LDFLAGS:INTERNAL=-L/usr/local/lib;-lMagick++-7.Q16HDRI;-lMagickWand-7.Q16HDRI;-lMagickCore-7.Q16HDRI
+PC_Magick++_LDFLAGS_OTHER:INTERNAL=
+PC_Magick++_LIBDIR:INTERNAL=/usr/local/lib
+PC_Magick++_LIBRARIES:INTERNAL=Magick++-7.Q16HDRI;MagickWand-7.Q16HDRI;MagickCore-7.Q16HDRI
+PC_Magick++_LIBRARY_DIRS:INTERNAL=/usr/local/lib
+PC_Magick++_LIBS:INTERNAL=
+PC_Magick++_LIBS_L:INTERNAL=
+PC_Magick++_LIBS_OTHER:INTERNAL=
+PC_Magick++_LIBS_PATHS:INTERNAL=
+PC_Magick++_MODULE_NAME:INTERNAL=Magick++
+PC_Magick++_Magick++_INCLUDEDIR:INTERNAL=
+PC_Magick++_Magick++_LIBDIR:INTERNAL=
+PC_Magick++_Magick++_PREFIX:INTERNAL=
+PC_Magick++_Magick++_VERSION:INTERNAL=
+PC_Magick++_PREFIX:INTERNAL=/usr/local
+PC_Magick++_STATIC_CFLAGS:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-I/usr/local/include/ImageMagick-7
+PC_Magick++_STATIC_CFLAGS_I:INTERNAL=
+PC_Magick++_STATIC_CFLAGS_OTHER:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32
+PC_Magick++_STATIC_INCLUDE_DIRS:INTERNAL=/usr/local/include/ImageMagick-7
+PC_Magick++_STATIC_LDFLAGS:INTERNAL=-L/usr/local/lib;-lMagick++-7.Q16HDRI;-lm;-lMagickWand-7.Q16HDRI;-ljbig;-llcms2;-ltiff;-lfreetype;-ljpeg;-lpng16;-lz;-lfontconfig;-lfreetype;-lheif;-lwebpmux;-lwebpdemux;-lwebp;-lXext;-lXt;-lSM;-lICE;-lX11;-llzma;-lbz2;-lIlmImf-2_5;-lImath-2_5;-lHalf-2_5;-lIex-2_5;-lIexMath-2_5;-lIlmThread-2_5;-lopenjp2;-lxml2;-lz;-lzip;-lm;-lpthread;-lgomp;-lm;-lMagickCore-7.Q16HDRI;-ljbig;-llcms2;-ltiff;-lfreetype;-ljpeg;-lpng16;-lz;-lfontconfig;-lfreetype;-lheif;-lwebpmux;-lwebpdemux;-lwebp;-lXext;-lXt;-lSM;-lICE;-lX11;-llzma;-lbz2;-lIlmImf-2_5;-lImath-2_5;-lHalf-2_5;-lIex-2_5;-lIexMath-2_5;-lIlmThread-2_5;-lopenjp2;-lxml2;-lz;-lzip;-lm;-lpthread;-lgomp;-lm
+PC_Magick++_STATIC_LDFLAGS_OTHER:INTERNAL=
+PC_Magick++_STATIC_LIBDIR:INTERNAL=
+PC_Magick++_STATIC_LIBRARIES:INTERNAL=Magick++-7.Q16HDRI;m;MagickWand-7.Q16HDRI;jbig;lcms2;tiff;freetype;jpeg;png16;z;fontconfig;freetype;heif;webpmux;webpdemux;webp;Xext;Xt;SM;ICE;X11;lzma;bz2;IlmImf-2_5;Imath-2_5;Half-2_5;Iex-2_5;IexMath-2_5;IlmThread-2_5;openjp2;xml2;z;zip;m;pthread;gomp;m;MagickCore-7.Q16HDRI;jbig;lcms2;tiff;freetype;jpeg;png16;z;fontconfig;freetype;heif;webpmux;webpdemux;webp;Xext;Xt;SM;ICE;X11;lzma;bz2;IlmImf-2_5;Imath-2_5;Half-2_5;Iex-2_5;IexMath-2_5;IlmThread-2_5;openjp2;xml2;z;zip;m;pthread;gomp;m
+PC_Magick++_STATIC_LIBRARY_DIRS:INTERNAL=/usr/local/lib
+PC_Magick++_STATIC_LIBS:INTERNAL=
+PC_Magick++_STATIC_LIBS_L:INTERNAL=
+PC_Magick++_STATIC_LIBS_OTHER:INTERNAL=
+PC_Magick++_STATIC_LIBS_PATHS:INTERNAL=
+PC_Magick++_VERSION:INTERNAL=7.1.2
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+//CMAKE_INSTALL_PREFIX during last run
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+//Path to a program.
+_Python_EXECUTABLE:INTERNAL=/usr/bin/python3.10
+//Python Properties
+_Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;12;64;;cpython-310-x86_64-linux-gnu;/usr/lib/python3.10;/usr/lib/python3.10;/usr/lib/python3/dist-packages;/usr/lib/python3/dist-packages
+_Python_INTERPRETER_SIGNATURE:INTERNAL=61380851b1f49cd20124cec6c9ca8095
+__pkg_config_arguments_PC_Magick++:INTERNAL=QUIET;Magick++
+__pkg_config_checked_PC_Magick++:INTERNAL=1
+cmake_package_name:INTERNAL=GTest
+generated_dir:INTERNAL=/home/peera/A-star-algorithm/build/_deps/googletest-build/googletest/generated
+//ADVANCED property for variable: gmock_build_tests
+gmock_build_tests-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: gtest_build_samples
+gtest_build_samples-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: gtest_build_tests
+gtest_build_tests-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: gtest_disable_pthreads
+gtest_disable_pthreads-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: gtest_force_shared_crt
+gtest_force_shared_crt-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: gtest_hide_internal_symbols
+gtest_hide_internal_symbols-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_Magick++_Magick++-7.Q16HDRI
+pkgcfg_lib_PC_Magick++_Magick++-7.Q16HDRI-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_Magick++_MagickCore-7.Q16HDRI
+pkgcfg_lib_PC_Magick++_MagickCore-7.Q16HDRI-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_Magick++_MagickWand-7.Q16HDRI
+pkgcfg_lib_PC_Magick++_MagickWand-7.Q16HDRI-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/usr/local/lib
+targets_export_name:INTERNAL=GTestTargets
 

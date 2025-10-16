@@ -1,0 +1,217 @@
+Start testing: Oct 16 01:09 EDT
+----------------------------------------------------------
+1/6 Testing: HelloTest.BasicAssertions
+1/6 Test: HelloTest.BasicAssertions
+Command: "/home/peera/A-star-algorithm/build/hello_test" "--gtest_filter=HelloTest.BasicAssertions" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"HelloTest.BasicAssertions" start time: Oct 16 01:09 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = HelloTest.BasicAssertions
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from HelloTest
+[ RUN      ] HelloTest.BasicAssertions
+[       OK ] HelloTest.BasicAssertions (0 ms)
+[----------] 1 test from HelloTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"HelloTest.BasicAssertions" end time: Oct 16 01:09 EDT
+"HelloTest.BasicAssertions" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/6 Testing: GridMapTest.AllFreeCells
+2/6 Test: GridMapTest.AllFreeCells
+Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.AllFreeCells" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"GridMapTest.AllFreeCells" start time: Oct 16 01:09 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GridMapTest.AllFreeCells
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GridMapTest
+[ RUN      ] GridMapTest.AllFreeCells
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: test1.png
+Loading image file test1.png
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+No matrix decomposition applied.
+First ten elements of result matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Random grid data value: 0
+First grid cell value: 0
+[       OK ] GridMapTest.AllFreeCells (16 ms)
+[----------] 1 test from GridMapTest (16 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (16 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"GridMapTest.AllFreeCells" end time: Oct 16 01:09 EDT
+"GridMapTest.AllFreeCells" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/6 Testing: GridMapTest.AllOccupiedCells
+3/6 Test: GridMapTest.AllOccupiedCells
+Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.AllOccupiedCells" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"GridMapTest.AllOccupiedCells" start time: Oct 16 01:09 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GridMapTest.AllOccupiedCells
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GridMapTest
+[ RUN      ] GridMapTest.AllOccupiedCells
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: test2.png
+Loading image file test2.png
+First ten elements of normalized matrix:
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+No matrix decomposition applied.
+First ten elements of result matrix:
+100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 
+Random grid data value: 100
+[       OK ] GridMapTest.AllOccupiedCells (14 ms)
+[----------] 1 test from GridMapTest (14 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (14 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GridMapTest.AllOccupiedCells" end time: Oct 16 01:09 EDT
+"GridMapTest.AllOccupiedCells" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/6 Testing: GridMapTest.MixedCells
+4/6 Test: GridMapTest.MixedCells
+Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.MixedCells" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"GridMapTest.MixedCells" start time: Oct 16 01:09 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GridMapTest.MixedCells
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GridMapTest
+[ RUN      ] GridMapTest.MixedCells
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: test3.png
+Loading image file test3.png
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+No matrix decomposition applied.
+First ten elements of result matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Random grid data value: 0
+[       OK ] GridMapTest.MixedCells (23 ms)
+[----------] 1 test from GridMapTest (23 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (24 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"GridMapTest.MixedCells" end time: Oct 16 01:09 EDT
+"GridMapTest.MixedCells" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/6 Testing: GridMapTest.CellsWithUnknown
+5/6 Test: GridMapTest.CellsWithUnknown
+Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.CellsWithUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"GridMapTest.CellsWithUnknown" start time: Oct 16 01:09 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GridMapTest.CellsWithUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GridMapTest
+[ RUN      ] GridMapTest.CellsWithUnknown
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: test3.png
+Loading image file test3.png
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+No matrix decomposition applied.
+First ten elements of result matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Random grid data value: 0
+/home/peera/A-star-algorithm/tests/map_test.cc:124: Failure
+Expected equality of these values:
+  gm.grid_.data[idx(0, 0, gm.grid_.width)]
+    Which is: '\0'
+  100
+/home/peera/A-star-algorithm/tests/map_test.cc:126: Failure
+Expected equality of these values:
+  gm.grid_.data[idx(50, 50, gm.grid_.width)]
+    Which is: 'd' (100, 0x64)
+  -1
+[  FAILED  ] GridMapTest.CellsWithUnknown (28 ms)
+[----------] 1 test from GridMapTest (28 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (28 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] GridMapTest.CellsWithUnknown
+
+ 1 FAILED TEST
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Failed.
+"GridMapTest.CellsWithUnknown" end time: Oct 16 01:09 EDT
+"GridMapTest.CellsWithUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/6 Testing: GridMapTest.CellsWithAlpha
+6/6 Test: GridMapTest.CellsWithAlpha
+Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.CellsWithAlpha" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"GridMapTest.CellsWithAlpha" start time: Oct 16 01:09 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GridMapTest.CellsWithAlpha
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GridMapTest
+[ RUN      ] GridMapTest.CellsWithAlpha
+Image directory: "/home/peera/A-star-algorithm/images"
+[       OK ] GridMapTest.CellsWithAlpha (0 ms)
+[----------] 1 test from GridMapTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GridMapTest.CellsWithAlpha" end time: Oct 16 01:09 EDT
+"GridMapTest.CellsWithAlpha" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 16 01:09 EDT

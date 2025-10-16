@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/astar_search.dir/src/main.cpp.o -o astar_search  src/AstarSearch/libAstarSearch.a src/Map/libMap.a 
+/usr/bin/c++ CMakeFiles/astar_search.dir/src/main.cpp.o -o astar_search  -Wl,-rpath,/usr/local/lib: src/AstarSearch/libAstarSearch.a src/Map/libMap.a /usr/local/lib/libMagick++-7.Q16HDRI.so 

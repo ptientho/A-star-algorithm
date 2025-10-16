@@ -52,6 +52,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/peera/A-star-algorithm/build/astar_search")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/astar_search" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/astar_search")
+    file(RPATH_CHANGE
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/astar_search"
+         OLD_RPATH "/usr/local/lib:"
+         NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/astar_search")
     endif()
@@ -62,6 +66,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/peera/A-star-algorithm/build/src/AstarSearch/cmake_install.cmake")
   include("/home/peera/A-star-algorithm/build/src/Map/cmake_install.cmake")
+  include("/home/peera/A-star-algorithm/build/_deps/googletest-build/cmake_install.cmake")
 
 endif()
 
