@@ -250,7 +250,7 @@ TEST_F(GridMapTest, DecomposeObstacledImage) {
 
 // Test 9
 TEST_F(GridMapTest, DecomposeMapImage) {
-    std::string mapFile = "test8.png";
+    std::string mapFile = "test9.png";
     fs::path out = img_dir / fs::path(mapFile);
 
     GridMap gm;
@@ -275,7 +275,7 @@ TEST_F(GridMapTest, DecomposeMapImage) {
 
 // Test 10
 TEST_F(GridMapTest, CheckObstacleMapImage) {
-    std::string mapFile = "test8.png";
+    std::string mapFile = "test9.png";
     fs::path out = img_dir / fs::path(mapFile);
 
     GridMap gm;
@@ -298,7 +298,7 @@ TEST_F(GridMapTest, CheckObstacleMapImage) {
 
 // Test 11
 TEST_F(GridMapTest, CheckObstacleMapImageWithDecomposition) {
-    std::string mapFile = "test8.png";
+    std::string mapFile = "test9.png";
     fs::path out = img_dir / fs::path(mapFile);
 
     GridMap gm;
