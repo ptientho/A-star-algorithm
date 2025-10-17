@@ -3,13 +3,34 @@
 #include <unordered_set>
 #include <vector>
 
-std::vector<std::vector<uint32_t>> reconstruct_path(Node * current_node) {
+void reconstruct_path(std::vector<size_t> & shortest_path, std::shared_ptr<Node> current_node, size_t start_index, size_t goal_index)
+{
+    
+    if (current_node->get_index() != goal_index) {
+        std::cerr << "Error: Current node is not the goal node." << std::endl;
+        return;
+    }
+
+    auto node = current_node;
+    shortest_path.push_back(goal_index);
+
+    while (node->get_index() != start_index) {
+        auto parent = node->get_parent();
+        if (parent != nullptr) {
+            shortest_path.push_back(parent->get_index());
+            node = parent;
+        } else {
+            break;
+        }
+    }
+
+    std::reverse(shortest_path.begin(), shortest_path.end());
     
 }
 
 bool astar_search(const OccupancyGrid & grid,
     const size_t & start_idx,
-    const size_t & goal_idx, std::vector<std::vector<size_t>> & shortest_path) 
+    const size_t & goal_idx, std::vector<size_t> & shortest_path) 
 {
 
     // boolean flag to keep track if path is found
@@ -49,14 +70,14 @@ bool astar_search(const OccupancyGrid & grid,
         }
 
         // Find neighbors of the current node
-        std::vector<std::shared_ptr<Node>> neighbors = find_neighbors(current_node, grid);
+        std::unordered_map<size_t, double> neighbors = find_neighbors(current_node, grid);
 
         // Iterate over each neighbors
         for (const auto& neighbor : neighbors)
         {
             // Get neighbor index and step cost
-            size_t neighbor_idx = neighbor->get_index();
-            double step_cost = neighbor->get_g_cost();
+            size_t neighbor_idx = neighbor.first;
+            double step_cost = neighbor.second;
 
             // Check if neighbor is in closed list
             auto closed_idx = closed_list.find(neighbor_idx);
@@ -67,13 +88,12 @@ bool astar_search(const OccupancyGrid & grid,
                 continue;
             }
 
-            // Update cost. g_cost is already set in find_neighbors function
+            // Update costs
             // Update only f and h values
+            double g_cost = current_node->get_g_cost() + step_cost;
             double h_cost = calculate_heuristic(neighbor_idx, goal_idx, grid.width);
-            neighbor->set_h_cost(h_cost);
 
-            double f_cost = neighbor->get_g_cost() + neighbor->get_h_cost();
-            neighbor->set_f_cost(f_cost);
+            double f_cost = g_cost + h_cost;
 
             // Check if neighbor is in open_list
             auto open_list_idx = std::find_if(open_list.begin(), open_list.end(),
@@ -84,9 +104,20 @@ bool astar_search(const OccupancyGrid & grid,
             if (open_list_idx != open_list.end())
             {
                 // Update existing neighbor in open_list if new f_cost is lower
+                if (f_cost < (*open_list_idx)->get_f_cost())
+                {   
+                    
+                    (*open_list_idx)->set_g_cost(g_cost);
+                    (*open_list_idx)->set_h_cost(h_cost);
+                    (*open_list_idx)->set_f_cost(f_cost);
+                    (*open_list_idx)->set_parent(current_node);
+                }
             } else {
                 // Add new neighbor to open list
-                open_list.push_back(neighbor);
+                open_list.push_back(std::make_shared<Node>(current_node, neighbor_idx));
+                open_list.back()->set_g_cost(g_cost);
+                open_list.back()->set_h_cost(h_cost);
+                open_list.back()->set_f_cost(f_cost);
             }
         }
 
@@ -96,7 +127,7 @@ bool astar_search(const OccupancyGrid & grid,
     // A* doen traversing nodes in open_list
     // Reconstruct path if found
     if (path_found) {
-
+        reconstruct_path(shortest_path, current_node, start_idx, goal_idx);
     } else {
         std::cout << "No path found from start to goal." << std::endl;
     }
@@ -111,14 +142,15 @@ size_t gridCellToIndex(const size_t & x, const size_t & y, const size_t & width)
 
 void indexToGridCell(const size_t & index, const size_t & width, size_t & x, size_t & y)
 {
-
+    x = index % width;
+    y = index / width;
 }
 
-std::vector<std::shared_ptr<Node>>
+std::unordered_map<size_t, double>
 find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & grid)
 {
     // Given current node and map, find its 8-connected neighbors
-    std::vector<std::shared_ptr<Node>> neighbors;
+    std::unordered_map<size_t, double> neighbors;
 
     double diag_cost = 1.41421;
     double step_cost = 1.0;
@@ -154,8 +186,7 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
     {
         if (grid.data[upper] != obstacle && grid.data[upper] != unknown)
         {
-            neighbors.push_back(std::make_shared<Node>(current_node, upper));
-            neighbors.back()->set_g_cost(current_node->get_g_cost() + step_cost);
+            neighbors.insert({upper, step_cost});
         }
     }
 
@@ -165,8 +196,7 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
     {
         if (grid.data[left] != obstacle && grid.data[left] != unknown)
         {
-            neighbors.push_back(std::make_shared<Node>(current_node, left));
-            neighbors.back()->set_g_cost(current_node->get_g_cost() + step_cost);
+            neighbors.insert({left, step_cost});
         }
     }
 
@@ -176,8 +206,7 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
     {
         if (grid.data[upper_left] != obstacle && grid.data[upper_left] != unknown)
         {
-            neighbors.push_back(std::make_shared<Node>(current_node, upper_left));
-            neighbors.back()->set_g_cost(current_node->get_g_cost() + diag_cost);
+            neighbors.insert({upper_left, diag_cost});
         }
     }
 
@@ -187,8 +216,7 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
     {
         if (grid.data[upper_right] != obstacle && grid.data[upper_right] != unknown)
         {
-            neighbors.push_back(std::make_shared<Node>(current_node, upper_right));
-            neighbors.back()->set_g_cost(current_node->get_g_cost() + diag_cost);
+            neighbors.insert({upper_right, diag_cost});
         }
     }
 
@@ -198,8 +226,7 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
     {
         if (grid.data[right] != obstacle && grid.data[right] != unknown)
         {
-            neighbors.push_back(std::make_shared<Node>(current_node, right));
-            neighbors.back()->set_g_cost(current_node->get_g_cost() + step_cost);
+            neighbors.insert({right, step_cost});
         }
     }
 
@@ -209,8 +236,7 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
     {
         if (grid.data[lower_left] != obstacle && grid.data[lower_left] != unknown)
         {
-            neighbors.push_back(std::make_shared<Node>(current_node, lower_left));
-            neighbors.back()->set_g_cost(current_node->get_g_cost() + diag_cost);
+            neighbors.insert({lower_left, diag_cost});
         }
     }
 
@@ -219,8 +245,7 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
     {
         if (grid.data[lower] != obstacle && grid.data[lower] != unknown)
         {
-            neighbors.push_back(std::make_shared<Node>(current_node, lower));
-            neighbors.back()->set_g_cost(current_node->get_g_cost() + step_cost);
+            neighbors.insert({lower, step_cost});
         }
     }
 
@@ -230,12 +255,27 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
     {
         if (grid.data[lower_right] != obstacle && grid.data[lower_right] != unknown)
         {
-            neighbors.push_back(std::make_shared<Node>(current_node, lower_right));
-            neighbors.back()->set_g_cost(current_node->get_g_cost() + diag_cost);
+            neighbors.insert({lower_right, diag_cost});
         }
     }
 
 
     return neighbors;
+}
+
+double calculate_heuristic(size_t current_index, size_t goal_index, size_t grid_width)
+{
+    size_t current_x;
+    size_t current_y;
+    size_t goal_x;
+    size_t goal_y;
+
+    indexToGridCell(current_index, grid_width, current_x, current_y);
+    indexToGridCell(goal_index, grid_width, goal_x, goal_y);
+
+    double heuristic = std::sqrt(std::pow(static_cast<double>(goal_x) - static_cast<double>(current_x), 2) +
+        std::pow(static_cast<double>(goal_y) - static_cast<double>(current_y), 2));
+
+    return heuristic;
 }
 

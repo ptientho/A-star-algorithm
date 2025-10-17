@@ -38,6 +38,9 @@ public:
     // set f_cost
     void set_f_cost(double f) { f_cost = f; }
 
+    // set parent
+    void set_parent(std::shared_ptr<Node> parent) { parent_ = parent; }
+
 private:
     std::shared_ptr<Node> parent_;
     size_t curr_position_idx_;
@@ -48,7 +51,7 @@ private:
 
 // Path reconstruction function
 // Given a current node, construct path backward to start node
-std::vector<std::vector<uint32_t>> reconstruct_path(Node * current_node);
+void reconstruct_path(std::vector<size_t> & shortest_path, std::shared_ptr<Node> current_node, size_t start_index, size_t goal_index);
 
 
 // A* Search algorithm implementation
@@ -82,8 +85,14 @@ void indexToGridCell(const size_t & index, const size_t & width, size_t & x, siz
     current_node: current node index value of grid cell
     return: hash table of neighbor node indices and their movement costs
 */
-std::vector<std::shared_ptr<Node>>
+std::unordered_map<size_t, double>
 find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & grid);
+
+/*
+    Calculate heuristic cost using Euclidean distance
+    The distance between current position and goal position
+*/
+double calculate_heuristic(size_t current_index, size_t goal_index, size_t grid_width);
 
 template <typename K, typename V>
 void print_map(const std::unordered_map<K, V> & map) {
