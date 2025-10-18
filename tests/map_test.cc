@@ -94,7 +94,7 @@ TEST_F(GridMapTest, MixedCells) {
 
     ASSERT_EQ(gm.grid_.resolution, resolution);
 
-    EXPECT_EQ(gm.get_depth(), 1);
+    EXPECT_EQ(gm.get_depth(), 16);
 
     // In this test image, the top-left corner of the rectangle is 50x50
     // the bottom-right corner is 150x150
@@ -238,7 +238,7 @@ TEST_F(GridMapTest, DecomposeObstacledImage) {
 
     ASSERT_EQ(gm.grid_.resolution, resolution);
 
-    EXPECT_EQ(gm.get_depth(), 1);
+    EXPECT_EQ(gm.get_depth(), 16);
 
     // Expect that total cells is less than original (200x100=20000)
     auto total = gm.grid_.data.size();
@@ -263,7 +263,7 @@ TEST_F(GridMapTest, DecomposeMapImage) {
 
     ASSERT_EQ(gm.grid_.resolution, resolution);
 
-    EXPECT_EQ(gm.get_depth(), 8); // This image has depth of 8
+    EXPECT_EQ(gm.get_depth(), 16);
 
     // Expect that total cells is less than original (200x100=20000)
     auto total = gm.grid_.data.size();
@@ -288,11 +288,11 @@ TEST_F(GridMapTest, CheckObstacleMapImage) {
 
     ASSERT_EQ(gm.grid_.resolution, resolution);
 
-    EXPECT_EQ(gm.get_depth(), 8); // This image has depth of 8
+    EXPECT_EQ(gm.get_depth(), 16);
 
     // Expect that obstacle or free is located in this defined pixel location
-    EXPECT_EQ(gm.grid_.data[idx(158, 95, gm.grid_.width)], 100);
-    EXPECT_EQ(gm.grid_.data[idx(127, 82, gm.grid_.width)], 0);
+    EXPECT_EQ(gm.grid_.data[idx(145, 67, gm.grid_.width)], 100);
+    EXPECT_EQ(gm.grid_.data[idx(102, 42, gm.grid_.width)], 0);
 
 }
 
@@ -305,16 +305,16 @@ TEST_F(GridMapTest, CheckObstacleMapImageWithDecomposition) {
     std::vector<double> origin = {0.0, 0.0, 0.0};
     double occ_thresh = 0.65;
     double free_thresh = 0.196;
-    uint8_t resolution = 4; // scale down by 4
+    uint8_t resolution = 2; // scale down by 2
 
     ASSERT_TRUE(gm.load_map(img_dir, mapFile, origin, occ_thresh, free_thresh, resolution, true));
 
     ASSERT_EQ(gm.grid_.resolution, resolution);
 
-    EXPECT_EQ(gm.get_depth(), 8); // This image has depth of 8
+    EXPECT_EQ(gm.get_depth(), 16);
 
     // Expect that obstacle or free is located in this defined pixel location
-    EXPECT_NE(gm.grid_.data[idx(158, 95, gm.grid_.width)], 100);
-    EXPECT_EQ(gm.grid_.data[idx(127, 82, gm.grid_.width)], 0);
+    EXPECT_EQ(gm.grid_.data[idx(73, 31, gm.grid_.width)], 100);
+    EXPECT_EQ(gm.grid_.data[idx(56, 29, gm.grid_.width)], 0);
 
 }

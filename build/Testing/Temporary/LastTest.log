@@ -1,10 +1,10 @@
-Start testing: Oct 17 20:43 EDT
+Start testing: Oct 18 10:32 EDT
 ----------------------------------------------------------
-1/15 Testing: GridMapTest.AllFreeCells
-1/15 Test: GridMapTest.AllFreeCells
+1/24 Testing: GridMapTest.AllFreeCells
+1/24 Test: GridMapTest.AllFreeCells
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.AllFreeCells" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.AllFreeCells" start time: Oct 17 20:43 EDT
+"GridMapTest.AllFreeCells" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -25,25 +25,25 @@ First ten elements of initialized result matrix:
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 Random grid data value: 0
 First grid cell value: 0
-[       OK ] GridMapTest.AllFreeCells (17 ms)
-[----------] 1 test from GridMapTest (17 ms total)
+[       OK ] GridMapTest.AllFreeCells (15 ms)
+[----------] 1 test from GridMapTest (15 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (17 ms total)
+[==========] 1 test from 1 test suite ran. (15 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.08 sec
+Test time =   0.07 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.AllFreeCells" end time: Oct 17 20:43 EDT
+"GridMapTest.AllFreeCells" end time: Oct 18 10:32 EDT
 "GridMapTest.AllFreeCells" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-2/15 Testing: GridMapTest.AllOccupiedCells
-2/15 Test: GridMapTest.AllOccupiedCells
+2/24 Testing: GridMapTest.AllOccupiedCells
+2/24 Test: GridMapTest.AllOccupiedCells
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.AllOccupiedCells" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.AllOccupiedCells" start time: Oct 17 20:43 EDT
+"GridMapTest.AllOccupiedCells" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -63,25 +63,25 @@ First ten elements of initialized result matrix:
 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 First ten elements of result matrix:
 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 
 Random grid data value: 100
-[       OK ] GridMapTest.AllOccupiedCells (16 ms)
-[----------] 1 test from GridMapTest (16 ms total)
+[       OK ] GridMapTest.AllOccupiedCells (14 ms)
+[----------] 1 test from GridMapTest (14 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (16 ms total)
+[==========] 1 test from 1 test suite ran. (14 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.08 sec
+Test time =   0.06 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.AllOccupiedCells" end time: Oct 17 20:43 EDT
+"GridMapTest.AllOccupiedCells" end time: Oct 18 10:32 EDT
 "GridMapTest.AllOccupiedCells" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-3/15 Testing: GridMapTest.MixedCells
-3/15 Test: GridMapTest.MixedCells
+3/24 Testing: GridMapTest.MixedCells
+3/24 Test: GridMapTest.MixedCells
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.MixedCells" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.MixedCells" start time: Oct 17 20:43 EDT
+"GridMapTest.MixedCells" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -101,25 +101,25 @@ First ten elements of initialized result matrix:
 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 First ten elements of result matrix:
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 Random grid data value: 0
-[       OK ] GridMapTest.MixedCells (25 ms)
-[----------] 1 test from GridMapTest (25 ms total)
+[       OK ] GridMapTest.MixedCells (27 ms)
+[----------] 1 test from GridMapTest (27 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (26 ms total)
+[==========] 1 test from 1 test suite ran. (27 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.11 sec
+Test time =   0.08 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.MixedCells" end time: Oct 17 20:43 EDT
+"GridMapTest.MixedCells" end time: Oct 18 10:32 EDT
 "GridMapTest.MixedCells" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-4/15 Testing: GridMapTest.CellsWithUnknown
-4/15 Test: GridMapTest.CellsWithUnknown
+4/24 Testing: GridMapTest.CellsWithUnknown
+4/24 Test: GridMapTest.CellsWithUnknown
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.CellsWithUnknown" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.CellsWithUnknown" start time: Oct 17 20:43 EDT
+"GridMapTest.CellsWithUnknown" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -139,25 +139,25 @@ First ten elements of initialized result matrix:
 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 First ten elements of result matrix:
 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 
 Random grid data value: 0
-[       OK ] GridMapTest.CellsWithUnknown (13 ms)
-[----------] 1 test from GridMapTest (13 ms total)
+[       OK ] GridMapTest.CellsWithUnknown (15 ms)
+[----------] 1 test from GridMapTest (15 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (14 ms total)
+[==========] 1 test from 1 test suite ran. (16 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.08 sec
+Test time =   0.07 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.CellsWithUnknown" end time: Oct 17 20:43 EDT
+"GridMapTest.CellsWithUnknown" end time: Oct 18 10:32 EDT
 "GridMapTest.CellsWithUnknown" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-5/15 Testing: GridMapTest.CellsWithAlpha
-5/15 Test: GridMapTest.CellsWithAlpha
+5/24 Testing: GridMapTest.CellsWithAlpha
+5/24 Test: GridMapTest.CellsWithAlpha
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.CellsWithAlpha" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.CellsWithAlpha" start time: Oct 17 20:43 EDT
+"GridMapTest.CellsWithAlpha" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -184,18 +184,18 @@ Random grid data value: -1
 [==========] 1 test from 1 test suite ran. (19 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.08 sec
+Test time =   0.07 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.CellsWithAlpha" end time: Oct 17 20:43 EDT
+"GridMapTest.CellsWithAlpha" end time: Oct 18 10:32 EDT
 "GridMapTest.CellsWithAlpha" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-6/15 Testing: GridMapTest.PartialAlpha
-6/15 Test: GridMapTest.PartialAlpha
+6/24 Testing: GridMapTest.PartialAlpha
+6/24 Test: GridMapTest.PartialAlpha
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.PartialAlpha" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.PartialAlpha" start time: Oct 17 20:43 EDT
+"GridMapTest.PartialAlpha" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -215,25 +215,25 @@ First ten elements of initialized result matrix:
 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 First ten elements of result matrix:
 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 
 Random grid data value: 0
-[       OK ] GridMapTest.PartialAlpha (15 ms)
-[----------] 1 test from GridMapTest (15 ms total)
+[       OK ] GridMapTest.PartialAlpha (18 ms)
+[----------] 1 test from GridMapTest (18 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (15 ms total)
+[==========] 1 test from 1 test suite ran. (18 ms total)
 [  PASSED  ] 1 test.
 <end of output>
 Test time =   0.08 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.PartialAlpha" end time: Oct 17 20:43 EDT
+"GridMapTest.PartialAlpha" end time: Oct 18 10:32 EDT
 "GridMapTest.PartialAlpha" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-7/15 Testing: GridMapTest.DecomposeImage
-7/15 Test: GridMapTest.DecomposeImage
+7/24 Testing: GridMapTest.DecomposeImage
+7/24 Test: GridMapTest.DecomposeImage
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.DecomposeImage" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.DecomposeImage" start time: Oct 17 20:43 EDT
+"GridMapTest.DecomposeImage" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -255,21 +255,21 @@ Random grid data value: 0
 [----------] 1 test from GridMapTest (11 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (11 ms total)
+[==========] 1 test from 1 test suite ran. (12 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.08 sec
+Test time =   0.07 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.DecomposeImage" end time: Oct 17 20:43 EDT
+"GridMapTest.DecomposeImage" end time: Oct 18 10:32 EDT
 "GridMapTest.DecomposeImage" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-8/15 Testing: GridMapTest.DecomposeObstacledImage
-8/15 Test: GridMapTest.DecomposeObstacledImage
+8/24 Testing: GridMapTest.DecomposeObstacledImage
+8/24 Test: GridMapTest.DecomposeObstacledImage
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.DecomposeObstacledImage" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.DecomposeObstacledImage" start time: Oct 17 20:43 EDT
+"GridMapTest.DecomposeObstacledImage" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -287,25 +287,25 @@ First ten elements of normalized matrix:
 Applying matrix decomposition with resolution: 4
 Coarse matrix dimensions: 50 x 50
 Random grid data value: 100
-[       OK ] GridMapTest.DecomposeObstacledImage (25 ms)
-[----------] 1 test from GridMapTest (25 ms total)
+[       OK ] GridMapTest.DecomposeObstacledImage (19 ms)
+[----------] 1 test from GridMapTest (19 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (25 ms total)
+[==========] 1 test from 1 test suite ran. (19 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.10 sec
+Test time =   0.07 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.DecomposeObstacledImage" end time: Oct 17 20:43 EDT
+"GridMapTest.DecomposeObstacledImage" end time: Oct 18 10:32 EDT
 "GridMapTest.DecomposeObstacledImage" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-9/15 Testing: GridMapTest.DecomposeMapImage
-9/15 Test: GridMapTest.DecomposeMapImage
+9/24 Testing: GridMapTest.DecomposeMapImage
+9/24 Test: GridMapTest.DecomposeMapImage
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.DecomposeMapImage" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.DecomposeMapImage" start time: Oct 17 20:43 EDT
+"GridMapTest.DecomposeMapImage" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -321,27 +321,27 @@ Image does not have alpha channel.
 First ten elements of normalized matrix:
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 Applying matrix decomposition with resolution: 4
-Coarse matrix dimensions: 156 x 133
+Coarse matrix dimensions: 149 x 125
 Random grid data value: 0
-[       OK ] GridMapTest.DecomposeMapImage (139 ms)
-[----------] 1 test from GridMapTest (139 ms total)
+[       OK ] GridMapTest.DecomposeMapImage (137 ms)
+[----------] 1 test from GridMapTest (137 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (140 ms total)
+[==========] 1 test from 1 test suite ran. (137 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.22 sec
+Test time =   0.21 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.DecomposeMapImage" end time: Oct 17 20:43 EDT
+"GridMapTest.DecomposeMapImage" end time: Oct 18 10:32 EDT
 "GridMapTest.DecomposeMapImage" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-10/15 Testing: GridMapTest.CheckObstacleMapImage
-10/15 Test: GridMapTest.CheckObstacleMapImage
+10/24 Testing: GridMapTest.CheckObstacleMapImage
+10/24 Test: GridMapTest.CheckObstacleMapImage
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.CheckObstacleMapImage" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.CheckObstacleMapImage" start time: Oct 17 20:43 EDT
+"GridMapTest.CheckObstacleMapImage" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -361,25 +361,25 @@ First ten elements of initialized result matrix:
 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 First ten elements of result matrix:
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 Random grid data value: 0
-[       OK ] GridMapTest.CheckObstacleMapImage (194 ms)
-[----------] 1 test from GridMapTest (194 ms total)
+[       OK ] GridMapTest.CheckObstacleMapImage (182 ms)
+[----------] 1 test from GridMapTest (182 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (194 ms total)
+[==========] 1 test from 1 test suite ran. (183 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.27 sec
+Test time =   0.25 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.CheckObstacleMapImage" end time: Oct 17 20:43 EDT
+"GridMapTest.CheckObstacleMapImage" end time: Oct 18 10:32 EDT
 "GridMapTest.CheckObstacleMapImage" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-11/15 Testing: GridMapTest.CheckObstacleMapImageWithDecomposition
-11/15 Test: GridMapTest.CheckObstacleMapImageWithDecomposition
+11/24 Testing: GridMapTest.CheckObstacleMapImageWithDecomposition
+11/24 Test: GridMapTest.CheckObstacleMapImageWithDecomposition
 Command: "/home/peera/A-star-algorithm/build/map_test" "--gtest_filter=GridMapTest.CheckObstacleMapImageWithDecomposition" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"GridMapTest.CheckObstacleMapImageWithDecomposition" start time: Oct 17 20:43 EDT
+"GridMapTest.CheckObstacleMapImageWithDecomposition" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -394,28 +394,28 @@ Loading image file test9.png
 Image does not have alpha channel.
 First ten elements of normalized matrix:
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-Applying matrix decomposition with resolution: 4
-Coarse matrix dimensions: 156 x 133
+Applying matrix decomposition with resolution: 2
+Coarse matrix dimensions: 297 x 249
 Random grid data value: 0
-[       OK ] GridMapTest.CheckObstacleMapImageWithDecomposition (97 ms)
-[----------] 1 test from GridMapTest (97 ms total)
+[       OK ] GridMapTest.CheckObstacleMapImageWithDecomposition (158 ms)
+[----------] 1 test from GridMapTest (158 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (97 ms total)
+[==========] 1 test from 1 test suite ran. (158 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.16 sec
+Test time =   0.21 sec
 ----------------------------------------------------------
 Test Passed.
-"GridMapTest.CheckObstacleMapImageWithDecomposition" end time: Oct 17 20:43 EDT
+"GridMapTest.CheckObstacleMapImageWithDecomposition" end time: Oct 18 10:32 EDT
 "GridMapTest.CheckObstacleMapImageWithDecomposition" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-12/15 Testing: AstarSearchTest.CheckPathFoundReturned
-12/15 Test: AstarSearchTest.CheckPathFoundReturned
+12/24 Testing: AstarSearchTest.CheckPathFoundReturned
+12/24 Test: AstarSearchTest.CheckPathFoundReturned
 Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.CheckPathFoundReturned" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"AstarSearchTest.CheckPathFoundReturned" start time: Oct 17 20:43 EDT
+"AstarSearchTest.CheckPathFoundReturned" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -434,25 +434,25 @@ Applying matrix decomposition with resolution: 4
 Coarse matrix dimensions: 50 x 25
 Random grid data value: 0
 A* Search Initialized
-[       OK ] AstarSearchTest.CheckPathFoundReturned (67 ms)
-[----------] 1 test from AstarSearchTest (68 ms total)
+[       OK ] AstarSearchTest.CheckPathFoundReturned (69 ms)
+[----------] 1 test from AstarSearchTest (69 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (68 ms total)
+[==========] 1 test from 1 test suite ran. (69 ms total)
 [  PASSED  ] 1 test.
 <end of output>
 Test time =   0.12 sec
 ----------------------------------------------------------
 Test Passed.
-"AstarSearchTest.CheckPathFoundReturned" end time: Oct 17 20:43 EDT
+"AstarSearchTest.CheckPathFoundReturned" end time: Oct 18 10:32 EDT
 "AstarSearchTest.CheckPathFoundReturned" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-13/15 Testing: AstarSearchTest.PrintMapPathMapScaling
-13/15 Test: AstarSearchTest.PrintMapPathMapScaling
+13/24 Testing: AstarSearchTest.PrintMapPathMapScaling
+13/24 Test: AstarSearchTest.PrintMapPathMapScaling
 Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.PrintMapPathMapScaling" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"AstarSearchTest.PrintMapPathMapScaling" start time: Oct 17 20:43 EDT
+"AstarSearchTest.PrintMapPathMapScaling" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -474,146 +474,26 @@ Grid width: 50, height: 25
 A* Search Initialized
 Size of shortest path: 40
 (10,10) (11,10) (12,10) (13,10) (14,10) (15,10) (16,10) (17,10) (18,10) (19,10) (20,10) (21,10) (22,11) (23,11) (24,12) (25,12) (26,13) (27,13) (28,13) (29,14) (30,14) (31,15) (32,15) (33,16) (34,16) (35,16) (36,16) (37,16) (38,16) (39,16) (40,17) (41,18) (42,19) (43,20) (44,21) (45,21) (46,22) (47,22) (48,23) (49,23) 
-Drawing path point 0 at (10, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 1 at (11, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 2 at (12, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 3 at (13, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 4 at (14, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 5 at (15, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 6 at (16, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 7 at (17, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 8 at (18, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 9 at (19, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 10 at (20, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 11 at (21, 10)
-Drawing path on image.
-Image size: 1250
-Drawing path point 12 at (22, 11)
-Drawing path on image.
-Image size: 1250
-Drawing path point 13 at (23, 11)
-Drawing path on image.
-Image size: 1250
-Drawing path point 14 at (24, 12)
-Drawing path on image.
-Image size: 1250
-Drawing path point 15 at (25, 12)
-Drawing path on image.
-Image size: 1250
-Drawing path point 16 at (26, 13)
-Drawing path on image.
-Image size: 1250
-Drawing path point 17 at (27, 13)
-Drawing path on image.
-Image size: 1250
-Drawing path point 18 at (28, 13)
-Drawing path on image.
-Image size: 1250
-Drawing path point 19 at (29, 14)
-Drawing path on image.
-Image size: 1250
-Drawing path point 20 at (30, 14)
-Drawing path on image.
-Image size: 1250
-Drawing path point 21 at (31, 15)
-Drawing path on image.
-Image size: 1250
-Drawing path point 22 at (32, 15)
-Drawing path on image.
-Image size: 1250
-Drawing path point 23 at (33, 16)
-Drawing path on image.
-Image size: 1250
-Drawing path point 24 at (34, 16)
-Drawing path on image.
-Image size: 1250
-Drawing path point 25 at (35, 16)
-Drawing path on image.
-Image size: 1250
-Drawing path point 26 at (36, 16)
-Drawing path on image.
-Image size: 1250
-Drawing path point 27 at (37, 16)
-Drawing path on image.
-Image size: 1250
-Drawing path point 28 at (38, 16)
-Drawing path on image.
-Image size: 1250
-Drawing path point 29 at (39, 16)
-Drawing path on image.
-Image size: 1250
-Drawing path point 30 at (40, 17)
-Drawing path on image.
-Image size: 1250
-Drawing path point 31 at (41, 18)
-Drawing path on image.
-Image size: 1250
-Drawing path point 32 at (42, 19)
-Drawing path on image.
-Image size: 1250
-Drawing path point 33 at (43, 20)
-Drawing path on image.
-Image size: 1250
-Drawing path point 34 at (44, 21)
-Drawing path on image.
-Image size: 1250
-Drawing path point 35 at (45, 21)
-Drawing path on image.
-Image size: 1250
-Drawing path point 36 at (46, 22)
-Drawing path on image.
-Image size: 1250
-Drawing path point 37 at (47, 22)
-Drawing path on image.
-Image size: 1250
-Drawing path point 38 at (48, 23)
-Drawing path on image.
-Image size: 1250
-Drawing path point 39 at (49, 23)
-Drawing path on image.
-Image size: 1250
-Path image saved to: "/home/peera/A-star-algorithm/images/output.png"
-[       OK ] AstarSearchTest.PrintMapPathMapScaling (72 ms)
-[----------] 1 test from AstarSearchTest (72 ms total)
+Path image saved to: "/home/peera/A-star-algorithm/images/output_path1.png"
+[       OK ] AstarSearchTest.PrintMapPathMapScaling (73 ms)
+[----------] 1 test from AstarSearchTest (74 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (72 ms total)
+[==========] 1 test from 1 test suite ran. (74 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.12 sec
+Test time =   0.13 sec
 ----------------------------------------------------------
 Test Passed.
-"AstarSearchTest.PrintMapPathMapScaling" end time: Oct 17 20:43 EDT
+"AstarSearchTest.PrintMapPathMapScaling" end time: Oct 18 10:32 EDT
 "AstarSearchTest.PrintMapPathMapScaling" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-14/15 Testing: AstarSearchTest.PrintMapPathMapNoScale
-14/15 Test: AstarSearchTest.PrintMapPathMapNoScale
+14/24 Testing: AstarSearchTest.PrintMapPathMapNoScale
+14/24 Test: AstarSearchTest.PrintMapPathMapNoScale
 Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.PrintMapPathMapNoScale" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"AstarSearchTest.PrintMapPathMapNoScale" start time: Oct 17 20:43 EDT
+"AstarSearchTest.PrintMapPathMapNoScale" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -637,129 +517,9 @@ Grid width: 200, height: 100
 A* Search Initialized
 Size of shortest path: 40
 (10,10) (11,10) (12,10) (13,10) (14,10) (15,10) (16,10) (17,10) (18,10) (19,10) (20,10) (21,10) (22,11) (23,11) (24,12) (25,12) (26,13) (27,13) (28,13) (29,14) (30,14) (31,15) (32,15) (33,16) (34,16) (35,16) (36,16) (37,16) (38,16) (39,16) (40,17) (41,18) (42,19) (43,20) (44,21) (45,21) (46,22) (47,22) (48,23) (49,23) 
-Drawing path point 0 at (10, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 1 at (11, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 2 at (12, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 3 at (13, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 4 at (14, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 5 at (15, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 6 at (16, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 7 at (17, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 8 at (18, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 9 at (19, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 10 at (20, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 11 at (21, 10)
-Drawing path on image.
-Image size: 20000
-Drawing path point 12 at (22, 11)
-Drawing path on image.
-Image size: 20000
-Drawing path point 13 at (23, 11)
-Drawing path on image.
-Image size: 20000
-Drawing path point 14 at (24, 12)
-Drawing path on image.
-Image size: 20000
-Drawing path point 15 at (25, 12)
-Drawing path on image.
-Image size: 20000
-Drawing path point 16 at (26, 13)
-Drawing path on image.
-Image size: 20000
-Drawing path point 17 at (27, 13)
-Drawing path on image.
-Image size: 20000
-Drawing path point 18 at (28, 13)
-Drawing path on image.
-Image size: 20000
-Drawing path point 19 at (29, 14)
-Drawing path on image.
-Image size: 20000
-Drawing path point 20 at (30, 14)
-Drawing path on image.
-Image size: 20000
-Drawing path point 21 at (31, 15)
-Drawing path on image.
-Image size: 20000
-Drawing path point 22 at (32, 15)
-Drawing path on image.
-Image size: 20000
-Drawing path point 23 at (33, 16)
-Drawing path on image.
-Image size: 20000
-Drawing path point 24 at (34, 16)
-Drawing path on image.
-Image size: 20000
-Drawing path point 25 at (35, 16)
-Drawing path on image.
-Image size: 20000
-Drawing path point 26 at (36, 16)
-Drawing path on image.
-Image size: 20000
-Drawing path point 27 at (37, 16)
-Drawing path on image.
-Image size: 20000
-Drawing path point 28 at (38, 16)
-Drawing path on image.
-Image size: 20000
-Drawing path point 29 at (39, 16)
-Drawing path on image.
-Image size: 20000
-Drawing path point 30 at (40, 17)
-Drawing path on image.
-Image size: 20000
-Drawing path point 31 at (41, 18)
-Drawing path on image.
-Image size: 20000
-Drawing path point 32 at (42, 19)
-Drawing path on image.
-Image size: 20000
-Drawing path point 33 at (43, 20)
-Drawing path on image.
-Image size: 20000
-Drawing path point 34 at (44, 21)
-Drawing path on image.
-Image size: 20000
-Drawing path point 35 at (45, 21)
-Drawing path on image.
-Image size: 20000
-Drawing path point 36 at (46, 22)
-Drawing path on image.
-Image size: 20000
-Drawing path point 37 at (47, 22)
-Drawing path on image.
-Image size: 20000
-Drawing path point 38 at (48, 23)
-Drawing path on image.
-Image size: 20000
-Drawing path point 39 at (49, 23)
-Drawing path on image.
-Image size: 20000
 Path image saved to: "/home/peera/A-star-algorithm/images/output_path2.png"
-[       OK ] AstarSearchTest.PrintMapPathMapNoScale (83 ms)
-[----------] 1 test from AstarSearchTest (83 ms total)
+[       OK ] AstarSearchTest.PrintMapPathMapNoScale (84 ms)
+[----------] 1 test from AstarSearchTest (84 ms total)
 
 [----------] Global test environment tear-down
 [==========] 1 test from 1 test suite ran. (84 ms total)
@@ -768,15 +528,15 @@ Path image saved to: "/home/peera/A-star-algorithm/images/output_path2.png"
 Test time =   0.14 sec
 ----------------------------------------------------------
 Test Passed.
-"AstarSearchTest.PrintMapPathMapNoScale" end time: Oct 17 20:43 EDT
+"AstarSearchTest.PrintMapPathMapNoScale" end time: Oct 18 10:32 EDT
 "AstarSearchTest.PrintMapPathMapNoScale" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-15/15 Testing: AstarSearchTest.NoPathFound
-15/15 Test: AstarSearchTest.NoPathFound
+15/24 Testing: AstarSearchTest.NoPathFound
+15/24 Test: AstarSearchTest.NoPathFound
 Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.NoPathFound" "--gtest_also_run_disabled_tests"
 Directory: /home/peera/A-star-algorithm/build
-"AstarSearchTest.NoPathFound" start time: Oct 17 20:43 EDT
+"AstarSearchTest.NoPathFound" start time: Oct 18 10:32 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -798,26 +558,375 @@ First ten elements of initialized result matrix:
 Random grid data value: 100
 Grid width: 200, height: 100
 Start cell is not free
-/home/peera/A-star-algorithm/tests/astar_test.cc:162: Failure
-Value of: path_found
-  Actual: false
-Expected: true
-[  FAILED  ] AstarSearchTest.NoPathFound (14 ms)
+[       OK ] AstarSearchTest.NoPathFound (14 ms)
 [----------] 1 test from AstarSearchTest (14 ms total)
 
 [----------] Global test environment tear-down
 [==========] 1 test from 1 test suite ran. (14 ms total)
-[  PASSED  ] 0 tests.
-[  FAILED  ] 1 test, listed below:
-[  FAILED  ] AstarSearchTest.NoPathFound
-
- 1 FAILED TEST
+[  PASSED  ] 1 test.
 <end of output>
 Test time =   0.07 sec
 ----------------------------------------------------------
-Test Failed.
-"AstarSearchTest.NoPathFound" end time: Oct 17 20:43 EDT
+Test Passed.
+"AstarSearchTest.NoPathFound" end time: Oct 18 10:32 EDT
 "AstarSearchTest.NoPathFound" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Oct 17 20:43 EDT
+16/24 Testing: AstarSearchTest.PathWithObstacles
+16/24 Test: AstarSearchTest.PathWithObstacles
+Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.PathWithObstacles" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"AstarSearchTest.PathWithObstacles" start time: Oct 18 10:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AstarSearchTest.PathWithObstacles
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AstarSearchTest
+[ RUN      ] AstarSearchTest.PathWithObstacles
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: test3.png
+Loading image file test3.png
+Image does not have alpha channel.
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+No matrix decomposition applied.
+First ten elements of initialized result matrix:
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 First ten elements of result matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Random grid data value: 0
+Grid width: 200, height: 200
+A* Search Initialized
+Path image saved to: "/home/peera/A-star-algorithm/images/output_path3.png"
+[       OK ] AstarSearchTest.PathWithObstacles (10010 ms)
+[----------] 1 test from AstarSearchTest (10010 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (10010 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =  10.06 sec
+----------------------------------------------------------
+Test Passed.
+"AstarSearchTest.PathWithObstacles" end time: Oct 18 10:32 EDT
+"AstarSearchTest.PathWithObstacles" time elapsed: 00:00:10
+----------------------------------------------------------
+
+17/24 Testing: AstarSearchTest.PathScalingWithObstacles
+17/24 Test: AstarSearchTest.PathScalingWithObstacles
+Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.PathScalingWithObstacles" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"AstarSearchTest.PathScalingWithObstacles" start time: Oct 18 10:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AstarSearchTest.PathScalingWithObstacles
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AstarSearchTest
+[ RUN      ] AstarSearchTest.PathScalingWithObstacles
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: test3.png
+Loading image file test3.png
+Image does not have alpha channel.
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Applying matrix decomposition with resolution: 4
+Coarse matrix dimensions: 50 x 50
+Random grid data value: 100
+Grid width: 50, height: 50
+A* Search Initialized
+Path image saved to: "/home/peera/A-star-algorithm/images/output_path4.png"
+[       OK ] AstarSearchTest.PathScalingWithObstacles (59 ms)
+[----------] 1 test from AstarSearchTest (59 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (59 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"AstarSearchTest.PathScalingWithObstacles" end time: Oct 18 10:32 EDT
+"AstarSearchTest.PathScalingWithObstacles" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/24 Testing: AstarSearchTest.GradientMap
+18/24 Test: AstarSearchTest.GradientMap
+Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.GradientMap" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"AstarSearchTest.GradientMap" start time: Oct 18 10:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AstarSearchTest.GradientMap
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AstarSearchTest
+[ RUN      ] AstarSearchTest.GradientMap
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: test4.png
+Loading image file test4.png
+Image does not have alpha channel.
+First ten elements of normalized matrix:
+1 0.994995 0.990005 0.985 0.979995 0.975006 0.970001 0.964996 0.960006 0.955001 0.949996 0.945006 0.940002 0.934997 0.930007 0.925002 0.919997 0.915007 0.910002 0.904997 
+No matrix decomposition applied.
+First ten elements of initialized result matrix:
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 First ten elements of result matrix:
+100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 
+Random grid data value: 0
+Grid width: 200, height: 100
+A* Search Initialized
+Path image saved to: "/home/peera/A-star-algorithm/images/output_path5.png"
+[       OK ] AstarSearchTest.GradientMap (78 ms)
+[----------] 1 test from AstarSearchTest (78 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (78 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"AstarSearchTest.GradientMap" end time: Oct 18 10:32 EDT
+"AstarSearchTest.GradientMap" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/24 Testing: AstarSearchTest.RealMap
+19/24 Test: AstarSearchTest.RealMap
+Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.RealMap" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"AstarSearchTest.RealMap" start time: Oct 18 10:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AstarSearchTest.RealMap
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AstarSearchTest
+[ RUN      ] AstarSearchTest.RealMap
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: test9.png
+Loading image file test9.png
+Image does not have alpha channel.
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+No matrix decomposition applied.
+First ten elements of initialized result matrix:
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 First ten elements of result matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Random grid data value: 0
+Grid width: 594, height: 497
+A* Search Initialized
+Path image saved to: "/home/peera/A-star-algorithm/images/output_path6.png"
+[       OK ] AstarSearchTest.RealMap (24013 ms)
+[----------] 1 test from AstarSearchTest (24013 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (24013 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =  24.04 sec
+----------------------------------------------------------
+Test Passed.
+"AstarSearchTest.RealMap" end time: Oct 18 10:32 EDT
+"AstarSearchTest.RealMap" time elapsed: 00:00:24
+----------------------------------------------------------
+
+20/24 Testing: AstarSearchTest.RealMapScaling
+20/24 Test: AstarSearchTest.RealMapScaling
+Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.RealMapScaling" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"AstarSearchTest.RealMapScaling" start time: Oct 18 10:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AstarSearchTest.RealMapScaling
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AstarSearchTest
+[ RUN      ] AstarSearchTest.RealMapScaling
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: test9.png
+Loading image file test9.png
+Image does not have alpha channel.
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Applying matrix decomposition with resolution: 2
+Coarse matrix dimensions: 297 x 249
+Random grid data value: 0
+Grid width: 297, height: 249
+A* Search Initialized
+Path image saved to: "/home/peera/A-star-algorithm/images/output_path7.png"
+[       OK ] AstarSearchTest.RealMapScaling (2753 ms)
+[----------] 1 test from AstarSearchTest (2753 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2753 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   2.77 sec
+----------------------------------------------------------
+Test Passed.
+"AstarSearchTest.RealMapScaling" end time: Oct 18 10:32 EDT
+"AstarSearchTest.RealMapScaling" time elapsed: 00:00:02
+----------------------------------------------------------
+
+21/24 Testing: AstarSearchTest.RealMapGoalBlocked
+21/24 Test: AstarSearchTest.RealMapGoalBlocked
+Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.RealMapGoalBlocked" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"AstarSearchTest.RealMapGoalBlocked" start time: Oct 18 10:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AstarSearchTest.RealMapGoalBlocked
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AstarSearchTest
+[ RUN      ] AstarSearchTest.RealMapGoalBlocked
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: test9.png
+Loading image file test9.png
+Image does not have alpha channel.
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Applying matrix decomposition with resolution: 2
+Coarse matrix dimensions: 297 x 249
+Random grid data value: 0
+Grid width: 297, height: 249
+A* Search Initialized
+No path found from start to goal.
+[       OK ] AstarSearchTest.RealMapGoalBlocked (10363 ms)
+[----------] 1 test from AstarSearchTest (10363 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (10363 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =  10.39 sec
+----------------------------------------------------------
+Test Passed.
+"AstarSearchTest.RealMapGoalBlocked" end time: Oct 18 10:33 EDT
+"AstarSearchTest.RealMapGoalBlocked" time elapsed: 00:00:10
+----------------------------------------------------------
+
+22/24 Testing: AstarSearchTest.NarrowCorridors
+22/24 Test: AstarSearchTest.NarrowCorridors
+Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.NarrowCorridors" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"AstarSearchTest.NarrowCorridors" start time: Oct 18 10:33 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AstarSearchTest.NarrowCorridors
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AstarSearchTest
+[ RUN      ] AstarSearchTest.NarrowCorridors
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: andino_office.png
+Loading image file andino_office.png
+Image does not have alpha channel.
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Applying matrix decomposition with resolution: 2
+Coarse matrix dimensions: 827 x 585
+Random grid data value: 100
+Grid width: 827, height: 585
+A* Search Initialized
+Path image saved to: "/home/peera/A-star-algorithm/images/output_path8.png"
+[       OK ] AstarSearchTest.NarrowCorridors (1564 ms)
+[----------] 1 test from AstarSearchTest (1564 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1564 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   1.59 sec
+----------------------------------------------------------
+Test Passed.
+"AstarSearchTest.NarrowCorridors" end time: Oct 18 10:33 EDT
+"AstarSearchTest.NarrowCorridors" time elapsed: 00:00:01
+----------------------------------------------------------
+
+23/24 Testing: AstarSearchTest.NarrowCorridorsScalingUp1
+23/24 Test: AstarSearchTest.NarrowCorridorsScalingUp1
+Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.NarrowCorridorsScalingUp1" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"AstarSearchTest.NarrowCorridorsScalingUp1" start time: Oct 18 10:33 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AstarSearchTest.NarrowCorridorsScalingUp1
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AstarSearchTest
+[ RUN      ] AstarSearchTest.NarrowCorridorsScalingUp1
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: andino_office.png
+Loading image file andino_office.png
+Image does not have alpha channel.
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Applying matrix decomposition with resolution: 3
+Coarse matrix dimensions: 552 x 390
+Random grid data value: 0
+Grid width: 552, height: 390
+A* Search Initialized
+Path image saved to: "/home/peera/A-star-algorithm/images/output_path9.png"
+[       OK ] AstarSearchTest.NarrowCorridorsScalingUp1 (571 ms)
+[----------] 1 test from AstarSearchTest (571 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (571 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.59 sec
+----------------------------------------------------------
+Test Passed.
+"AstarSearchTest.NarrowCorridorsScalingUp1" end time: Oct 18 10:33 EDT
+"AstarSearchTest.NarrowCorridorsScalingUp1" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/24 Testing: AstarSearchTest.NarrowCorridorsScalingUp2
+24/24 Test: AstarSearchTest.NarrowCorridorsScalingUp2
+Command: "/home/peera/A-star-algorithm/build/astar_test" "--gtest_filter=AstarSearchTest.NarrowCorridorsScalingUp2" "--gtest_also_run_disabled_tests"
+Directory: /home/peera/A-star-algorithm/build
+"AstarSearchTest.NarrowCorridorsScalingUp2" start time: Oct 18 10:33 EDT
+Output:
+----------------------------------------------------------
+Running main() from /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AstarSearchTest.NarrowCorridorsScalingUp2
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AstarSearchTest
+[ RUN      ] AstarSearchTest.NarrowCorridorsScalingUp2
+Image directory: "/home/peera/A-star-algorithm/images"
+Loading map from file: andino_office.png
+Loading image file andino_office.png
+Image does not have alpha channel.
+First ten elements of normalized matrix:
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Applying matrix decomposition with resolution: 4
+Coarse matrix dimensions: 414 x 293
+Random grid data value: 0
+Grid width: 414, height: 293
+A* Search Initialized
+Path image saved to: "/home/peera/A-star-algorithm/images/output_path10.png"
+[       OK ] AstarSearchTest.NarrowCorridorsScalingUp2 (326 ms)
+[----------] 1 test from AstarSearchTest (326 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (326 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.35 sec
+----------------------------------------------------------
+Test Passed.
+"AstarSearchTest.NarrowCorridorsScalingUp2" end time: Oct 18 10:33 EDT
+"AstarSearchTest.NarrowCorridorsScalingUp2" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 18 10:33 EDT

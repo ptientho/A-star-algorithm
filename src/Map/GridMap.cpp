@@ -359,7 +359,7 @@ void GridMap::fill_alpha_array(AlphaArray & alpha_array,
      }, alpha_array);  
 }
 
-void create_map_path(fs::path img_dir, const std::string & mapFile, const std::vector<size_t> & shortest_path, const std::string & output_filename, int point_radius) {
+void create_map_path(fs::path img_dir, const std::string & mapFile, const std::vector<size_t> & shortest_path, const std::string & output_filename) {
     
     Magick::InitializeMagick(nullptr);
     // Read image file
@@ -430,7 +430,7 @@ void create_map_path(fs::path img_dir, const std::string & mapFile, const std::v
         ssize_t gx = static_cast<ssize_t>(index % img_w);
         ssize_t gy = static_cast<ssize_t>(index / img_w);
 
-        std::cout << "Drawing path point " << idx << " at (" << gx << ", " << gy << ")" << std::endl;
+        // std::cout << "Drawing path point " << idx << " at (" << gx << ", " << gy << ")" << std::endl;
         // Draw one pixel
         draw_pixel(image, gx, gy);
     } 
@@ -460,8 +460,8 @@ void draw_pixel(Magick::Image & img, size_t x, size_t y)
         // Allocate pixel view
         Magick::Pixels view(img);
 
-        std::cout << "Drawing path on image." << std::endl;
-        std::cout << "Image size: " << img.columns() * img.rows() << std::endl;
+        // std::cout << "Drawing path on image." << std::endl;
+        // std::cout << "Image size: " << img.columns() * img.rows() << std::endl;
  
         Magick::ColorRGB blue_rgb(0.0, 0.0, 1.0); 
         
