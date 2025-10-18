@@ -62,7 +62,7 @@ void reconstruct_path(std::vector<size_t> & shortest_path, std::shared_ptr<Node>
 */
 bool astar_search(const OccupancyGrid & grid,
     const size_t & start_idx,
-    const size_t & goal_idx, std::vector<std::vector<size_t>> & shortest_path);
+    const size_t & goal_idx, std::vector<size_t> & shortest_path);
 
 /*
     Convert (x,y) coordinate to linear index value

@@ -50,10 +50,15 @@ target_link_libraries(
     astar_test
     GTest::gtest_main
     AstarSearch
+    Map
 )
 target_compile_definitions(map_test PRIVATE
+    PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
+)
+target_compile_definitions(astar_test PRIVATE
     PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
 )
 
 include(GoogleTest)
 gtest_discover_tests(map_test)
+gtest_discover_tests(astar_test)

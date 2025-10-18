@@ -22,7 +22,7 @@ class GridMapTest : public testing::Test
 
         }
 
-};;
+};
 // Test 1
 TEST_F(GridMapTest, AllFreeCells) {
     std::string mapFile = "test1.png"; // All free cells

@@ -11,18 +11,21 @@ void reconstruct_path(std::vector<size_t> & shortest_path, std::shared_ptr<Node>
         return;
     }
 
-    auto node = current_node;
-    shortest_path.push_back(goal_index);
-
-    while (node->get_index() != start_index) {
-        auto parent = node->get_parent();
-        if (parent != nullptr) {
-            shortest_path.push_back(parent->get_index());
-            node = parent;
-        } else {
-            break;
-        }
+    std::shared_ptr<Node> node = current_node;
+    
+    // validate that node is goal_index
+    if (node->get_index() != goal_index) {
+        std::cerr << "Error: Node index does not match goal index." << std::endl;
+        return;
     }
+
+    while (node)
+    {
+       shortest_path.push_back(node->get_index());
+       if (node->get_index() == start_index) break;
+       node = node->get_parent();
+    }
+    
 
     std::reverse(shortest_path.begin(), shortest_path.end());
     
@@ -32,6 +35,21 @@ bool astar_search(const OccupancyGrid & grid,
     const size_t & start_idx,
     const size_t & goal_idx, std::vector<size_t> & shortest_path) 
 {
+
+    size_t total = static_cast<size_t>(grid.width * grid.height);
+    if (start_idx >= total || goal_idx >= total) {
+        std::cerr << "Start/goal index out of range\n";
+        return false;
+    }
+
+    if (grid.data[start_idx] == 100 || grid.data[start_idx] == -1) {
+        std::cerr << "Start cell is not free\n"; 
+        return false;
+    }
+    if (grid.data[goal_idx] == 100 || grid.data[goal_idx] == -1) {
+        std::cerr << "Goal cell is not free\n"; 
+        return false;
+    }
 
     // boolean flag to keep track if path is found
     bool path_found = false;
@@ -111,6 +129,16 @@ bool astar_search(const OccupancyGrid & grid,
                     (*open_list_idx)->set_h_cost(h_cost);
                     (*open_list_idx)->set_f_cost(f_cost);
                     (*open_list_idx)->set_parent(current_node);
+                } else if (f_cost == (*open_list_idx)->get_f_cost())
+                {
+                    // Tie breaking: if f_cost is the same, prefer the one with lower h_cost
+                    if (h_cost < (*open_list_idx)->get_h_cost())
+                    {
+                        (*open_list_idx)->set_g_cost(g_cost);
+                        (*open_list_idx)->set_h_cost(h_cost);
+                        (*open_list_idx)->set_f_cost(f_cost);
+                        (*open_list_idx)->set_parent(current_node);
+                    }
                 }
             } else {
                 // Add new neighbor to open list
@@ -137,7 +165,7 @@ bool astar_search(const OccupancyGrid & grid,
 
 size_t gridCellToIndex(const size_t & x, const size_t & y, const size_t & width)
 {
-
+    return y * width + x;
 }
 
 void indexToGridCell(const size_t & index, const size_t & width, size_t & x, size_t & y)
@@ -152,115 +180,146 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
     // Given current node and map, find its 8-connected neighbors
     std::unordered_map<size_t, double> neighbors;
 
-    double diag_cost = 1.41421;
-    double step_cost = 1.0;
-    int8_t obstacle = 100;
-    int8_t unknown = -1;
+    const double diag_cost = 1.41421;
+    const double step_cost = 1.0;
+    const int8_t OCC = 100;
+    const int8_t UNKNOWN = -1;
 
-    // Get index value above the current node
-    size_t upper = current_node->get_index() - grid.width;
+    size_t curr_idx = current_node->get_index();
+    size_t gx, gy;
+    size_t width = static_cast<size_t>(grid.width);
+    size_t height = static_cast<size_t>(grid.height);
+    indexToGridCell(curr_idx, width, gx, gy);
+    
+    // 8-connected offsets
+    constexpr int dx[8] = {-1,  0, +1, -1, +1, -1,  0, +1};
+    constexpr int dy[8] = {-1, -1, -1,  0,  0, +1, +1, +1};
 
-    // Get index value to the left of the current node
-    size_t left = current_node->get_index() - 1;
-
-    // Get index value to the upper left of the current node
-    size_t upper_left = current_node->get_index() - grid.width - 1;
-
-    // Get index value to the upper right of the current node
-    size_t upper_right = current_node->get_index() - grid.width + 1;
-
-    // Get index value to the right of the current node
-    size_t right = current_node->get_index() + 1;
-
-    // Get index value to the lower left of the current node
-    size_t lower_left = current_node->get_index() + grid.width - 1;
-
-    // Get index value to below the current node
-    size_t lower = current_node->get_index() + grid.width;
-
-    // Get index value to the lower right of the current node
-    size_t lower_right = current_node->get_index() + grid.width + 1;
-
-    // Check if each neighbor is within bounds and not an obstacle or unknown
-    if (upper >= 0)
+    for (int k = 0; k < 8; ++k) 
     {
-        if (grid.data[upper] != obstacle && grid.data[upper] != unknown)
-        {
-            neighbors.insert({upper, step_cost});
-        }
-    }
+        int64_t nx = static_cast<int64_t>(gx) + dx[k];
+        int64_t ny = static_cast<int64_t>(gy) + dy[k];
 
-    // Exclude left neighbor that are outside left boundary
-    // Exclude left neighbor that are on the right most column
-    if (left % static_cast<size_t>(grid.width) > 0 && left % static_cast<size_t>(grid.width) != static_cast<size_t>(grid.width) - 1)
-    {
-        if (grid.data[left] != obstacle && grid.data[left] != unknown)
-        {
-            neighbors.insert({left, step_cost});
-        }
-    }
+        // bounds check
+        if (nx < 0 || ny < 0) continue;
+        if (static_cast<size_t>(nx) >= width || static_cast<size_t>(ny) >= height) continue;
 
-    // Exclude cell outside the map
-    // Exclude upper left neighbor that are on the right most column
-    if (upper_left >= 0 && left % static_cast<size_t>(grid.width) != static_cast<size_t>(grid.width) - 1)
-    {
-        if (grid.data[upper_left] != obstacle && grid.data[upper_left] != unknown)
-        {
-            neighbors.insert({upper_left, diag_cost});
-        }
-    }
+        size_t nindex = gridCellToIndex(static_cast<size_t>(nx), static_cast<size_t>(ny), width);
+        
+        // skip obstacle or unknown
+        if (grid.data[nindex] == OCC || grid.data[nindex] == UNKNOWN) continue;
 
-    // Exclude cell outside the map
-    // Exclude upper right neighbor that are on the left most column
-    if (upper_right >= 0 && upper_right % static_cast<size_t>(grid.width) != 0)
-    {
-        if (grid.data[upper_right] != obstacle && grid.data[upper_right] != unknown)
-        {
-            neighbors.insert({upper_right, diag_cost});
-        }
+        double cost = (dx[k] != 0 && dy[k] != 0) ? diag_cost : step_cost;
+        neighbors.emplace(nindex, cost);
     }
-
-    // Exclude right neightbor in the first column
-    // Exclude it if it is outside the map
-    if (right % static_cast<size_t>(grid.width) != 0 && right >= static_cast<size_t>(grid.width * grid.height))
-    {
-        if (grid.data[right] != obstacle && grid.data[right] != unknown)
-        {
-            neighbors.insert({right, step_cost});
-        }
-    }
-
-    // Exclude lower left neighbor if it exceeds the max costmap size
-    // Exclude lower left neighbor that are on the right most column
-    if (lower_left < static_cast<size_t>(grid.width * grid.height) && lower_left % static_cast<size_t>(grid.width) != static_cast<size_t>(grid.width) - 1)
-    {
-        if (grid.data[lower_left] != obstacle && grid.data[lower_left] != unknown)
-        {
-            neighbors.insert({lower_left, diag_cost});
-        }
-    }
-
-    // Exclude lower neighbor if it exceeds the max costmap size
-    if (lower < static_cast<size_t>(grid.width * grid.height))
-    {
-        if (grid.data[lower] != obstacle && grid.data[lower] != unknown)
-        {
-            neighbors.insert({lower, step_cost});
-        }
-    }
-
-    // Exclude the lower right neighbor if it exceeds the max costmap size
-    // Exclude lower right neighbor that are on the left most column
-    if (lower_right < static_cast<size_t>(grid.width * grid.height) && lower_right % static_cast<size_t>(grid.width) != 0)
-    {
-        if (grid.data[lower_right] != obstacle && grid.data[lower_right] != unknown)
-        {
-            neighbors.insert({lower_right, diag_cost});
-        }
-    }
-
 
     return neighbors;
+
+    // // Get index value above the current node
+    // size_t upper = current_node->get_index() - grid.width;
+
+    // // Get index value to the left of the current node
+    // size_t left = current_node->get_index() - 1;
+
+    // // Get index value to the upper left of the current node
+    // size_t upper_left = current_node->get_index() - grid.width - 1;
+
+    // // Get index value to the upper right of the current node
+    // size_t upper_right = current_node->get_index() - grid.width + 1;
+
+    // // Get index value to the right of the current node
+    // size_t right = current_node->get_index() + 1;
+
+    // // Get index value to the lower left of the current node
+    // size_t lower_left = current_node->get_index() + grid.width - 1;
+
+    // // Get index value to below the current node
+    // size_t lower = current_node->get_index() + grid.width;
+
+    // // Get index value to the lower right of the current node
+    // size_t lower_right = current_node->get_index() + grid.width + 1;
+
+    // // Check if each neighbor is within bounds and not an obstacle or unknown
+    // if (upper >= 0)
+    // {
+    //     if (grid.data[upper] != obstacle && grid.data[upper] != unknown)
+    //     {
+    //         neighbors.insert({upper, step_cost});
+    //     }
+    // }
+
+    // // Exclude left neighbor that are outside left boundary
+    // // Exclude left neighbor that are on the right most column
+    // if (left % static_cast<size_t>(grid.width) > 0 && left % static_cast<size_t>(grid.width) != static_cast<size_t>(grid.width) - 1)
+    // {
+    //     if (grid.data[left] != obstacle && grid.data[left] != unknown)
+    //     {
+    //         neighbors.insert({left, step_cost});
+    //     }
+    // }
+
+    // // Exclude cell outside the map
+    // // Exclude upper left neighbor that are on the right most column
+    // if (upper_left >= 0 && left % static_cast<size_t>(grid.width) != static_cast<size_t>(grid.width) - 1)
+    // {
+    //     if (grid.data[upper_left] != obstacle && grid.data[upper_left] != unknown)
+    //     {
+    //         neighbors.insert({upper_left, diag_cost});
+    //     }
+    // }
+
+    // // Exclude cell outside the map
+    // // Exclude upper right neighbor that are on the left most column
+    // if (upper_right >= 0 && upper_right % static_cast<size_t>(grid.width) != 0)
+    // {
+    //     if (grid.data[upper_right] != obstacle && grid.data[upper_right] != unknown)
+    //     {
+    //         neighbors.insert({upper_right, diag_cost});
+    //     }
+    // }
+
+    // // Exclude right neightbor in the first column
+    // // Exclude it if it is outside the map
+    // if (right % static_cast<size_t>(grid.width) != 0 && right >= static_cast<size_t>(grid.width * grid.height))
+    // {
+    //     if (grid.data[right] != obstacle && grid.data[right] != unknown)
+    //     {
+    //         neighbors.insert({right, step_cost});
+    //     }
+    // }
+
+    // // Exclude lower left neighbor if it exceeds the max costmap size
+    // // Exclude lower left neighbor that are on the right most column
+    // if (lower_left < static_cast<size_t>(grid.width * grid.height) && lower_left % static_cast<size_t>(grid.width) != static_cast<size_t>(grid.width) - 1)
+    // {
+    //     if (grid.data[lower_left] != obstacle && grid.data[lower_left] != unknown)
+    //     {
+    //         neighbors.insert({lower_left, diag_cost});
+    //     }
+    // }
+
+    // // Exclude lower neighbor if it exceeds the max costmap size
+    // if (lower < static_cast<size_t>(grid.width * grid.height))
+    // {
+    //     if (grid.data[lower] != obstacle && grid.data[lower] != unknown)
+    //     {
+    //         neighbors.insert({lower, step_cost});
+    //     }
+    // }
+
+    // // Exclude the lower right neighbor if it exceeds the max costmap size
+    // // Exclude lower right neighbor that are on the left most column
+    // if (lower_right < static_cast<size_t>(grid.width * grid.height) && lower_right % static_cast<size_t>(grid.width) != 0)
+    // {
+    //     if (grid.data[lower_right] != obstacle && grid.data[lower_right] != unknown)
+    //     {
+    //         neighbors.insert({lower_right, diag_cost});
+    //     }
+    // }
+
+
+    // return neighbors;
+
 }
 
 double calculate_heuristic(size_t current_index, size_t goal_index, size_t grid_width)

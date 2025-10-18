@@ -1,6 +1,7 @@
 #include "GridMap.hpp"
 #include <iostream>
 
+using MagickCore::Quantum;
 
 GridMap::GridMap() {}
 
@@ -331,7 +332,7 @@ void GridMap::fill_alpha_array(AlphaArray & alpha_array,
         
         // Get a pointer to the raw image data
         const auto* img_pixels = img.getConstPixels(0,0,width,height);
-
+        
         // Cast the pixel data to the correct type and create Eigen::Map
         if (depth <= 8) {
                 // 8-bit or less depth
@@ -356,4 +357,168 @@ void GridMap::fill_alpha_array(AlphaArray & alpha_array,
                 throw std::invalid_argument("Unsupported image depth: " + std::to_string(depth));
             }
      }, alpha_array);  
+}
+
+void create_map_path(fs::path img_dir, const std::string & mapFile, const std::vector<size_t> & shortest_path, const std::string & output_filename, int point_radius) {
+    
+    Magick::InitializeMagick(nullptr);
+    // Read image file
+    if (mapFile.empty()){
+        std::cerr << "Error: Map file name is empty." << std::endl;
+        return;
+    }
+
+    fs::path out = img_dir / fs::path(mapFile);
+    if (!fs::exists(out)) {
+        std::cerr << "Error: Map file does not exist: " << out << std::endl;
+        return;
+    }
+
+    Magick::Image image;
+    try {
+        image.read(out.string());
+    } catch (const Magick::Exception &e) {
+        std::cerr << "Error loading image file: " << e.what() << std::endl;
+        return;
+    }
+
+    const auto img_w = static_cast<size_t>(image.columns());
+    const auto img_h = static_cast<size_t>(image.rows());
+
+    if (img_w == 0 || img_h == 0) {
+        std::cerr << "Error: image has zero width or height." << std::endl;
+        return;
+    }
+
+    
+    
+    // Helper to draw a small square centered at (x,y)
+    // auto draw_point = [&](size_t x, size_t y) {
+    //     // signed coords for Magick API safety
+    //     long cx = static_cast<long>(x);
+    //     long cy = static_cast<long>(y);
+
+    //     // draw a small square of size (2*point_radius + 1)
+    //     for (int dy = -point_radius; dy <= point_radius; ++dy) {
+    //         long yy = cy + dy;
+    //         if (yy < 0 || static_cast<size_t>(yy) >= img_h) continue;
+    //         for (int dx = -point_radius; dx <= point_radius; ++dx) {
+    //             long xx = cx + dx;
+    //             if (xx < 0 || static_cast<size_t>(xx) >= img_w) continue;
+    //             try {
+    //                 image.pixelColor(static_cast<size_t>(xx), static_cast<size_t>(yy), blue_rgb);
+    //                 //std::cout << "Set pixel at (" << xx << "," << yy << ") to blue." << "\n";
+    //             } catch (const Magick::Exception &e) {
+    //                 // Shouldn't normally happen, but guard anyway
+    //                 std::cerr << "Warning: pixelColor failed at (" << xx << "," << yy << "): " << e.what() << std::endl;
+    //             }
+    //         }
+    //     }
+    // };
+
+    // Draw each path point
+    const size_t total_pixels = img_w * img_h;
+    for (size_t idx = 0; idx < shortest_path.size(); ++idx) {
+        size_t index = shortest_path[idx];
+
+        // Bounds check
+        if (index >= total_pixels) {
+            std::cerr << "Warning: path index " << index << " is out of image bounds (skip)" << std::endl;
+            continue;
+        }
+
+        ssize_t gx = static_cast<ssize_t>(index % img_w);
+        ssize_t gy = static_cast<ssize_t>(index / img_w);
+
+        std::cout << "Drawing path point " << idx << " at (" << gx << ", " << gy << ")" << std::endl;
+        // Draw one pixel
+        draw_pixel(image, gx, gy);
+    } 
+    
+    // Save the modified image back to the directory with the name "output.png"
+    fs::path output_path = img_dir / output_filename;
+    try {
+        image.write(output_path.string());
+        std::cout << "Path image saved to: " << output_path << std::endl;
+    } catch (const Magick::Exception &e) {
+        std::cerr << "Error saving image file: " << e.what() << std::endl;
+    }
+    
+}
+
+void draw_pixel(Magick::Image & img, size_t x, size_t y)
+{
+
+    // Prepare to modify image pixels
+    try
+    {
+        // Set the image type to TrueColor DirectClass representation
+        img.type(Magick::TrueColorType);
+        // Ensure that there is only one reference to underlying image 
+        // If this is not done, then image pixels will not be modified
+        img.modifyImage();
+        // Allocate pixel view
+        Magick::Pixels view(img);
+
+        std::cout << "Drawing path on image." << std::endl;
+        std::cout << "Image size: " << img.columns() * img.rows() << std::endl;
+ 
+        Magick::ColorRGB blue_rgb(0.0, 0.0, 1.0); 
+        
+        Magick::Quantum qR = static_cast<Magick::Quantum>(QuantumRange * blue_rgb.red());
+        Magick::Quantum qG = static_cast<Magick::Quantum>(QuantumRange * blue_rgb.green());
+        Magick::Quantum qB = static_cast<Magick::Quantum>(QuantumRange * blue_rgb.blue());
+
+        ssize_t px = static_cast<ssize_t>(x);
+        ssize_t py = static_cast<ssize_t>(y);
+         
+        Magick::Quantum *pixels = view.get(px,py,1,1);
+        if (!pixels) {
+            std::cerr << "Error: Failed to authenticate pixels." << std::endl;
+            return;
+        }
+        // for (ssize_t row = 0; row < rows; ++row) 
+        //     for (ssize_t column = 0; column < columns; ++column) 
+        //     {
+        //         // pixels->red = MaxRGB * green.redQuantum();
+        //         // pixels->green = MaxRGB * green.greenQuantum();
+        //         // pixels->blue = MaxRGB * green.blueQuantum();
+        //         // ++pixels;
+        //         *pixels++ = MagickCore::QuantumRange * green.quantumRed();
+        //         *pixels++ = MagickCore::QuantumRange * green.quantumGreen();
+        //         *pixels++ = MagickCore::QuantumRange * green.quantumBlue();
+        //     }
+        // // Save changes to image.
+        int channels = img.channels(); // typically 3 (RGB) or 4 (RGBA)
+        // Example: set one pixel at location (px, py)
+        if (pixels != nullptr) {
+            // Write interleaved values for one pixel:
+            // Many ImageMagick builds use RGB[A] ordering.
+            // We'll write R,G,B and if there's an alpha channel we preserve it by skipping one Quantum
+            if (channels == 3) {
+                pixels[0] = qR;
+                pixels[1] = qG;
+                pixels[2] = qB;
+            } else if (channels == 4) {
+                pixels[0] = qR;
+                pixels[1] = qG;
+                pixels[2] = qB;
+                // keep alpha as fully opaque
+                pixels[3] = QuantumRange; // optional: set alpha to max (opaque)
+            } else {
+                // fallback: write first 3 channels
+                pixels[0] = qR;
+                pixels[1] = qG;
+                pixels[2] = qB;
+            }
+            view.sync(); // commit region back to image
+        }
+        
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        return;
+    }
+
 }

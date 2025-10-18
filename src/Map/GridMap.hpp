@@ -79,4 +79,8 @@ private:
 
 };
 
+void create_map_path(fs::path img_dir, const std::string & mapFile, const std::vector<size_t> & shortest_path, const std::string & output_filename, int point_radius = 1);
+
+void draw_pixel(Magick::Image & img, size_t x, size_t y);
+
 #endif //GRIDMAP_HPP
