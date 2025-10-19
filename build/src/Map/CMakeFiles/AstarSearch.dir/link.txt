@@ -1,2 +1,0 @@
-/usr/bin/ar qc libAstarSearch.a CMakeFiles/AstarSearch.dir/a.cpp.o CMakeFiles/AstarSearch.dir/b.cpp.o
-/usr/bin/ranlib libAstarSearch.a

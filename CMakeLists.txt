@@ -4,9 +4,6 @@ project(A-star-algorithm)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-
-add_executable(astar_search src/main.cpp)
-
 # Add subdirectories for libraries
 add_subdirectory(src/AstarSearch)
 add_subdirectory(src/Map)
@@ -21,6 +18,8 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+add_executable(astar_search src/main.cpp)
+
 # Include headers
 target_include_directories(astar_search PUBLIC
                            "${PROJECT_BINARY_DIR}"
@@ -29,7 +28,7 @@ target_include_directories(astar_search PUBLIC
                             )
 
 # Link library to the executable
-target_link_libraries(astar_search PUBLIC AstarSearch Map)
+target_link_libraries(astar_search PRIVATE AstarSearch Map)
 
 install(TARGETS astar_search DESTINATION bin)
 
@@ -51,6 +50,9 @@ target_link_libraries(
     GTest::gtest_main
     AstarSearch
     Map
+)
+target_compile_definitions(astar_search PRIVATE
+    PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
 )
 target_compile_definitions(map_test PRIVATE
     PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}"

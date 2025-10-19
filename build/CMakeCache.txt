@@ -152,7 +152,7 @@ CMAKE_INSTALL_MANDIR:PATH=
 CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=/usr/local
+CMAKE_INSTALL_PREFIX:PATH=/home/peera/A-star-algorithm
 
 //Run-time variable data (LOCALSTATEDIR/run)
 CMAKE_INSTALL_RUNSTATEDIR:PATH=
@@ -347,9 +347,6 @@ ImageMagick_Magick++_INCLUDE_DIR:PATH=/usr/local/include/ImageMagick-7
 
 //Path to the ImageMagick Magick++ library.
 ImageMagick_Magick++_LIBRARY:FILEPATH=/usr/local/lib/libMagick++-7.Q16HDRI.so
-
-//The directory containing a CMake configuration file for Map.
-Map_DIR:PATH=Map_DIR-NOTFOUND
 
 //Dependencies for the target
 Map_LIB_DEPENDS:STATIC=general;/usr/local/lib/libMagick++-7.Q16HDRI.so;
@@ -666,7 +663,7 @@ PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
-_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/home/peera/A-star-algorithm
 //Path to a program.
 _Python_EXECUTABLE:INTERNAL=/usr/bin/python3.10
 //Python Properties

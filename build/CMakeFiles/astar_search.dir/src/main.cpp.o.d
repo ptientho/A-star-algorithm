@@ -567,4 +567,8 @@ CMakeFiles/astar_search.dir/src/main.cpp.o: \
  /usr/include/Magick++/Exception.h /usr/include/Magick++/TypeMetric.h \
  /usr/include/Magick++/Pixels.h /usr/include/Magick++/STL.h \
  /usr/include/Magick++/CoderInfo.h /usr/include/Magick++/Montage.h \
- /usr/include/c++/11/variant /home/peera/A-star-algorithm/src/Map/Map.hpp
+ /usr/include/c++/11/variant \
+ /home/peera/A-star-algorithm/src/Map/GridMap.hpp \
+ /usr/local/include/argparse/argparse.hpp /usr/include/c++/11/any \
+ /usr/include/c++/11/set /usr/include/c++/11/bits/stl_set.h \
+ /usr/include/c++/11/bits/stl_multiset.h /usr/include/c++/11/charconv

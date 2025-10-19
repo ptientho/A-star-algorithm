@@ -4,6 +4,9 @@
 #include <vector>
 #include <string>
 #include <filesystem>
+#include "eigen3/Eigen/Dense"
+#include "Magick++.h"
+#include <variant>
 
 namespace fs = std::filesystem;
 
@@ -18,16 +21,20 @@ struct LoadMapParameters
 
 struct OccupancyGrid
 {
-    uint8_t resolution; // one cell represents resolution x resolution pixels | default = 1
+    uint8_t resolution = 1; // one cell represents resolution x resolution pixels | default = 1
     uint32_t width; // number of cells in the x direction
     uint32_t height; // number of cells in the y direction
-    std::vector<double> origin; // [x, y, theta] of the lower-left corner of the map
+    std::vector<double> origin{0,0,0}; // [x, y, theta] of the lower-left corner of the map
     std::vector<int8_t> data; // 2D grid representation of the map (size = width * height)
 };
 
 class GridMap 
 {
 public:
+    using AlphaArray = std::variant<
+        Eigen::Array<uint8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>,
+        Eigen::Array<uint16_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>>;
+
     // Constructor to load map and parameters required for initialization
     GridMap();
 
@@ -38,16 +45,19 @@ public:
         std::vector<double> origin, 
         double occupancy_thresh, 
         double free_thresh,
-        uint8_t resolution = 1,
+        uint8_t resolution,
         bool decomposition = false);
 
     OccupancyGrid grid_; // 2D grid representation of the map
 
+    unsigned int get_depth() const { return depth; }
+    
     ~GridMap();
 
 private:
 
     LoadMapParameters map_params;
+    unsigned int depth; // bits per channel (1, 8, 16, ...)
     // Convert image to occupancy grid, given that parameters are already set
     /*
         - load an image (PNG format) from the specified file path using ImageMagick
@@ -56,6 +66,21 @@ private:
     */
     void convert_map(fs::path img_dir, bool decomposition = false);
 
+    template <typename T>
+    AlphaArray construct_alpha_array(unsigned int depth) {
+        return Eigen::Array<T, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>();
+    }
+
+    void normalize_pixel(Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> & norm_mat,
+        Magick::Image & img, size_t width, size_t height, unsigned int depth);
+
+    void fill_alpha_array(AlphaArray & alpha_array,
+        Magick::Image & img, size_t width, size_t height, unsigned int depth);
+
 };
+
+void create_map_path(fs::path img_dir, const std::string & mapFile, const std::vector<size_t> & shortest_path, const std::string & output_filename);
+
+void draw_pixel(Magick::Image & img, size_t x, size_t y);
 
 #endif //GRIDMAP_HPP

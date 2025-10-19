@@ -1,5 +1,5 @@
-libdir=/usr/local/lib
-includedir=/usr/local/include
+libdir=/home/peera/A-star-algorithm/lib
+includedir=/home/peera/A-star-algorithm/include
 
 Name: gmock_main
 Description: GoogleMock (with main() function)
