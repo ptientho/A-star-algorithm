@@ -5,14 +5,11 @@
 #include <iostream>
 
 class Node {
-    // 8 connectivity
 public:
     Node(std::shared_ptr<Node> parent, const size_t & current_position_index = 0)
     : parent_(parent), curr_position_idx_(current_position_index) {}
 
     ~Node() {}
-
-    // overload operator==
 
     // get parent
     std::shared_ptr<Node> & get_parent() { return parent_; }
@@ -49,13 +46,15 @@ private:
     double f_cost = 0.0; // total cost
 };
 
-// Path reconstruction function
-// Given a current node, construct path backward to start node
+/*
+    Path reconstruction function
+    Given a current node, construct path backward to start node
+*/
 void reconstruct_path(std::vector<size_t> & shortest_path, std::shared_ptr<Node> current_node, size_t start_index, size_t goal_index);
 
-
-// A* Search algorithm implementation
-/* Requirements:
+/* 
+    A* Search algorithm implementation
+    Requirements:
     8-connected grid
     Movement cost: 1 for axial, sqrt(2) for diagonal
     Output: collision free path
@@ -94,11 +93,5 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
 */
 double calculate_heuristic(size_t current_index, size_t goal_index, size_t grid_width);
 
-template <typename K, typename V>
-void print_map(const std::unordered_map<K, V> & map) {
-    for (const auto & pair : map) {
-        std::cout << "{ " << pair.first << ": " << pair.second << "}\n";
-    }
-}
 
 #endif // ASTARSEARCH_HPP

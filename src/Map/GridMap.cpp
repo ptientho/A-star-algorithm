@@ -44,12 +44,6 @@ bool GridMap::load_map(fs::path img_dir, const std::string & mapFile,
     return true;
 }
 
-
-/*
-    - load an image (PNG format) from the specified file path using ImageMagick
-    - convert it into a grayscale matrix with pixel intensities -> occupancy values, using thresholds
-    - store the resulting occupancy grid in the grid_ member variable
-*/
 void GridMap::convert_map(fs::path img_dir, bool decomposition) {
     Magick::InitializeMagick(nullptr);
     
@@ -119,21 +113,17 @@ void GridMap::convert_map(fs::path img_dir, bool decomposition) {
     
     // Handle alpha channel if present
     if (has_alpha_channel) {
-        this->fill_alpha_array(alpha_array, image, width, height, depth);
-    }
-    
-
-    if (has_alpha_channel) {
         std::cout << "Image has alpha channel." << std::endl;
+        this->fill_alpha_array(alpha_array, image, width, height, depth);
     } else {
         std::cout << "Image does not have alpha channel." << std::endl;
     }
-
-    std::cout << "First ten elements of normalized matrix:" << std::endl;
-    for (int i = 0; i < std::min(20, static_cast<int>(normalized.size())); ++i) {
-        std::cout << normalized.data()[i] << " ";
-    }
-    std::cout << std::endl;
+    
+    // std::cout << "First ten elements of normalized matrix:" << std::endl;
+    // for (int i = 0; i < std::min(20, static_cast<int>(normalized.size())); ++i) {
+    //     std::cout << normalized.data()[i] << " ";
+    // }
+    // std::cout << std::endl;
 
     if (!decomposition) {
         std::cout << "No matrix decomposition applied." << std::endl;
@@ -153,10 +143,11 @@ void GridMap::convert_map(fs::path img_dir, bool decomposition) {
         result_matrix.setConstant(-1); // array of -1s
 
         // print first ten elements of -1s
-        std::cout << "First ten elements of initialized result matrix:" << std::endl;
-        for (int i = 0; i < std::min(20, static_cast<int>(result_matrix.size())); ++i) {
-            std::cout << static_cast<int>(result_matrix.data()[i]) << " ";
-        }
+        // std::cout << "First ten elements of initialized result matrix:" << std::endl;
+        // for (int i = 0; i < std::min(20, static_cast<int>(result_matrix.size())); ++i) {
+        //     std::cout << static_cast<int>(result_matrix.data()[i]) << " ";
+        // }
+
         // Scale occupancy values to [0,100]
         result_matrix = (occupied_cells.array() > 0).select(100, result_matrix);
         result_matrix = (free_cells.array() > 0).select(0, result_matrix);
@@ -172,21 +163,22 @@ void GridMap::convert_map(fs::path img_dir, bool decomposition) {
             }
         }
 
-        std::cout << "First ten elements of result matrix:" << std::endl;
-        for (int i = 0; i < std::min(20, static_cast<int>(result_matrix.size())); ++i) {
-            std::cout << static_cast<int>(result_matrix.data()[i]) << " ";
-        }
-        std::cout << std::endl;
+        // std::cout << "First ten elements of result matrix:" << std::endl;
+        // for (int i = 0; i < std::min(20, static_cast<int>(result_matrix.size())); ++i) {
+        //     std::cout << static_cast<int>(result_matrix.data()[i]) << " ";
+        // }
+        // std::cout << std::endl;
 
         // Convert result matrix to row-major 1D vector
         std::memcpy(this->grid_.data.data(), result_matrix.data(), width * height);
+        
         // Print a random member of grid data
-        if (!this->grid_.data.empty()) {
-            size_t random_index = std::rand() % this->grid_.data.size();
-            std::cout << "Random grid data value: " << static_cast<int>(this->grid_.data[random_index]) << std::endl;
-        } else {
-            std::cerr << "Grid data is empty." << std::endl;
-        }
+        // if (!this->grid_.data.empty()) {
+        //     size_t random_index = std::rand() % this->grid_.data.size();
+        //     std::cout << "Random grid data value: " << static_cast<int>(this->grid_.data[random_index]) << std::endl;
+        // } else {
+        //     std::cerr << "Grid data is empty." << std::endl;
+        // }
     } 
     else {
         std::cout << "Applying matrix decomposition with resolution: " << 
@@ -246,29 +238,17 @@ void GridMap::convert_map(fs::path img_dir, bool decomposition) {
     
         result_int8 = (occupied_cells.array() > 0).select(static_cast<int8_t>(100), result_int8);
         result_int8 = (free_cells.array() > 0).select(static_cast<int8_t>(0), result_int8);
-
-        // Select unknown cells where alpha < 255 if alpha channel exists
-        // if (has_alpha_channel) {
-        //     if (depth <= 8){
-        //         // Set cells with alpha = 0 to unknown (-1)
-        //         result_matrix = (std::get<Eigen::Array<uint8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>>(alpha_array) < 255).select(-1, result_matrix);
-        //     } else {
-        //         // Set cells with alpha = 0 to unknown (-1)
-        //         result_matrix = (std::get<Eigen::Array<uint16_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>>(alpha_array) < 65535).select(-1, result_matrix);
-        //     }
-        // }
-        //result_matrix = (unknown_cells.array() == 1).select(-1, result_matrix);
-        
-        
+                
         // Convert result matrix to row-major 1D vector
         std::memcpy(this->grid_.data.data(), result_int8.data(), c_width * c_height);
+        
         // Print a random member of grid data
-        if (!this->grid_.data.empty()) {
-            size_t random_index = std::rand() % this->grid_.data.size();
-            std::cout << "Random grid data value: " << static_cast<int>(this->grid_.data[random_index]) << std::endl;
-        } else {
-            std::cerr << "Grid data is empty." << std::endl;
-        }
+        // if (!this->grid_.data.empty()) {
+        //     size_t random_index = std::rand() % this->grid_.data.size();
+        //     std::cout << "Random grid data value: " << static_cast<int>(this->grid_.data[random_index]) << std::endl;
+        // } else {
+        //     std::cerr << "Grid data is empty." << std::endl;
+        // }
     }
 
     
@@ -390,32 +370,6 @@ void create_map_path(fs::path img_dir, const std::string & mapFile, const std::v
         return;
     }
 
-    
-    
-    // Helper to draw a small square centered at (x,y)
-    // auto draw_point = [&](size_t x, size_t y) {
-    //     // signed coords for Magick API safety
-    //     long cx = static_cast<long>(x);
-    //     long cy = static_cast<long>(y);
-
-    //     // draw a small square of size (2*point_radius + 1)
-    //     for (int dy = -point_radius; dy <= point_radius; ++dy) {
-    //         long yy = cy + dy;
-    //         if (yy < 0 || static_cast<size_t>(yy) >= img_h) continue;
-    //         for (int dx = -point_radius; dx <= point_radius; ++dx) {
-    //             long xx = cx + dx;
-    //             if (xx < 0 || static_cast<size_t>(xx) >= img_w) continue;
-    //             try {
-    //                 image.pixelColor(static_cast<size_t>(xx), static_cast<size_t>(yy), blue_rgb);
-    //                 //std::cout << "Set pixel at (" << xx << "," << yy << ") to blue." << "\n";
-    //             } catch (const Magick::Exception &e) {
-    //                 // Shouldn't normally happen, but guard anyway
-    //                 std::cerr << "Warning: pixelColor failed at (" << xx << "," << yy << "): " << e.what() << std::endl;
-    //             }
-    //         }
-    //     }
-    // };
-
     // Draw each path point
     const size_t total_pixels = img_w * img_h;
     for (size_t idx = 0; idx < shortest_path.size(); ++idx) {
@@ -454,9 +408,11 @@ void draw_pixel(Magick::Image & img, size_t x, size_t y)
     {
         // Set the image type to TrueColor DirectClass representation
         img.type(Magick::TrueColorType);
+        
         // Ensure that there is only one reference to underlying image 
         // If this is not done, then image pixels will not be modified
         img.modifyImage();
+        
         // Allocate pixel view
         Magick::Pixels view(img);
 
@@ -477,24 +433,11 @@ void draw_pixel(Magick::Image & img, size_t x, size_t y)
             std::cerr << "Error: Failed to authenticate pixels." << std::endl;
             return;
         }
-        // for (ssize_t row = 0; row < rows; ++row) 
-        //     for (ssize_t column = 0; column < columns; ++column) 
-        //     {
-        //         // pixels->red = MaxRGB * green.redQuantum();
-        //         // pixels->green = MaxRGB * green.greenQuantum();
-        //         // pixels->blue = MaxRGB * green.blueQuantum();
-        //         // ++pixels;
-        //         *pixels++ = MagickCore::QuantumRange * green.quantumRed();
-        //         *pixels++ = MagickCore::QuantumRange * green.quantumGreen();
-        //         *pixels++ = MagickCore::QuantumRange * green.quantumBlue();
-        //     }
-        // // Save changes to image.
+        
         int channels = img.channels(); // typically 3 (RGB) or 4 (RGBA)
-        // Example: set one pixel at location (px, py)
+        
+        // Modify pixel values
         if (pixels != nullptr) {
-            // Write interleaved values for one pixel:
-            // Many ImageMagick builds use RGB[A] ordering.
-            // We'll write R,G,B and if there's an alpha channel we preserve it by skipping one Quantum
             if (channels == 3) {
                 pixels[0] = qR;
                 pixels[1] = qG;

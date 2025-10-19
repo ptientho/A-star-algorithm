@@ -152,7 +152,7 @@ bool astar_search(const OccupancyGrid & grid,
 
     }
 
-    // A* doen traversing nodes in open_list
+    // A* done traversing nodes in open_list
     // Reconstruct path if found
     if (path_found) {
         reconstruct_path(shortest_path, current_node, start_idx, goal_idx);
@@ -214,111 +214,6 @@ find_neighbors(const std::shared_ptr<Node>& current_node, const OccupancyGrid & 
     }
 
     return neighbors;
-
-    // // Get index value above the current node
-    // size_t upper = current_node->get_index() - grid.width;
-
-    // // Get index value to the left of the current node
-    // size_t left = current_node->get_index() - 1;
-
-    // // Get index value to the upper left of the current node
-    // size_t upper_left = current_node->get_index() - grid.width - 1;
-
-    // // Get index value to the upper right of the current node
-    // size_t upper_right = current_node->get_index() - grid.width + 1;
-
-    // // Get index value to the right of the current node
-    // size_t right = current_node->get_index() + 1;
-
-    // // Get index value to the lower left of the current node
-    // size_t lower_left = current_node->get_index() + grid.width - 1;
-
-    // // Get index value to below the current node
-    // size_t lower = current_node->get_index() + grid.width;
-
-    // // Get index value to the lower right of the current node
-    // size_t lower_right = current_node->get_index() + grid.width + 1;
-
-    // // Check if each neighbor is within bounds and not an obstacle or unknown
-    // if (upper >= 0)
-    // {
-    //     if (grid.data[upper] != obstacle && grid.data[upper] != unknown)
-    //     {
-    //         neighbors.insert({upper, step_cost});
-    //     }
-    // }
-
-    // // Exclude left neighbor that are outside left boundary
-    // // Exclude left neighbor that are on the right most column
-    // if (left % static_cast<size_t>(grid.width) > 0 && left % static_cast<size_t>(grid.width) != static_cast<size_t>(grid.width) - 1)
-    // {
-    //     if (grid.data[left] != obstacle && grid.data[left] != unknown)
-    //     {
-    //         neighbors.insert({left, step_cost});
-    //     }
-    // }
-
-    // // Exclude cell outside the map
-    // // Exclude upper left neighbor that are on the right most column
-    // if (upper_left >= 0 && left % static_cast<size_t>(grid.width) != static_cast<size_t>(grid.width) - 1)
-    // {
-    //     if (grid.data[upper_left] != obstacle && grid.data[upper_left] != unknown)
-    //     {
-    //         neighbors.insert({upper_left, diag_cost});
-    //     }
-    // }
-
-    // // Exclude cell outside the map
-    // // Exclude upper right neighbor that are on the left most column
-    // if (upper_right >= 0 && upper_right % static_cast<size_t>(grid.width) != 0)
-    // {
-    //     if (grid.data[upper_right] != obstacle && grid.data[upper_right] != unknown)
-    //     {
-    //         neighbors.insert({upper_right, diag_cost});
-    //     }
-    // }
-
-    // // Exclude right neightbor in the first column
-    // // Exclude it if it is outside the map
-    // if (right % static_cast<size_t>(grid.width) != 0 && right >= static_cast<size_t>(grid.width * grid.height))
-    // {
-    //     if (grid.data[right] != obstacle && grid.data[right] != unknown)
-    //     {
-    //         neighbors.insert({right, step_cost});
-    //     }
-    // }
-
-    // // Exclude lower left neighbor if it exceeds the max costmap size
-    // // Exclude lower left neighbor that are on the right most column
-    // if (lower_left < static_cast<size_t>(grid.width * grid.height) && lower_left % static_cast<size_t>(grid.width) != static_cast<size_t>(grid.width) - 1)
-    // {
-    //     if (grid.data[lower_left] != obstacle && grid.data[lower_left] != unknown)
-    //     {
-    //         neighbors.insert({lower_left, diag_cost});
-    //     }
-    // }
-
-    // // Exclude lower neighbor if it exceeds the max costmap size
-    // if (lower < static_cast<size_t>(grid.width * grid.height))
-    // {
-    //     if (grid.data[lower] != obstacle && grid.data[lower] != unknown)
-    //     {
-    //         neighbors.insert({lower, step_cost});
-    //     }
-    // }
-
-    // // Exclude the lower right neighbor if it exceeds the max costmap size
-    // // Exclude lower right neighbor that are on the left most column
-    // if (lower_right < static_cast<size_t>(grid.width * grid.height) && lower_right % static_cast<size_t>(grid.width) != 0)
-    // {
-    //     if (grid.data[lower_right] != obstacle && grid.data[lower_right] != unknown)
-    //     {
-    //         neighbors.insert({lower_right, diag_cost});
-    //     }
-    // }
-
-
-    // return neighbors;
 
 }
 

@@ -24,7 +24,7 @@ struct OccupancyGrid
     uint8_t resolution = 1; // one cell represents resolution x resolution pixels | default = 1
     uint32_t width; // number of cells in the x direction
     uint32_t height; // number of cells in the y direction
-    std::vector<double> origin{0,0,0}; // [x, y, theta] of the lower-left corner of the map
+    std::vector<double> origin{0,0,0}; // [x, y, theta] of the lower-left corner of the map (May bot be used in pixel-based map)
     std::vector<int8_t> data; // 2D grid representation of the map (size = width * height)
 };
 
@@ -58,29 +58,49 @@ private:
 
     LoadMapParameters map_params;
     unsigned int depth; // bits per channel (1, 8, 16, ...)
-    // Convert image to occupancy grid, given that parameters are already set
+    
     /*
+        Convert image to occupancy grid, given that parameters are already set
         - load an image (PNG format) from the specified file path using ImageMagick
         - convert it into a grayscale matrix with pixel intensities -> occupancy values, using thresholds
         - store the resulting occupancy grid in the grid_ member variable
     */
     void convert_map(fs::path img_dir, bool decomposition = false);
 
+    /*
+        Factory function to handle image with different depth and construct alpha array
+    */
     template <typename T>
     AlphaArray construct_alpha_array(unsigned int depth) {
         return Eigen::Array<T, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>();
     }
 
+    /*
+        Normalize pixel values to [0, 1] range based on image depth
+    */
     void normalize_pixel(Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> & norm_mat,
         Magick::Image & img, size_t width, size_t height, unsigned int depth);
 
+    /*
+        Helper function to fill alpha array based on image depth
+     */
     void fill_alpha_array(AlphaArray & alpha_array,
         Magick::Image & img, size_t width, size_t height, unsigned int depth);
 
 };
 
+/*
+    Create a new image with the shortest path drawn on top of the original map
+    - img_dir: directory where the original map image is located
+    - mapFile: filename of the original map image
+    - shortest_path: vector of linear indices representing the shortest path
+    - output_filename: filename for saving the new image with the path drawn
+*/
 void create_map_path(fs::path img_dir, const std::string & mapFile, const std::vector<size_t> & shortest_path, const std::string & output_filename);
 
+/*
+    Helper function to draw a pixel on the image at specified (x, y) coordinates
+*/
 void draw_pixel(Magick::Image & img, size_t x, size_t y);
 
 #endif //GRIDMAP_HPP

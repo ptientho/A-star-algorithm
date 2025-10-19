@@ -11,7 +11,6 @@ class AstarSearchTest : public testing::Test
     protected:
         fs::path img_dir;
 
-        // Helper function to calculate 1D index from 2D coordinates
         uint32_t idx(uint32_t x, uint32_t y, uint32_t width) {
             return y * width + x;
         }
