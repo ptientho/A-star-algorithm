@@ -15,6 +15,7 @@ maps
 - [Magick](https://imagemagick.org/script/magick++.php): Image-processing library
 - [Eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page): C++ template library for linear algebra: matrices, vertors, and related algorithms
 - [GoogleTest](https://github.com/google/googletest): Testing framework for C++
+- [argparse](https://github.com/p-ranav/argparse): Argument parsing in C++
 
 ## Build and Install
 1. At the project root, create `build` folder
