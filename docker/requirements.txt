@@ -7,4 +7,14 @@ git
 wget 
 curl
 nano
+sudo
 libeigen3-dev
+libpng-dev 
+libjpeg-dev 
+libtiff-dev
+libwebp-dev 
+libopenjp2-7-dev 
+zlib1g-dev 
+liblzma-dev
+libfreetype6-dev 
+libxml2-dev

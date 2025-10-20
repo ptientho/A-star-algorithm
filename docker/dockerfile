@@ -14,8 +14,12 @@ COPY docker/requirements.txt .
 RUN apt-get update && apt-get install --no-install-recommends -y $(cat requirements.txt) && rm -rf /var/lib/apt/lists/*
 RUN rm requirements.txt
 
+# Update certificate
+RUN sudo apt-get update && apt-get install ca-certificates -y
+RUN sudo update-ca-certificates
+
 # Create a user with passwordless sudo
-RUN adduser --uid $USERID --gecos "ubuntu 22:04" --disabled-password $USER
+RUN adduser --uid $USERID --gecos "ubuntu-22-04" --disabled-password $USER
 RUN adduser $USER sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
@@ -39,8 +43,10 @@ RUN pkg-config --list-all | grep -i magick
 # Install argparse
 WORKDIR /home/$USER
 RUN git clone https://github.com/p-ranav/argparse
-WORKDIR /home/${USER}/argparse
-RUN mkdir build && cd build
+
+WORKDIR /home/$USER/argparse
+RUN mkdir build
+WORKDIR /home/$USER/argparse/build
 RUN cmake -DARGPARSE_BUILD_SAMPLES=on -DARGPARSE_BUILD_TESTS=on ..
 RUN make
 RUN sudo make install
@@ -48,7 +54,7 @@ RUN sudo make install
 # Install this project
 WORKDIR /home/$USER
 RUN git clone -b main https://github.com/ptientho/A-star-algorithm.git
-WORKDIR /home/${USER}/A-star-algorithm
+WORKDIR /home/$USER/A-star-algorithm
 
 # Clean previous build
 RUN if [ -d "build" ]; then rm -rf build; fi
