@@ -1,6 +1,10 @@
 find_package(Eigen3 REQUIRED NO_MODULE)
 find_package(ImageMagick REQUIRED COMPONENTS Magick++ MagickCore)
 
+# print them for debugging:
+message(STATUS "ImageMagick include dirs: ${ImageMagick_INCLUDE_DIRS}")
+message(STATUS "ImageMagick libraries: ${ImageMagick_LIBRARIES}")
+
 # Create a library target with its source files
 add_library(Map GridMap.cpp)
 
