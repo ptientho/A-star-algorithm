@@ -66,14 +66,14 @@ CMAKE_BINARY_DIR = /home/peera/A-star-algorithm/build
 all: CMakeFiles/astar_search.dir/all
 all: CMakeFiles/map_test.dir/all
 all: CMakeFiles/astar_test.dir/all
-all: src/AstarSearch/all
 all: src/Map/all
+all: src/AstarSearch/all
 all: _deps/googletest-build/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: src/AstarSearch/preinstall
 preinstall: src/Map/preinstall
+preinstall: src/AstarSearch/preinstall
 preinstall: _deps/googletest-build/preinstall
 .PHONY : preinstall
 
@@ -81,8 +81,8 @@ preinstall: _deps/googletest-build/preinstall
 clean: CMakeFiles/astar_search.dir/clean
 clean: CMakeFiles/map_test.dir/clean
 clean: CMakeFiles/astar_test.dir/clean
-clean: src/AstarSearch/clean
 clean: src/Map/clean
+clean: src/AstarSearch/clean
 clean: _deps/googletest-build/clean
 .PHONY : clean
 
@@ -171,8 +171,8 @@ src/Map/clean: src/Map/CMakeFiles/Map.dir/clean
 # Target rules for target CMakeFiles/astar_search.dir
 
 # All Build rule for target.
-CMakeFiles/astar_search.dir/all: src/AstarSearch/CMakeFiles/AstarSearch.dir/all
 CMakeFiles/astar_search.dir/all: src/Map/CMakeFiles/Map.dir/all
+CMakeFiles/astar_search.dir/all: src/AstarSearch/CMakeFiles/AstarSearch.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_search.dir/build.make CMakeFiles/astar_search.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=5,6 "Built target astar_search"
@@ -226,8 +226,8 @@ CMakeFiles/map_test.dir/clean:
 # Target rules for target CMakeFiles/astar_test.dir
 
 # All Build rule for target.
-CMakeFiles/astar_test.dir/all: src/AstarSearch/CMakeFiles/AstarSearch.dir/all
 CMakeFiles/astar_test.dir/all: src/Map/CMakeFiles/Map.dir/all
+CMakeFiles/astar_test.dir/all: src/AstarSearch/CMakeFiles/AstarSearch.dir/all
 CMakeFiles/astar_test.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 CMakeFiles/astar_test.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_test.dir/build.make CMakeFiles/astar_test.dir/depend
@@ -250,32 +250,6 @@ astar_test: CMakeFiles/astar_test.dir/rule
 CMakeFiles/astar_test.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/astar_test.dir/build.make CMakeFiles/astar_test.dir/clean
 .PHONY : CMakeFiles/astar_test.dir/clean
-
-#=============================================================================
-# Target rules for target src/AstarSearch/CMakeFiles/AstarSearch.dir
-
-# All Build rule for target.
-src/AstarSearch/CMakeFiles/AstarSearch.dir/all: src/Map/CMakeFiles/Map.dir/all
-	$(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/depend
-	$(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=1,2 "Built target AstarSearch"
-.PHONY : src/AstarSearch/CMakeFiles/AstarSearch.dir/all
-
-# Build rule for subdir invocation for target.
-src/AstarSearch/CMakeFiles/AstarSearch.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/AstarSearch/CMakeFiles/AstarSearch.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles 0
-.PHONY : src/AstarSearch/CMakeFiles/AstarSearch.dir/rule
-
-# Convenience name for target.
-AstarSearch: src/AstarSearch/CMakeFiles/AstarSearch.dir/rule
-.PHONY : AstarSearch
-
-# clean rule for target.
-src/AstarSearch/CMakeFiles/AstarSearch.dir/clean:
-	$(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/clean
-.PHONY : src/AstarSearch/CMakeFiles/AstarSearch.dir/clean
 
 #=============================================================================
 # Target rules for target src/Map/CMakeFiles/Map.dir
@@ -302,6 +276,32 @@ Map: src/Map/CMakeFiles/Map.dir/rule
 src/Map/CMakeFiles/Map.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/clean
 .PHONY : src/Map/CMakeFiles/Map.dir/clean
+
+#=============================================================================
+# Target rules for target src/AstarSearch/CMakeFiles/AstarSearch.dir
+
+# All Build rule for target.
+src/AstarSearch/CMakeFiles/AstarSearch.dir/all: src/Map/CMakeFiles/Map.dir/all
+	$(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=1,2 "Built target AstarSearch"
+.PHONY : src/AstarSearch/CMakeFiles/AstarSearch.dir/all
+
+# Build rule for subdir invocation for target.
+src/AstarSearch/CMakeFiles/AstarSearch.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/AstarSearch/CMakeFiles/AstarSearch.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/peera/A-star-algorithm/build/CMakeFiles 0
+.PHONY : src/AstarSearch/CMakeFiles/AstarSearch.dir/rule
+
+# Convenience name for target.
+AstarSearch: src/AstarSearch/CMakeFiles/AstarSearch.dir/rule
+.PHONY : AstarSearch
+
+# clean rule for target.
+src/AstarSearch/CMakeFiles/AstarSearch.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/clean
+.PHONY : src/AstarSearch/CMakeFiles/AstarSearch.dir/clean
 
 #=============================================================================
 # Target rules for target _deps/googletest-build/googlemock/CMakeFiles/gmock.dir

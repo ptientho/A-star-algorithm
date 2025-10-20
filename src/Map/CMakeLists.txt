@@ -14,12 +14,13 @@ target_compile_definitions(Map PUBLIC
 )
 
 include_directories(${ImageMagick_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR})
-target_link_libraries(Map PUBLIC Eigen3::Eigen ${ImageMagick_LIBRARIES})
 
 target_include_directories(Map
     PUBLIC
-        ${CMAKE_SOURCE_DIR}/src
+      ${ImageMagick_INCLUDE_DIRS}
+      ${CMAKE_SOURCE_DIR}/src
 )
+target_link_libraries(Map PUBLIC Eigen3::Eigen ${ImageMagick_LIBRARIES})
 
 install(TARGETS Map DESTINATION lib)
 

@@ -64,8 +64,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/peera/A-star-algorithm/build/src/AstarSearch/cmake_install.cmake")
   include("/home/peera/A-star-algorithm/build/src/Map/cmake_install.cmake")
+  include("/home/peera/A-star-algorithm/build/src/AstarSearch/cmake_install.cmake")
   include("/home/peera/A-star-algorithm/build/_deps/googletest-build/cmake_install.cmake")
 
 endif()

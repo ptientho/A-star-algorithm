@@ -6,6 +6,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add subdirectories for libraries
 add_subdirectory(src/Map)
+
+get_target_property(_incs Map INTERFACE_INCLUDE_DIRECTORIES)
+message(STATUS "Map INTERFACE include dirs: ${_incs}")
+get_target_property(_links Map INTERFACE_LINK_LIBRARIES)
+message(STATUS "Map INTERFACE link libs: ${_links}")
+
+
 add_subdirectory(src/AstarSearch)
 
 include(FetchContent)

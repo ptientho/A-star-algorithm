@@ -211,19 +211,6 @@ astar_test/fast:
 .PHONY : astar_test/fast
 
 #=============================================================================
-# Target rules for targets named AstarSearch
-
-# Build rule for target.
-AstarSearch: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 AstarSearch
-.PHONY : AstarSearch
-
-# fast build rule for target.
-AstarSearch/fast:
-	$(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/build
-.PHONY : AstarSearch/fast
-
-#=============================================================================
 # Target rules for targets named Map
 
 # Build rule for target.
@@ -235,6 +222,19 @@ Map: cmake_check_build_system
 Map/fast:
 	$(MAKE) $(MAKESILENT) -f src/Map/CMakeFiles/Map.dir/build.make src/Map/CMakeFiles/Map.dir/build
 .PHONY : Map/fast
+
+#=============================================================================
+# Target rules for targets named AstarSearch
+
+# Build rule for target.
+AstarSearch: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 AstarSearch
+.PHONY : AstarSearch
+
+# fast build rule for target.
+AstarSearch/fast:
+	$(MAKE) $(MAKESILENT) -f src/AstarSearch/CMakeFiles/AstarSearch.dir/build.make src/AstarSearch/CMakeFiles/AstarSearch.dir/build
+.PHONY : AstarSearch/fast
 
 #=============================================================================
 # Target rules for targets named gmock

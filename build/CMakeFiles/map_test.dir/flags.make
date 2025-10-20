@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -DPROJECT_SOURCE_DIR=\"/home/peera/A-star-algorithm\"
 
-CXX_INCLUDES = -I/home/peera/A-star-algorithm/src -isystem /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/include -isystem /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest -isystem /usr/local/include/eigen3
+CXX_INCLUDES = -I/usr/local/include/ImageMagick-7 -I/home/peera/A-star-algorithm/src -isystem /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest/include -isystem /home/peera/A-star-algorithm/build/_deps/googletest-src/googletest -isystem /usr/local/include/eigen3
 
 CXX_FLAGS = -std=gnu++20
 
