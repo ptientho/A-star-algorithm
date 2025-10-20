@@ -29,8 +29,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             build-essential make cmake ccache pkg-config git wget curl \
-            libmagick++-dev libmagickcore-6.q16-dev libmagickwand-6.q16-dev imagemagick \
             libeigen3-dev
+
+      - name: Install Magick 7 library
+        run: |
+          cd $HOME
+          git clone --depth 1 --branch [latest_release_tag] https://github.com/ImageMagick/ImageMagick.git ImageMagick-7.1.2
+          cd ImageMagick-7.1.2
+          # Configure and Build
+          ./configure
+          make
+          # Install
+          sudo make install
+          # Configure the dynamic linker run-time bindings
+          sudo ldconfig /usr/local/lib
 
       - name: Clean previous build
         run: |
