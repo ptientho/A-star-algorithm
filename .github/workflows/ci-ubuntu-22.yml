@@ -1,4 +1,4 @@
-name: build & test (Ubuntu matrix)
+name: build & test (Ubuntu 22.04)
 
 on:
   push:
@@ -6,10 +6,7 @@ on:
 
 jobs:
   build-and-test:
-    strategy:
-      matrix:
-        os: [ ubuntu-22.04 ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout this repository
         uses: actions/checkout@v4
