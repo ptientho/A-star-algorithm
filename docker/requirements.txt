@@ -1,0 +1,10 @@
+build-essential 
+make 
+cmake 
+ccache 
+pkg-config 
+git 
+wget 
+curl
+nano
+libeigen3-dev

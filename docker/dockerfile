@@ -1,0 +1,69 @@
+FROM ubuntu:jammy
+
+# Arguments for building
+ARG USERID
+ARG USER
+
+# Setup environment
+ENV TERM=linux
+ENV DEBIAN_FRONTEND=noninteractive
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+# Copy requirement files and install dependencies
+COPY docker/requirements.txt .
+RUN apt-get update && apt-get install --no-install-recommends -y $(cat requirements.txt) && rm -rf /var/lib/apt/lists/*
+RUN rm requirements.txt
+
+# Create a user with passwordless sudo
+RUN adduser --uid $USERID --gecos "ubuntu 22:04" --disabled-password $USER
+RUN adduser $USER sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER $USER
+
+WORKDIR /home/$USER
+
+# Install Magick 7 lib
+RUN git clone --depth 1 --branch main https://github.com/ImageMagick/ImageMagick.git ImageMagick-7.1.2
+WORKDIR /home/$USER/ImageMagick-7.1.2
+# Configure and Build
+RUN ./configure
+RUN make
+# Install
+RUN sudo make install
+# Configure the dynamic linker run-time bindings
+RUN sudo ldconfig /usr/local/lib
+# Check if magick is installed
+RUN pkg-config --list-all | grep -i magick
+
+# Install argparse
+WORKDIR /home/$USER
+RUN git clone https://github.com/p-ranav/argparse
+WORKDIR /home/${USER}/argparse
+RUN mkdir build && cd build
+RUN cmake -DARGPARSE_BUILD_SAMPLES=on -DARGPARSE_BUILD_TESTS=on ..
+RUN make
+RUN sudo make install
+
+# Install this project
+WORKDIR /home/$USER
+RUN git clone -b main https://github.com/ptientho/A-star-algorithm.git
+WORKDIR /home/${USER}/A-star-algorithm
+
+# Clean previous build
+RUN if [ -d "build" ]; then rm -rf build; fi
+
+# Configure and Build
+RUN cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+            -DCMAKE_CXX_STANDARD=20 \
+            -DCMAKE_INSTALL_PREFIX=./
+
+RUN cmake --build build
+RUN cmake --install build
+
+# Set working directory
+WORKDIR /home/$USER/A-star-algorithm
+
+CMD ["/bin/bash"]
