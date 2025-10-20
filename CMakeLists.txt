@@ -5,8 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add subdirectories for libraries
-add_subdirectory(src/AstarSearch)
 add_subdirectory(src/Map)
+add_subdirectory(src/AstarSearch)
 
 include(FetchContent)
 FetchContent_Declare(
