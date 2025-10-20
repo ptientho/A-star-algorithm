@@ -1,83 +1,82 @@
-name: build & test (Ubuntu 22.04)
+name: build & test (Ubuntu matrix)
+
 on:
-    push:
-        branches: [main]
+  push:
+    branches: [ main ]
 
 jobs:
-    build-and-test:
-        runs-on: ubuntu-22.04
-        steps:
-            - name: Checkout this repository
-            uses: actions/checkout@v5
-            with:
-                fetch-depth: 0
+  build-and-test:
+    strategy:
+      matrix:
+        os: [ ubuntu-22.04, ubuntu-24.04 ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-            - name: Cache ccache
-            uses: actions/cache@v4
-            with:
-                path: ~/.ccache
-                key: ccache-${{ runner.os }}-${{ hashFiles('**/CMakeLists.txt', '**/src/**') }}
-                restore-keys: |
-                    ccache-${{ runner.os }}-
-            
-            - name: Install dependencies
-            run: |
-                sudo apt-get update
-                sudo apt-get install -y --no-install-recommends \
-                    build-essential make cmake ccache pkg-config git wget curl \
-                    libmagick++-dev libmagickcore-6.q16-dev libmagickwand-6.q16-dev imagemagick \
-                    libeigen3-dev
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: ~/.ccache
+          key: ccache-${{ runner.os }}-${{ hashFiles('**/CMakeLists.txt', '**/src/**') }}
+          restore-keys: |
+            ccache-${{ runner.os }}-
 
-            - name: Configure Cmake
-            run: |
-                cmake -S . -B build \
-                -DCMAKE_BUILD_TYPE=Release \
-                -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-                -DCMAKE_CXX_STANDARD=20 \
-                -DCMAKE_INSTALL_PREFIX=./
-                    
-            - name: Build
-            run: |
-                cmake --build build --parallel \
-                cmake --install build --verbose
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential make cmake ccache pkg-config git wget curl \
+            libmagick++-dev libmagickcore-6.q16-dev libmagickwand-6.q16-dev imagemagick \
+            libeigen3-dev
 
-            - name: Run tests
-            run: |
-                # run tests and capture output and exit code
-                set -o pipefail
-                ctest --test-dir build --output-on-failure | tee test_output.txt
-                # ensure failure not swallowed by pipe; fail if tests failed
-                if ! tail -n +1 test_output.txt | grep -q "100% tests passed"; then
-                    echo "Some tests failed (see test_output.txt)."
-                    exit 1
-                fi
+      - name: Configure CMake
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+            -DCMAKE_CXX_STANDARD=20 \
+            -DCMAKE_INSTALL_PREFIX=./
 
-            - name: Upload a Build Artifact
-            if: always()
-            uses: actions/upload-artifact@v4.6.2
-            with:
-                name: astar_search-binary
-                path: build/astar_search
-                retention-days: 5
+      - name: Build
+        run: cmake --build build --parallel
 
-            - name: Upload test log
-            if: always()
-            uses: actions/upload-artifact@v4.6.2
-            with:
-                name: test-log
-                path: test_output.txt
-                retention-days: 5
+      - name: Install into workspace (local install)
+        run: cmake --install build --verbose
 
-            - name: Show build summary
-            if: always()
-            run: |
-            echo "Build finished. Contents of build/:"
-            ls -al build || true
-            echo "Installed CMake cache:"
-            sed -n '1,200p' build/CMakeCache.txt || true
+      - name: Run tests
+        run: |
+          set -o pipefail
+          ctest --test-dir build --output-on-failure | tee test_output.txt
+          if ! grep -q "100% tests passed" test_output.txt; then
+            echo "Some tests failed (see test_output.txt)."
+            exit 1
+          fi
 
+      - name: Upload build artifact (binary)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: astar_search-binary
+          path: |
+            build/astar_search
+            build/src/astar_search/astar_search
+          retention-days: 5
 
+      - name: Upload test log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-log
+          path: test_output.txt
+          retention-days: 5
 
-
-
-
+      - name: Show build summary
+        if: always()
+        run: |
+          echo "Build finished. Contents of build/:"
+          ls -al build || true
+          echo "Installed CMake cache:"
+          sed -n '1,200p' build/CMakeCache.txt || true
