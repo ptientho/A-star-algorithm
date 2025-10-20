@@ -348,8 +348,17 @@ ImageMagick_Magick++_INCLUDE_DIR:PATH=/usr/local/include/ImageMagick-7
 //Path to the ImageMagick Magick++ library.
 ImageMagick_Magick++_LIBRARY:FILEPATH=/usr/local/lib/libMagick++-7.Q16HDRI.so
 
+//Path to the ImageMagick arch-specific include dir.
+ImageMagick_MagickCore_ARCH_INCLUDE_DIR:PATH=ImageMagick_MagickCore_ARCH_INCLUDE_DIR-NOTFOUND
+
+//Path to the ImageMagick arch-independent include dir.
+ImageMagick_MagickCore_INCLUDE_DIR:PATH=/usr/local/include/ImageMagick-7
+
+//Path to the ImageMagick Magick++ library.
+ImageMagick_MagickCore_LIBRARY:FILEPATH=/usr/local/lib/libMagickCore-7.Q16HDRI.so
+
 //Dependencies for the target
-Map_LIB_DEPENDS:STATIC=general;/usr/local/lib/libMagick++-7.Q16HDRI.so;
+Map_LIB_DEPENDS:STATIC=general;/usr/local/lib/libMagick++-7.Q16HDRI.so;general;/usr/local/lib/libMagickCore-7.Q16HDRI.so;
 
 //Arguments to supply to pkg-config
 PKG_CONFIG_ARGN:STRING=
@@ -420,6 +429,9 @@ pkgcfg_lib_PC_Magick++_MagickCore-7.Q16HDRI:FILEPATH=/usr/local/lib/libMagickCor
 
 //Path to a library.
 pkgcfg_lib_PC_Magick++_MagickWand-7.Q16HDRI:FILEPATH=/usr/local/lib/libMagickWand-7.Q16HDRI.so
+
+//Path to a library.
+pkgcfg_lib_PC_MagickCore_MagickCore-7.Q16HDRI:FILEPATH=/usr/local/lib/libMagickCore-7.Q16HDRI.so
 
 
 ########################
@@ -606,7 +618,9 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding ImageMagick
-FIND_PACKAGE_MESSAGE_DETAILS_ImageMagick:INTERNAL=[/usr/local/lib/libMagick++-7.Q16HDRI.so][v7.1.2-6()]
+FIND_PACKAGE_MESSAGE_DETAILS_ImageMagick:INTERNAL=[/usr/local/lib/libMagick++-7.Q16HDRI.so][/usr/local/lib/libMagickCore-7.Q16HDRI.so][v7.1.2-6()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.2()]
 //Details about finding Python
 FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[/usr/bin/python3.10][cfound components: Interpreter ][v3.10.12()]
 //Details about finding Threads
@@ -623,6 +637,31 @@ IMAGEMAGICK_IMPORT_EXECUTABLE-ADVANCED:INTERNAL=1
 IMAGEMAGICK_MOGRIFY_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: IMAGEMAGICK_MONTAGE_EXECUTABLE
 IMAGEMAGICK_MONTAGE_EXECUTABLE-ADVANCED:INTERNAL=1
+MAGICKPP_CFLAGS:INTERNAL=
+MAGICKPP_CFLAGS_I:INTERNAL=
+MAGICKPP_CFLAGS_OTHER:INTERNAL=
+MAGICKPP_FOUND:INTERNAL=
+MAGICKPP_INCLUDEDIR:INTERNAL=
+MAGICKPP_LIBDIR:INTERNAL=
+MAGICKPP_LIBS:INTERNAL=
+MAGICKPP_LIBS_L:INTERNAL=
+MAGICKPP_LIBS_OTHER:INTERNAL=
+MAGICKPP_LIBS_PATHS:INTERNAL=
+MAGICKPP_MODULE_NAME:INTERNAL=
+MAGICKPP_Magick++-7.Q16_INCLUDEDIR:INTERNAL=
+MAGICKPP_Magick++-7.Q16_LIBDIR:INTERNAL=
+MAGICKPP_Magick++-7.Q16_PREFIX:INTERNAL=
+MAGICKPP_Magick++-7.Q16_VERSION:INTERNAL=
+MAGICKPP_PREFIX:INTERNAL=
+MAGICKPP_STATIC_CFLAGS:INTERNAL=
+MAGICKPP_STATIC_CFLAGS_I:INTERNAL=
+MAGICKPP_STATIC_CFLAGS_OTHER:INTERNAL=
+MAGICKPP_STATIC_LIBDIR:INTERNAL=
+MAGICKPP_STATIC_LIBS:INTERNAL=
+MAGICKPP_STATIC_LIBS_L:INTERNAL=
+MAGICKPP_STATIC_LIBS_OTHER:INTERNAL=
+MAGICKPP_STATIC_LIBS_PATHS:INTERNAL=
+MAGICKPP_VERSION:INTERNAL=
 PC_Magick++_CFLAGS:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-I/usr/local/include/ImageMagick-7
 PC_Magick++_CFLAGS_I:INTERNAL=
 PC_Magick++_CFLAGS_OTHER:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32
@@ -658,6 +697,41 @@ PC_Magick++_STATIC_LIBS_L:INTERNAL=
 PC_Magick++_STATIC_LIBS_OTHER:INTERNAL=
 PC_Magick++_STATIC_LIBS_PATHS:INTERNAL=
 PC_Magick++_VERSION:INTERNAL=7.1.2
+PC_MagickCore_CFLAGS:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-I/usr/local/include/ImageMagick-7
+PC_MagickCore_CFLAGS_I:INTERNAL=
+PC_MagickCore_CFLAGS_OTHER:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32
+PC_MagickCore_FOUND:INTERNAL=1
+PC_MagickCore_INCLUDEDIR:INTERNAL=/usr/local/include/ImageMagick-7
+PC_MagickCore_INCLUDE_DIRS:INTERNAL=/usr/local/include/ImageMagick-7
+PC_MagickCore_LDFLAGS:INTERNAL=-L/usr/local/lib;-lMagickCore-7.Q16HDRI
+PC_MagickCore_LDFLAGS_OTHER:INTERNAL=
+PC_MagickCore_LIBDIR:INTERNAL=/usr/local/lib
+PC_MagickCore_LIBRARIES:INTERNAL=MagickCore-7.Q16HDRI
+PC_MagickCore_LIBRARY_DIRS:INTERNAL=/usr/local/lib
+PC_MagickCore_LIBS:INTERNAL=
+PC_MagickCore_LIBS_L:INTERNAL=
+PC_MagickCore_LIBS_OTHER:INTERNAL=
+PC_MagickCore_LIBS_PATHS:INTERNAL=
+PC_MagickCore_MODULE_NAME:INTERNAL=MagickCore
+PC_MagickCore_MagickCore_INCLUDEDIR:INTERNAL=
+PC_MagickCore_MagickCore_LIBDIR:INTERNAL=
+PC_MagickCore_MagickCore_PREFIX:INTERNAL=
+PC_MagickCore_MagickCore_VERSION:INTERNAL=
+PC_MagickCore_PREFIX:INTERNAL=/usr/local
+PC_MagickCore_STATIC_CFLAGS:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32;-I/usr/local/include/ImageMagick-7
+PC_MagickCore_STATIC_CFLAGS_I:INTERNAL=
+PC_MagickCore_STATIC_CFLAGS_OTHER:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=16;-DMAGICKCORE_CHANNEL_MASK_DEPTH=32
+PC_MagickCore_STATIC_INCLUDE_DIRS:INTERNAL=/usr/local/include/ImageMagick-7
+PC_MagickCore_STATIC_LDFLAGS:INTERNAL=-L/usr/local/lib;-lMagickCore-7.Q16HDRI;-ljbig;-llcms2;-ltiff;-lfreetype;-ljpeg;-lpng16;-lz;-lfontconfig;-lfreetype;-lheif;-lwebpmux;-lwebpdemux;-lwebp;-lXext;-lXt;-lSM;-lICE;-lX11;-llzma;-lbz2;-lIlmImf-2_5;-lImath-2_5;-lHalf-2_5;-lIex-2_5;-lIexMath-2_5;-lIlmThread-2_5;-lopenjp2;-lxml2;-lz;-lzip;-lm;-lpthread;-lgomp;-lm
+PC_MagickCore_STATIC_LDFLAGS_OTHER:INTERNAL=
+PC_MagickCore_STATIC_LIBDIR:INTERNAL=
+PC_MagickCore_STATIC_LIBRARIES:INTERNAL=MagickCore-7.Q16HDRI;jbig;lcms2;tiff;freetype;jpeg;png16;z;fontconfig;freetype;heif;webpmux;webpdemux;webp;Xext;Xt;SM;ICE;X11;lzma;bz2;IlmImf-2_5;Imath-2_5;Half-2_5;Iex-2_5;IexMath-2_5;IlmThread-2_5;openjp2;xml2;z;zip;m;pthread;gomp;m
+PC_MagickCore_STATIC_LIBRARY_DIRS:INTERNAL=/usr/local/lib
+PC_MagickCore_STATIC_LIBS:INTERNAL=
+PC_MagickCore_STATIC_LIBS_L:INTERNAL=
+PC_MagickCore_STATIC_LIBS_OTHER:INTERNAL=
+PC_MagickCore_STATIC_LIBS_PATHS:INTERNAL=
+PC_MagickCore_VERSION:INTERNAL=7.1.2
 //ADVANCED property for variable: PKG_CONFIG_ARGN
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
@@ -670,7 +744,9 @@ _Python_EXECUTABLE:INTERNAL=/usr/bin/python3.10
 _Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;12;64;;cpython-310-x86_64-linux-gnu;/usr/lib/python3.10;/usr/lib/python3.10;/usr/lib/python3/dist-packages;/usr/lib/python3/dist-packages
 _Python_INTERPRETER_SIGNATURE:INTERNAL=61380851b1f49cd20124cec6c9ca8095
 __pkg_config_arguments_PC_Magick++:INTERNAL=QUIET;Magick++
+__pkg_config_arguments_PC_MagickCore:INTERNAL=QUIET;MagickCore
 __pkg_config_checked_PC_Magick++:INTERNAL=1
+__pkg_config_checked_PC_MagickCore:INTERNAL=1
 cmake_package_name:INTERNAL=GTest
 generated_dir:INTERNAL=/home/peera/A-star-algorithm/build/_deps/googletest-build/googletest/generated
 //ADVANCED property for variable: gmock_build_tests
@@ -691,6 +767,8 @@ pkgcfg_lib_PC_Magick++_Magick++-7.Q16HDRI-ADVANCED:INTERNAL=1
 pkgcfg_lib_PC_Magick++_MagickCore-7.Q16HDRI-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_PC_Magick++_MagickWand-7.Q16HDRI
 pkgcfg_lib_PC_Magick++_MagickWand-7.Q16HDRI-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_MagickCore_MagickCore-7.Q16HDRI
+pkgcfg_lib_PC_MagickCore_MagickCore-7.Q16HDRI-ADVANCED:INTERNAL=1
 prefix_result:INTERNAL=/usr/local/lib
 targets_export_name:INTERNAL=GTestTargets
 

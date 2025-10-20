@@ -8,7 +8,7 @@ jobs:
   build-and-test:
     strategy:
       matrix:
-        os: [ ubuntu-22.04, ubuntu-24.04 ]
+        os: [ ubuntu-22.04 ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout this repository
@@ -34,11 +34,17 @@ jobs:
       - name: Install Magick 7 library
         run: |
           cd $HOME
-          tar xvzf ImageMagick.tar.gz
-          export MAGICK_HOME="$HOME/ImageMagick-7.1.2"
-          export PATH="$MAGICK_HOME/bin:$PATH
-          LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$MAGICK_HOME/lib
-          export LD_LIBRARY_PATH
+          git clone --depth 1 --branch main https://github.com/ImageMagick/ImageMagick.git ImageMagick-7.1.2
+          cd ImageMagick-7.1.2
+          # Configure and Build
+          ./configure
+          make
+          # Install
+          sudo make install
+          # Configure the dynamic linker run-time bindings
+          sudo ldconfig /usr/local/lib
+          # Check if magick is installed
+          pkg-config --list-all | grep -i magick
 
       - name: Clean previous build
         run: |
@@ -56,7 +62,7 @@ jobs:
             -DCMAKE_INSTALL_PREFIX=./
 
       - name: Build
-        run: cmake --build build --parallel
+        run: cmake --build build
 
       - name: Install into workspace (local install)
         run: cmake --install build --verbose

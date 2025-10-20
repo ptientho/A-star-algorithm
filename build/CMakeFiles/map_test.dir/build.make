@@ -96,6 +96,7 @@ map_test: lib/libgtest_main.a
 map_test: src/Map/libMap.a
 map_test: lib/libgtest.a
 map_test: /usr/local/lib/libMagick++-7.Q16HDRI.so
+map_test: /usr/local/lib/libMagickCore-7.Q16HDRI.so
 map_test: CMakeFiles/map_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/peera/A-star-algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable map_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/map_test.dir/link.txt --verbose=$(VERBOSE)

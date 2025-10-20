@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/map_test.dir/tests/map_test.cc.o -o map_test  -Wl,-rpath,/usr/local/lib lib/libgtest_main.a src/Map/libMap.a lib/libgtest.a /usr/local/lib/libMagick++-7.Q16HDRI.so 
+/usr/bin/c++ CMakeFiles/map_test.dir/tests/map_test.cc.o -o map_test  -Wl,-rpath,/usr/local/lib lib/libgtest_main.a src/Map/libMap.a lib/libgtest.a /usr/local/lib/libMagick++-7.Q16HDRI.so /usr/local/lib/libMagickCore-7.Q16HDRI.so 
