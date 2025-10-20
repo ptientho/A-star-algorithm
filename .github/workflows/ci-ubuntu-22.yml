@@ -34,15 +34,11 @@ jobs:
       - name: Install Magick 7 library
         run: |
           cd $HOME
-          git clone --depth 1 --branch main https://github.com/ImageMagick/ImageMagick.git ImageMagick-7.1.2
-          cd ImageMagick-7.1.2
-          # Configure and Build
-          ./configure
-          make
-          # Install
-          sudo make install
-          # Configure the dynamic linker run-time bindings
-          sudo ldconfig /usr/local/lib
+          tar xvzf ImageMagick.tar.gz
+          export MAGICK_HOME="$HOME/ImageMagick-7.1.2"
+          export PATH="$MAGICK_HOME/bin:$PATH
+          LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$MAGICK_HOME/lib
+          export LD_LIBRARY_PATH
 
       - name: Clean previous build
         run: |
