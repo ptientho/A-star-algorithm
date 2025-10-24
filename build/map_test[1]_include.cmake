@@ -1,5 +1,0 @@
-if(EXISTS "/home/peera/A-star-algorithm/build/map_test[1]_tests.cmake")
-  include("/home/peera/A-star-algorithm/build/map_test[1]_tests.cmake")
-else()
-  add_test(map_test_NOT_BUILT map_test_NOT_BUILT)
-endif()
