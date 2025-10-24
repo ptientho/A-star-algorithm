@@ -1,6 +1,7 @@
 #include "AstarSearch.hpp"
 #include <iostream>
 #include <unordered_set>
+#include <queue>
 #include <vector>
 
 void reconstruct_path(std::vector<size_t> &shortest_path, std::shared_ptr<Node> current_node, size_t start_index, size_t goal_index)
@@ -59,8 +60,14 @@ bool astar_search(const OccupancyGrid &grid,
     bool path_found = false;
 
     // Container to store nodes associated with g_cost
-    std::vector<std::shared_ptr<Node>> open_list;
+    auto compare = [](const std::shared_ptr<Node> &a, const std::shared_ptr<Node> &b) {
+        return a->get_f_cost() > b->get_f_cost();
+    };
+    std::priority_queue<std::shared_ptr<Node>, std::vector<std::shared_ptr<Node>>, decltype(compare)> open_list(compare);
 
+    // Container to store nodes in open_list for easy lookup
+    std::unordered_set<std::shared_ptr<Node>> open_list_indexes;
+    
     // Container to store visited nodes
     std::unordered_set<size_t> closed_list;
 
@@ -68,18 +75,19 @@ bool astar_search(const OccupancyGrid &grid,
     std::shared_ptr<Node> current_node = std::make_shared<Node>(nullptr, start_idx);
 
     // Put start node into open_list
-    open_list.push_back(current_node);
+    open_list.push(current_node);
+    open_list_indexes.insert(current_node);
 
     std::cout << "A* Search Initialized" << "\n";
 
     while (!open_list.empty())
     {
         // Select node with the lowest f_cost as a current node
-        std::sort(open_list.begin(), open_list.end(), [](std::shared_ptr<Node> a, std::shared_ptr<Node> b)
-                  { return a->get_f_cost() < b->get_f_cost(); });
-
-        current_node = open_list.front();
-        open_list.erase(open_list.begin());
+        current_node = open_list.top();
+        open_list.pop();
+        
+        // Remove from open_list_indexes
+        open_list_indexes.erase(current_node);
 
         // Add the current node to closed list as a visited node
         closed_list.insert(current_node->get_index());
@@ -117,23 +125,24 @@ bool astar_search(const OccupancyGrid &grid,
 
             double f_cost = g_cost + h_cost;
 
-            // Check if neighbor is in open_list
-            auto open_list_idx = std::find_if(open_list.begin(), open_list.end(),
-                                              [neighbor_idx](const std::shared_ptr<Node> &node)
-                                              {
-                                                  return node->get_index() == neighbor_idx;
-                                              });
+            // Check if neighbor is in open_list_indexes
+            auto open_list_idx = std::find_if(open_list_indexes.begin(), open_list_indexes.end(),
+                                               [neighbor_idx](const std::shared_ptr<Node> &node)
+                                               { return node->get_index() == neighbor_idx; });
 
-            if (open_list_idx != open_list.end())
+            if (open_list_idx != open_list_indexes.end())
             {
                 // Update existing neighbor in open_list if new f_cost is lower
                 if (f_cost < (*open_list_idx)->get_f_cost())
                 {
-
                     (*open_list_idx)->set_g_cost(g_cost);
                     (*open_list_idx)->set_h_cost(h_cost);
                     (*open_list_idx)->set_f_cost(f_cost);
                     (*open_list_idx)->set_parent(current_node);
+
+                    // Update the priority queue, remove and reinsert the updated node
+                    open_list = std::priority_queue<std::shared_ptr<Node>, std::vector<std::shared_ptr<Node>>, decltype(compare)>(
+                        compare, std::vector<std::shared_ptr<Node>>(open_list_indexes.begin(), open_list_indexes.end()));
                 }
                 else if (f_cost == (*open_list_idx)->get_f_cost())
                 {
@@ -144,16 +153,25 @@ bool astar_search(const OccupancyGrid &grid,
                         (*open_list_idx)->set_h_cost(h_cost);
                         (*open_list_idx)->set_f_cost(f_cost);
                         (*open_list_idx)->set_parent(current_node);
+
+                        // Update the priority queue, remove and reinsert the updated node
+                        open_list = std::priority_queue<std::shared_ptr<Node>, std::vector<std::shared_ptr<Node>>, decltype(compare)>(
+                        compare, std::vector<std::shared_ptr<Node>>(open_list_indexes.begin(), open_list_indexes.end()));
+                
                     }
                 }
             }
             else
             {
                 // Add new neighbor to open list
-                open_list.push_back(std::make_shared<Node>(current_node, neighbor_idx));
-                open_list.back()->set_g_cost(g_cost);
-                open_list.back()->set_h_cost(h_cost);
-                open_list.back()->set_f_cost(f_cost);
+                auto node = std::make_shared<Node>(current_node, neighbor_idx);
+                node->set_g_cost(g_cost);
+                node->set_h_cost(h_cost);
+                node->set_f_cost(f_cost);
+
+                open_list.push(node);
+                open_list_indexes.insert(node);
+                
             }
         }
     }

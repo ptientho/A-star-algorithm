@@ -54,11 +54,10 @@ Before running program, check `--help` flag for information about input argument
 
 At project root
 ```
-./bin/astar_search test9.png test9_resize.png -s 220 265 -g 510 346 --scaling_factor 2 --apply_scaling true
+./bin/astar_search test9.png -s 220 265 -g 510 346 --scaling_factor 2 --apply_scaling true
 ```
 
 - `test9.png`, a file name of the original image, is required for the algorithm to process on.
-- `test9_resize.png`, a file name to be written with the shortest path, is required for the program. Note that this name can be the same as the original image, if scaling is not applied.
 - `-s 220 265` is a start (x,y) position in pixel (required).
 - `-g 510 346` is a goal (x,y) position in pixel (required).
 - `--scaling_factor 2` is one cell represents NxN pixels. In this case, it's 2x2 pixel/cell. Note that the default is 1 (1x1 pixel/cell).
@@ -75,11 +74,10 @@ Below is the detailed information about input arguments of this program.
 
 **Input arguments**
 ```
-Usage: astar_search [--help] [--version] --start_position VAR... --goal_position VAR... [--scaling_factor VAR] [--apply_scaling VAR] [--output_map VAR] map_to_process map_to_draw
+Usage: astar_search [--help] [--version] --start_position VAR... --goal_position VAR... [--scaling_factor VAR] [--apply_scaling VAR] [--output_map VAR] map_to_process
 
 Positional arguments:
   map_to_process        map image name to process occupancy grid (e.g. test1.png) 
-  map_to_draw           map image name to draw the path on (e.g. test1.png). If scaling is applied, use resized map 
 
 Optional arguments:
   -h, --help            shows help message and exits 
