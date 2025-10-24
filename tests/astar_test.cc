@@ -344,7 +344,7 @@ TEST_F(AstarSearchTest, RealMapGoalBlocked) {
 }
 
 // Test 11
-TEST_F(AstarSearchTest, NarrowCorridors) {
+TEST_F(AstarSearchTest, NarrowCorridorsScale2) {
     std::string mapFile = "andino_office.png";
     fs::path out = img_dir / fs::path(mapFile);
 
@@ -375,7 +375,7 @@ TEST_F(AstarSearchTest, NarrowCorridors) {
 }
 
 // Test 12
-TEST_F(AstarSearchTest, NarrowCorridorsScalingUp1) {
+TEST_F(AstarSearchTest, NarrowCorridorsScale3) {
     std::string mapFile = "andino_office.png";
     fs::path out = img_dir / fs::path(mapFile);
 
@@ -406,7 +406,7 @@ TEST_F(AstarSearchTest, NarrowCorridorsScalingUp1) {
 }
 
 // Test 13
-TEST_F(AstarSearchTest, NarrowCorridorsScalingUp2) {
+TEST_F(AstarSearchTest, NarrowCorridorsScale4) {
     std::string mapFile = "andino_office.png";
     fs::path out = img_dir / fs::path(mapFile);
 
@@ -432,6 +432,130 @@ TEST_F(AstarSearchTest, NarrowCorridorsScalingUp2) {
 
     // Create map path image
     std::string outFile = "output_path10.png";
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
+
+}
+
+// Test 14
+TEST_F(AstarSearchTest, NarrowCorridorsScale6) {
+    std::string mapFile = "andino_office.png";
+    fs::path out = img_dir / fs::path(mapFile);
+
+    GridMap gm;
+    std::vector<double> origin = {0.0, 0.0, 0.0};
+    double occ_thresh = 0.65;
+    double free_thresh = 0.196;
+    uint8_t resolution = 6;
+
+    ASSERT_TRUE(gm.load_map(img_dir, mapFile, origin, occ_thresh, free_thresh, resolution, true));
+
+    size_t start_idx = idx(134, 89, gm.grid_.width);
+    size_t goal_idx = idx(39, 78, gm.grid_.width);
+
+    std::cout << "Grid width: " << gm.grid_.width << ", height: " << gm.grid_.height << "\n";
+    
+    std::vector<size_t> shortest_path;
+
+    bool path_found = astar_search(gm.grid_, start_idx, goal_idx, shortest_path);
+
+    ASSERT_TRUE(path_found);
+    ASSERT_FALSE(shortest_path.empty());
+
+    // Create map path image
+    std::string outFile = "output_path11.png";
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
+
+}
+
+// Test 15
+TEST_F(AstarSearchTest, NarrowCorridorsScale8) {
+    std::string mapFile = "andino_office.png";
+    fs::path out = img_dir / fs::path(mapFile);
+
+    GridMap gm;
+    std::vector<double> origin = {0.0, 0.0, 0.0};
+    double occ_thresh = 0.65;
+    double free_thresh = 0.196;
+    uint8_t resolution = 8;
+
+    ASSERT_TRUE(gm.load_map(img_dir, mapFile, origin, occ_thresh, free_thresh, resolution, true));
+
+    size_t start_idx = idx(101, 67, gm.grid_.width);
+    size_t goal_idx = idx(29, 58, gm.grid_.width);
+
+    std::cout << "Grid width: " << gm.grid_.width << ", height: " << gm.grid_.height << "\n";
+    
+    std::vector<size_t> shortest_path;
+
+    bool path_found = astar_search(gm.grid_, start_idx, goal_idx, shortest_path);
+
+    ASSERT_TRUE(path_found);
+    ASSERT_FALSE(shortest_path.empty());
+
+    // Create map path image
+    std::string outFile = "output_path12.png";
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
+
+}
+
+// Test 16
+TEST_F(AstarSearchTest, NarrowCorridorsScale10) {
+    std::string mapFile = "andino_office.png";
+    fs::path out = img_dir / fs::path(mapFile);
+
+    GridMap gm;
+    std::vector<double> origin = {0.0, 0.0, 0.0};
+    double occ_thresh = 0.65;
+    double free_thresh = 0.196;
+    uint8_t resolution = 10;
+
+    ASSERT_TRUE(gm.load_map(img_dir, mapFile, origin, occ_thresh, free_thresh, resolution, true));
+
+    size_t start_idx = idx(81, 54, gm.grid_.width);
+    size_t goal_idx = idx(23, 46, gm.grid_.width);
+
+    std::cout << "Grid width: " << gm.grid_.width << ", height: " << gm.grid_.height << "\n";
+    
+    std::vector<size_t> shortest_path;
+
+    bool path_found = astar_search(gm.grid_, start_idx, goal_idx, shortest_path);
+
+    ASSERT_TRUE(path_found);
+    ASSERT_FALSE(shortest_path.empty());
+
+    // Create map path image
+    std::string outFile = "output_path13.png";
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
+
+}
+
+// Test 17
+TEST_F(AstarSearchTest, NarrowCorridorsScale16) {
+    std::string mapFile = "andino_office.png";
+    fs::path out = img_dir / fs::path(mapFile);
+
+    GridMap gm;
+    std::vector<double> origin = {0.0, 0.0, 0.0};
+    double occ_thresh = 0.65;
+    double free_thresh = 0.196;
+    uint8_t resolution = 16;
+
+    ASSERT_TRUE(gm.load_map(img_dir, mapFile, origin, occ_thresh, free_thresh, resolution, true));
+
+    size_t start_idx = idx(51, 34, gm.grid_.width);
+    size_t goal_idx = idx(14, 29, gm.grid_.width);
+
+    std::cout << "Grid width: " << gm.grid_.width << ", height: " << gm.grid_.height << "\n";
+    
+    std::vector<size_t> shortest_path;
+
+    bool path_found = astar_search(gm.grid_, start_idx, goal_idx, shortest_path);
+
+    ASSERT_TRUE(path_found);
+    ASSERT_FALSE(shortest_path.empty());
+
+    // Create map path image
+    std::string outFile = "output_path14.png";
     create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 
 }
