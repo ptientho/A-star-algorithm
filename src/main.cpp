@@ -9,57 +9,53 @@
 namespace fs = std::filesystem;
 
 // Helper function to calculate 1D index from 2D coordinates
-uint32_t idx(uint32_t x, uint32_t y, uint32_t width) {
+uint32_t idx(uint32_t x, uint32_t y, uint32_t width)
+{
     return y * width + x;
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
     // Declare arguments
-    argparse::ArgumentParser program("astar_search", "1.0");
-    
+    argparse::ArgumentParser program("astar_search", "1.10");
+
     program.add_argument("map_to_process").help("map image name to process occupancy grid (e.g. test1.png)");
-    program.add_argument("map_to_draw").help("map image name to draw the path on (e.g. test1.png). If scaling is applied, use resized map");
     
-    program.add_argument("-s","--start_position")
+    program.add_argument("-s", "--start_position")
         .required()
         .help("start position in the map (e.g. 10 10)")
         .nargs(2)
         .scan<'i', uint32_t>();
-    
-    program.add_argument("-g","--goal_position")
-        .required().help("goal position in the map (e.g. 20 20)")
+
+    program.add_argument("-g", "--goal_position")
+        .required()
+        .help("goal position in the map (e.g. 20 20)")
         .nargs(2)
         .scan<'i', uint32_t>();
-    
-    int resolution;
-    program.add_argument("--scaling_factor").help("map scaling factor. Default is 1")
-        .default_value(1)
-        .scan<'i', int>()
-        .store_into(resolution);
-    
-    bool apply_scaling;
-    program.add_argument("--apply_scaling").help("whether to use scaling factor or not")
-        .default_value(false)
-        .store_into(apply_scaling);
-    
-    std::string outFile;
-    program.add_argument("--output_map").help("Output map name with shortest path")
-        .default_value("output.png")
-        .store_into(outFile);
-    
-    try{
 
+    int resolution;
+    program.add_argument("--scaling_factor").help("map scaling factor. Default is 1").default_value(1).scan<'i', int>().store_into(resolution);
+
+    bool apply_scaling;
+    program.add_argument("--apply_scaling").help("whether to use scaling factor or not").default_value(false).store_into(apply_scaling);
+
+    std::string outFile;
+    program.add_argument("--output_map").help("Output map name with shortest path").default_value("output.png").store_into(outFile);
+
+    try
+    {
         program.parse_args(argc, argv);
         std::cout << program << '\n';
-
-    }catch (const std::exception& err){
+    }
+    catch (const std::exception &err)
+    {
         std::cerr << err.what() << std::endl;
         std::cerr << program;
         return 1;
     }
 
     fs::path img_dir = fs::path(PROJECT_SOURCE_DIR) / fs::path("images");
-    
+
     std::string mapFile = program.get<std::string>("map_to_process");
     fs::path out = img_dir / fs::path(mapFile);
 
@@ -76,24 +72,24 @@ int main(int argc, char** argv) {
     auto start = program.get<std::vector<uint32_t>>("--start_position");
     auto goal = program.get<std::vector<uint32_t>>("--goal_position");
     size_t start_idx = idx(start[0] / static_cast<uint8_t>(resolution), start[1] / static_cast<uint8_t>(resolution), gm.grid_.width); // Starting at (10,10)
-    size_t goal_idx = idx(goal[0] / static_cast<uint8_t>(resolution), goal[1] / static_cast<uint8_t>(resolution), gm.grid_.width); // Goal at (49, 23)
+    size_t goal_idx = idx(goal[0] / static_cast<uint8_t>(resolution), goal[1] / static_cast<uint8_t>(resolution), gm.grid_.width);    // Goal at (49, 23)
 
     // Perform A* search
     std::vector<size_t> shortest_path;
     bool path_found = astar_search(gm.grid_, start_idx, goal_idx, shortest_path);
 
-    if (path_found) {
+    if (path_found)
+    {
         std::cout << "Path found!" << "\n";
-        
-        // Save image output of map and path
-        mapFile = program.get<std::string>("map_to_draw");
-        create_map_path(img_dir, mapFile, shortest_path, outFile);
-        std::cout << "\n";
 
-    } else {
+        // Save image output of map and path
+        create_map_path(img_dir, mapFile, shortest_path, outFile, static_cast<uint8_t>(resolution));
+        std::cout << "\n";
+    }
+    else
+    {
         std::cout << "No path found.\n";
     }
-    
-    return 0;
 
+    return 0;
 }

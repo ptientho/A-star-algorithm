@@ -14,21 +14,21 @@ struct LoadMapParameters
 {
     std::string mapFile;
     uint8_t resolution;
-    std::vector<double> origin{0,0,0};
+    std::vector<double> origin{0, 0, 0};
     double occupancy_thresh;
     double free_thresh;
 };
 
 struct OccupancyGrid
 {
-    uint8_t resolution = 1; // one cell represents resolution x resolution pixels | default = 1
-    uint32_t width; // number of cells in the x direction
-    uint32_t height; // number of cells in the y direction
-    std::vector<double> origin{0,0,0}; // [x, y, theta] of the lower-left corner of the map (May bot be used in pixel-based map)
-    std::vector<int8_t> data; // 2D grid representation of the map (size = width * height)
+    uint8_t resolution = 1;              // one cell represents resolution x resolution pixels | default = 1
+    uint32_t width;                      // number of cells in the x direction
+    uint32_t height;                     // number of cells in the y direction
+    std::vector<double> origin{0, 0, 0}; // [x, y, theta] of the lower-left corner of the map (May bot be used in pixel-based map)
+    std::vector<int8_t> data;            // 2D grid representation of the map (size = width * height)
 };
 
-class GridMap 
+class GridMap
 {
 public:
     using AlphaArray = std::variant<
@@ -41,24 +41,23 @@ public:
     // Load map from PNG image and set parameters
     // This method handles loading map filename, set parameters
     // Return true if successful, false otherwise
-    bool load_map(fs::path img_dir, const std::string & mapFile,  
-        std::vector<double> origin, 
-        double occupancy_thresh, 
-        double free_thresh,
-        uint8_t resolution,
-        bool decomposition = false);
+    bool load_map(fs::path img_dir, const std::string &mapFile,
+                  std::vector<double> origin,
+                  double occupancy_thresh,
+                  double free_thresh,
+                  uint8_t resolution,
+                  bool decomposition = false);
 
     OccupancyGrid grid_; // 2D grid representation of the map
 
     unsigned int get_depth() const { return depth; }
-    
+
     ~GridMap();
 
 private:
-
     LoadMapParameters map_params;
     unsigned int depth; // bits per channel (1, 8, 16, ...)
-    
+
     /*
         Convert image to occupancy grid, given that parameters are already set
         - load an image (PNG format) from the specified file path using ImageMagick
@@ -71,22 +70,22 @@ private:
         Factory function to handle image with different depth and construct alpha array
     */
     template <typename T>
-    AlphaArray construct_alpha_array(unsigned int depth) {
+    AlphaArray construct_alpha_array(unsigned int depth)
+    {
         return Eigen::Array<T, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>();
     }
 
     /*
         Normalize pixel values to [0, 1] range based on image depth
     */
-    void normalize_pixel(Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> & norm_mat,
-        Magick::Image & img, size_t width, size_t height, unsigned int depth);
+    void normalize_pixel(Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> &norm_mat,
+                         Magick::Image &img, size_t width, size_t height, unsigned int depth);
 
     /*
         Helper function to fill alpha array based on image depth
      */
-    void fill_alpha_array(AlphaArray & alpha_array,
-        Magick::Image & img, size_t width, size_t height, unsigned int depth);
-
+    void fill_alpha_array(AlphaArray &alpha_array,
+                          Magick::Image &img, size_t width, size_t height, unsigned int depth);
 };
 
 /*
@@ -96,11 +95,15 @@ private:
     - shortest_path: vector of linear indices representing the shortest path
     - output_filename: filename for saving the new image with the path drawn
 */
-void create_map_path(fs::path img_dir, const std::string & mapFile, const std::vector<size_t> & shortest_path, const std::string & output_filename);
+void create_map_path(fs::path img_dir, const std::string &mapFile, const std::vector<size_t> &shortest_path, const std::string &output_filename, const uint8_t &resolution);
 
 /*
     Helper function to draw a pixel on the image at specified (x, y) coordinates
 */
-void draw_pixel(Magick::Image & img, size_t x, size_t y);
+void draw_pixel(Magick::Image &img, size_t x, size_t y);
 
-#endif //GRIDMAP_HPP
+/*
+    Helper function to resize an image
+*/
+
+#endif // GRIDMAP_HPP

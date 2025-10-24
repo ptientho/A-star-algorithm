@@ -89,9 +89,8 @@ TEST_F(AstarSearchTest, PrintMapPathMapScaling) {
     std::cout << "\n";
 
     // Create map path image
-    mapFile = "test1_resize.png";
     std::string outFile = "output_path1.png";
-    create_map_path(img_dir, mapFile, shortest_path, outFile);
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 
 }
 
@@ -131,9 +130,8 @@ TEST_F(AstarSearchTest, PrintMapPathMapNoScale) {
     std::cout << "\n";
 
     // Create map path image
-    mapFile = "test1.png";
     std::string outFile = "output_path2.png";
-    create_map_path(img_dir, mapFile, shortest_path, outFile);
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 }
 
 // Test 4
@@ -189,9 +187,8 @@ TEST_F(AstarSearchTest, PathWithObstacles) {
     ASSERT_FALSE(shortest_path.empty());
 
     // Create map path image
-    mapFile = "test3.png";
     std::string outFile = "output_path3.png";
-    create_map_path(img_dir, mapFile, shortest_path, outFile);
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 
 }
 
@@ -221,9 +218,8 @@ TEST_F(AstarSearchTest, PathScalingWithObstacles) {
     ASSERT_FALSE(shortest_path.empty());
 
     // Create map path image
-    mapFile = "test3_resize.png";
     std::string outFile = "output_path4.png";
-    create_map_path(img_dir, mapFile, shortest_path, outFile);
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 
 }
 
@@ -253,9 +249,8 @@ TEST_F(AstarSearchTest, GradientMap) {
     ASSERT_FALSE(shortest_path.empty());
 
     // Create map path image
-    mapFile = "test4.png";
     std::string outFile = "output_path5.png";
-    create_map_path(img_dir, mapFile, shortest_path, outFile);
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 
 }
 
@@ -285,9 +280,8 @@ TEST_F(AstarSearchTest, RealMap) {
     ASSERT_FALSE(shortest_path.empty());
 
     // Create map path image
-    mapFile = "test9.png";
     std::string outFile = "output_path6.png";
-    create_map_path(img_dir, mapFile, shortest_path, outFile);
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 
 }
 
@@ -317,9 +311,8 @@ TEST_F(AstarSearchTest, RealMapScaling) {
     ASSERT_FALSE(shortest_path.empty());
 
     // Create map path image
-    mapFile = "test9_resize.png";
     std::string outFile = "output_path7.png";
-    create_map_path(img_dir, mapFile, shortest_path, outFile);
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 
 }
 
@@ -376,9 +369,8 @@ TEST_F(AstarSearchTest, NarrowCorridors) {
     ASSERT_FALSE(shortest_path.empty());
 
     // Create map path image
-    mapFile = "andino_office_resize.png";
     std::string outFile = "output_path8.png";
-    create_map_path(img_dir, mapFile, shortest_path, outFile);
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 
 }
 
@@ -408,9 +400,8 @@ TEST_F(AstarSearchTest, NarrowCorridorsScalingUp1) {
     ASSERT_FALSE(shortest_path.empty());
 
     // Create map path image
-    mapFile = "andino_office_resize2.png";
     std::string outFile = "output_path9.png";
-    create_map_path(img_dir, mapFile, shortest_path, outFile);
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 
 }
 
@@ -440,8 +431,7 @@ TEST_F(AstarSearchTest, NarrowCorridorsScalingUp2) {
     ASSERT_FALSE(shortest_path.empty());
 
     // Create map path image
-    mapFile = "andino_office_resize3.png";
     std::string outFile = "output_path10.png";
-    create_map_path(img_dir, mapFile, shortest_path, outFile);
+    create_map_path(img_dir, mapFile, shortest_path, outFile, resolution);
 
 }
